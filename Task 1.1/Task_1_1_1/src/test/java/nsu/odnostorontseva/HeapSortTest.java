@@ -1,12 +1,12 @@
 package nsu.odnostorontseva;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.Arrays;
 import java.util.Random;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class HeapSortTest{
+class HeapSortTest {
 
     @Test
     void main_check() {
