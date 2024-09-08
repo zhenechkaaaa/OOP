@@ -1,31 +1,30 @@
 package nsu.odnostorontseva;
 
 /**
- * Реализация пирамидальной сортировки
- * автор: Евгения Односторонцева
- * Класс HeapSort с методами sort и heapify
+ * Реализация пирамидальной сортировки.
+ * автор: Евгения Односторонцева.
+ * Класс HeapSort с методами sort и heapify.
  */
-public class HeapSort
-{
+public class HeapSort {
     /**
      * Метод `sort()` реализует сортировку кучей.
      * 1. Создает кучу: Преобразует массив в кучу, где корень всегда максимальный элемент.
      * 2. Извлекает максимальный элемент.
      * 3. Обновляет кучу.
+     *
      * @param arr (исходный массив)
      * @return (отсортированный массив)
      */
-    public static int[] sort(int[] arr)
-    {
+    public static int[] sort(int[] arr) {
         int n = arr.length;
 
         //построение кучи
-        for (int i = n / 2 - 1; i >= 0; i--)
+        for (int i = n / 2 - 1; i >= 0; i--) {
             heapify(arr, n, i);
+        }
 
         //вытаскиваем элементры из кучи
-        for (int i = n -1 ; i >= 0; i--)
-        {
+        for (int i = n - 1 ; i >= 0; i--) {
             // перемещаем текущий корень в конец
             int tmp = arr[0];
             arr[0] = arr[i];
