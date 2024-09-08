@@ -24,7 +24,7 @@ public class HeapSort {
         }
 
         //вытаскиваем элементры из кучи
-        for (int i = n - 1 ; i >= 0; i--) {
+        for (int i = n - 1; i >= 0; i--) {
             // перемещаем текущий корень в конец
             int tmp = arr[0];
             arr[0] = arr[i];
@@ -40,27 +40,28 @@ public class HeapSort {
     /**
      * Метод `heapify` переупорядочивает элементы подкучи с корнем в позиции `i`.
      * Обеспечивает, что подкуча с корнем `i` удовлетворяет условию кучи.
+     *
      * @param arr (исходный массив)
      * @param n (размер массива)
      * @param i (вершина которую сейчас проверяем)
      */
-    static void heapify(int arr[], int n, int i)
-    {
+    static void heapify(int[] arr, int n, int i) {
         int root = i; // наибольший элемент - корень
         int l = 2 * i + 1; // левый
-        int r = 2 * i+ 2; // правый
+        int r = 2 * i + 2; // правый
 
         // левый элемент больше корня
-        if (l < n && arr[l] > arr[root])
+        if (l < n && arr[l] > arr[root]) {
             root = l;
+        }
 
         // аналогично для правого
-        if (r < n && arr[r] > arr[root])
+        if (r < n && arr[r] > arr[root]) {
             root = r;
+        }
 
         // самый большой элемент не корень
-        if (root != i)
-        {
+        if (root != i) {
             int tmp = arr[i];
             arr[i] = arr[root];
             arr[root] = tmp;
@@ -71,6 +72,8 @@ public class HeapSort {
     }
 
     /**
+     * Пустая базовая функция мейн.
+     *
      * @param args (базовый параметр)
      */
     public static void main(String args[])
