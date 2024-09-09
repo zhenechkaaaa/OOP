@@ -70,12 +70,11 @@ public class HeapSort {
             heapify(arr, n, root);
         }
     }
-
     /**
-     * Пустая базовая функция мейн.
+     * БаЗОВая функция.
      *
      * @param args (базовый параметр)
      */
-    public static void main(String[] args)
-    {}
+    public static void main(String[] args) {
+    }
 }
