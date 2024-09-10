@@ -93,13 +93,17 @@ public class HeapSort {
      */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int len = scanner.nextInt();
-        int[] arr = new int[len];
-        for (int i = 0; i < len; i++) {
-            arr[i] = scanner.nextInt();
+        try {
+            int len = scanner.nextInt();
+            int[] arr = new int[len];
+            for (int i = 0; i < len; i++) {
+                arr[i] = scanner.nextInt();
+            }
+            int[] res = sort(arr);
+            printArray(res);
+        } catch (java.util.NoSuchElementException exception) {
+            System.out.println("Pipipupu");
         }
-        int[] res = sort(arr);
-        printArray(res);
 
         scanner.close();
     }

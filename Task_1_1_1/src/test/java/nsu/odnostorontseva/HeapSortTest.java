@@ -1,12 +1,19 @@
 package nsu.odnostorontseva;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.Random;
 import org.junit.jupiter.api.Test;
 
 class HeapSortTest {
+
+    @Test
+    void main_check() {
+        HeapSort.main(new String[] {});
+        assertTrue(true);
+    }
 
     @Test
     void empty_arr_check() {
