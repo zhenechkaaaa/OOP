@@ -1,5 +1,7 @@
 package nsu.odnostorontseva;
 
+import java.util.Scanner;
+
 /**
  * Реализация пирамидальной сортировки.
  * автор: Евгения Односторонцева.
@@ -70,10 +72,33 @@ public class HeapSort {
             heapify(arr, n, root);
         }
     }
+
     /**
-     * БаЗОВая функция.
+     * Впомогательная функция для вывод массива.
+     *
+     * @param arr (массив который нужно вывести)
+     */
+    static void printArray(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+
+    /**
+     * Базовая функция.
      *
      * @param args (базовый параметр)
      */
-    public static void main(String[] args) {}
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int len = scanner.nextInt();
+        int[] arr = new int[len];
+        for (int i = 0; i < len; i++) {
+            arr[i] = scanner.nextInt();
+        }
+        int[] res = sort(arr);
+        printArray(res);
+    }
 }
