@@ -72,20 +72,6 @@ public class HeapSort {
             heapify(arr, n, root);
         }
     }
-
-    /**
-     * Впомогательная функция для вывод массива.
-     *
-     * @param arr (массив который нужно вывести)
-     */
-    static void printArray(int[] arr) {
-        int n = arr.length;
-        for (int i = 0; i < n; i++) {
-            System.out.print(arr[i] + " ");
-        }
-        System.out.println();
-    }
-
     /**
      * Базовая функция.
      *
@@ -100,7 +86,10 @@ public class HeapSort {
                 arr[i] = scanner.nextInt();
             }
             int[] res = sort(arr);
-            printArray(res);
+            for (int i = 0; i < len; i++) {
+                System.out.print(res[i] + " ");
+            }
+            System.out.println();
         } catch (java.util.NoSuchElementException exception) {
             System.out.println("Pipipupu");
         }
