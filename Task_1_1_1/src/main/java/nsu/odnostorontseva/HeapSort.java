@@ -100,5 +100,7 @@ public class HeapSort {
         }
         int[] res = sort(arr);
         printArray(res);
+
+        scanner.close();
     }
 }
