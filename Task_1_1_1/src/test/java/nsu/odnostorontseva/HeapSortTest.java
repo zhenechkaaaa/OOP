@@ -65,9 +65,9 @@ class HeapSortTest {
     }
 
     @Test
-    void big_arr_sort_check() {
-        int[] expected = new int[] {-2147483648, 0, 2147483647};
-        int[] actual = HeapSort.sort(new int[] {0, -2147483648, 2147483647});
+    void sorted_arr_check() {
+        int[] expected = new int[] {1, 2, 3, 4, 5};
+        int[] actual = HeapSort.sort(new int[] {1, 2, 3, 4, 5});
         assertArrayEquals(expected, actual);
     }
 
