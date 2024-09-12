@@ -10,69 +10,69 @@ import org.junit.jupiter.api.Test;
 class HeapSortTest {
 
     @Test
-    void mainCheck() {
+    void MainCheck() {
         HeapSort.main(new String[] {});
         assertTrue(true);
     }
 
     @Test
-    void emptyArrCheck() {
+    void EmptyArrCheck() {
         int[] expected = new int[] {};
         int[] actual = HeapSort.sort(new int[] {});
         assertArrayEquals(expected, actual);
     }
 
     @Test
-    void singleElemCheck() {
+    void SingleElemCheck() {
         int[] expected = new int[] {8};
         int[] actual = HeapSort.sort(new int[] {8});
         assertArrayEquals(expected, actual);
     }
 
     @Test
-    void usualSortCheck() {
+    void UsualSortCheck() {
         int[] expected = new int[] {1, 2, 3, 4, 5};
         int[] actual = HeapSort.sort(new int[] {5, 3, 2, 1, 4});
         assertArrayEquals(expected, actual);
     }
 
     @Test
-    void reverseSortCheck() {
+    void ReverseSortCheck() {
         int[] expected = new int[] {1, 2, 3, 4, 5};
         int[] actual = HeapSort.sort(new int[] {5, 4, 3, 2, 1});
         assertArrayEquals(expected, actual);
     }
 
     @Test
-    void negElemsSortCheck() {
+    void NegElemsSortCheck() {
         int[] expected = new int[] {-5, -4, -3, -2, -1};
         int[] actual = HeapSort.sort(new int[] {-4, -3, -2, -1, -5});
         assertArrayEquals(expected, actual);
     }
 
     @Test
-    void bigElemsSortCheck() {
+    void BigElemsSortCheck() {
         int[] expected = new int[] {-2147483648, 0, 2147483647};
         int[] actual = HeapSort.sort(new int[] {0, -2147483648, 2147483647});
         assertArrayEquals(expected, actual);
     }
 
     @Test
-    void sameElemsSortCheck() {
+    void SameElemsSortCheck() {
         int[] expected = new int[] {5, 5, 5};
         int[] actual = HeapSort.sort(new int[] {5, 5, 5});
         assertArrayEquals(expected, actual);
     }
 
     @Test
-    void sortedArrCheck() {
+    void SortedArrCheck() {
         int[] expected = new int[] {1, 2, 3, 4, 5};
         int[] actual = HeapSort.sort(new int[] {1, 2, 3, 4, 5});
         assertArrayEquals(expected, actual);
     }
 
     @Test
-    void checkLargeArray() {
+    void CheckLargeArray() {
         int[] expected = new int[10000000];
         Random random = new Random();
         for (int i = 0; i < 10000000; i++) {
