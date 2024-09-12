@@ -72,7 +72,7 @@ class HeapSortTest {
     }
 
     @Test
-    void CheckLargeArray() {
+    void CheckLargeArr() {
         int[] expected = new int[10000000];
         Random random = new Random();
         for (int i = 0; i < 10000000; i++) {
