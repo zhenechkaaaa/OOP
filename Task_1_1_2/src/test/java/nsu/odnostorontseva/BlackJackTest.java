@@ -1,11 +1,13 @@
 package nsu.odnostorontseva;
 
-import java.io.ByteArrayOutputStream;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class BlackJackTest {
@@ -33,7 +35,7 @@ class BlackJackTest {
     }
 
     @Test
-    void gameOverTest () {
+    void gameOverTest() {
         String input = "n\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
 
