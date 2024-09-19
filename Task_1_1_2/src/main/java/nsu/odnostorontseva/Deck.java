@@ -100,7 +100,8 @@ public class Deck {
         this.addDeck(discard.getCards());
         this.shuffle();
         discard.emptyDeck();
-        System.out.println("Карты закончились, мы образовали новую колоду из сброшенных и перемешали её.");
+        System.out.println("Карты закончились, " +
+                "мы образовали новую колоду из сброшенных и перемешали её.");
     }
 
     /**

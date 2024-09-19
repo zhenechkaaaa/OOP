@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 /**
  * represents a player's hand in a game.
- * Provides functionality for taking cards, scoring, resetting a hand, and displaying hand information.
+ * Provides functionality for taking cards,
+ * scoring, resetting a hand,
+ * and displaying hand information.
  */
 public class Hand {
     private final ArrayList<Card> hand;

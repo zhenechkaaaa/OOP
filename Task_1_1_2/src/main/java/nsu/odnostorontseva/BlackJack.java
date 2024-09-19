@@ -12,7 +12,10 @@ public class BlackJack {
     private final Deck discarded;
     private final Dealer dealer;
     private final Player player;
-    private int wins, loses, nobody, roundCounter;
+    private int wins;
+    private int loses;
+    private int nobody;
+    private int roundCounter;
     boolean gameOver;
 
     /**
@@ -100,7 +103,8 @@ public class BlackJack {
                 System.out.println();
             } else {
                 loses++;
-                System.out.println("У дилера блекджек. Вы проиграли раунд. Счёт " + wins + ":" + loses + ".");
+                System.out.println("У дилера блекджек. Вы проиграли раунд. " +
+                        "Счёт " + wins + ":" + loses + ".");
             }
             return;
         }
