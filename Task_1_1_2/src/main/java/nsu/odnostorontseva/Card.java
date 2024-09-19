@@ -62,6 +62,6 @@ public class Card {
      * @return (строковое представление карты).
      */
     public String toString() {
-        return (rank + " " + suit + " (" + this.getValue() + ")");
+        return rank + " " + suit + " (" + this.getValue() + ")";
     }
 }
