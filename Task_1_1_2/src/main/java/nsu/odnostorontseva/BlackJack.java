@@ -103,8 +103,8 @@ public class BlackJack {
                 System.out.println();
             } else {
                 loses++;
-                System.out.println("У дилера блекджек. Вы проиграли раунд. " +
-                        "Счёт " + wins + ":" + loses + ".");
+                System.out.println("У дилера блекджек. Вы проиграли раунд. "
+                        + "Счёт " + wins + ":" + loses + ".");
             }
             return;
         }

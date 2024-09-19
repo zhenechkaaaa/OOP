@@ -9,22 +9,21 @@ import org.junit.jupiter.api.Test;
 
 class PersonTest {
 
-    private testPerson person;
-    private Deck deck;
-    private Deck discard;
-    private Hand hand;
-
-    // A simple subclass of Person to test abstract class functionality.
-    static class testPerson extends Person {
-        public testPerson() {
+    static class PersonForTest extends Person {
+        public PersonForTest() {
             super();
             this.setRole("Тестовый игрок");
         }
     }
 
+    private PersonForTest person;
+    private Deck deck;
+    private Deck discard;
+    private Hand hand;
+
     @BeforeEach
     void setUp() {
-        person = new testPerson();
+        person = new PersonForTest();
 
         deck = new Deck(true);
         discard = new Deck(false);
