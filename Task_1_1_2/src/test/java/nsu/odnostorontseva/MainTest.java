@@ -16,7 +16,7 @@ class MainTest {
         System.setOut(new PrintStream(output));
 
         try {
-            Main.main(new String[]{});
+            nsu.odnostorontseva.Main.main(new String[]{});
 
             String out = output.toString();
             assertEquals("Добро пожаловать в BlackJack!", out);
