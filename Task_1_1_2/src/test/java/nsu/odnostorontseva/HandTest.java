@@ -1,12 +1,14 @@
 package nsu.odnostorontseva;
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 class HandTest {
 
     private Hand hand;
     private Deck deck;
+    private Deck discarded;
 
     @Test
     void takeCardFromDeckTest() {
@@ -64,7 +66,7 @@ class HandTest {
     void discardHandToDeckTest() {
         hand = new Hand();
         deck = new Deck(false);
-        Deck discarded = new Deck(false);
+        discarded = new Deck(false);
 
         Card card0 = new Card(Suit.SPADES, Rank.SEVEN);
         deck.addCard(card0);
