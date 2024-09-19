@@ -1,7 +1,6 @@
 package nsu.odnostorontseva;
 
 import org.junit.jupiter.api.Test;
-import nsu.odnostorontseva.Main;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
