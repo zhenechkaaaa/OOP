@@ -66,7 +66,7 @@ public class Hand {
      * @return последняя взятая карта.
      */
     public Card getLastEdedCard() {
-        return hand.getLast();
+        return hand.get(hand.size() - 1);
     }
 
     /**
@@ -90,7 +90,7 @@ public class Hand {
             Card card = hand.get(counter);
             output += card + ", ";
         }
-        output += hand.getLast();
+        output += hand.get(hand.size() - 1);
         return output;
     }
 }

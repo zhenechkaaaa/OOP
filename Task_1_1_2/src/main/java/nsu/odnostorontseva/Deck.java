@@ -54,8 +54,8 @@ public class Deck {
      * @return (верхняя карта колоды).
      */
     public Card takeCard() {
-        Card cardToTake = new Card(deck.getFirst());
-        deck.removeFirst();
+        Card cardToTake = new Card(deck.get(0));
+        deck.remove(0);
         return cardToTake;
     }
 

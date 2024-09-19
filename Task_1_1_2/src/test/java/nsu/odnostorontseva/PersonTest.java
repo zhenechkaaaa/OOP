@@ -26,12 +26,10 @@ class PersonTest {
     void setUp() {
         person = new testPerson();
 
-        // Setup deck and discard pile
-        deck = new Deck(true);  // Initialized with cards
-        discard = new Deck(false);  // Empty discard pile
+        deck = new Deck(true);
+        discard = new Deck(false);
         hand = new Hand();
 
-        // Set hand to person
         person.setHand(hand);
     }
 
