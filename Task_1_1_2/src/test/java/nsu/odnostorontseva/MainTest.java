@@ -1,6 +1,7 @@
 package nsu.odnostorontseva;
 
 import org.junit.jupiter.api.Test;
+import nsu.odnostorontseva.Main;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -16,7 +17,7 @@ class MainTest {
         System.setOut(new PrintStream(output));
 
         try {
-            nsu.odnostorontseva.Main.main(new String[]{});
+            Main.main(new String[]{});
 
             String out = output.toString();
             assertEquals("Добро пожаловать в BlackJack!", out);
