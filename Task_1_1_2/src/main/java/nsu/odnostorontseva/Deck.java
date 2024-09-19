@@ -11,19 +11,19 @@ import java.util.Random;
  */
 public class Deck {
 
-    private ArrayList <Card> deck;
+    private final ArrayList<Card> deck;
 
     /**
      * creates a new deck of cards.
      *
      * @param makeDeck (Если true, создается полная колода из 52 карт.
-     *                 Если false, создается пустая колода.)
+     *                 Если false, создается пустая колода).
      */
     public Deck(boolean makeDeck) {
         deck = new ArrayList<Card>();
-        if(makeDeck) {
-            for(Suit suit : Suit.values()) {
-                for(Rank rank : Rank.values()) {
+        if (makeDeck) {
+            for (Suit suit : Suit.values()) {
+                for (Rank rank : Rank.values()) {
                     deck.add(new Card(suit, rank));
                 }
             }
@@ -54,8 +54,8 @@ public class Deck {
      * @return (верхняя карта колоды).
      */
     public Card takeCard() {
-        Card cardToTake = new Card(deck.get(0));
-        deck.remove(0);
+        Card cardToTake = new Card(deck.getFirst());
+        deck.removeFirst();
         return cardToTake;
     }
 
@@ -72,12 +72,7 @@ public class Deck {
      * @return (true, если колода пуста, иначе false).
      */
     public boolean empty() {
-        if (deck.size() <= 0) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return deck.isEmpty();
     }
 
     /**
@@ -125,7 +120,7 @@ public class Deck {
     public String toString() {
         String output = "";
 
-        for (Card card: deck) {
+        for (Card card : deck) {
             output += card;
             output += '\n';
         }

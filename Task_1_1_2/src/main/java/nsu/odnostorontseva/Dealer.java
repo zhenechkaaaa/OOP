@@ -1,8 +1,8 @@
 package nsu.odnostorontseva;
 
 /**
- * Representing the dealer in a game.
- * Inherits the Person class. *
+ * representing the dealer in a game.
+ * inherits the Person class.
  */
 public class Dealer extends Person {
 
@@ -14,7 +14,7 @@ public class Dealer extends Person {
     }
 
     /**
-     * Displays information about the dealer's first cards, hiding the second card.
+     * print information about the dealer's first cards, hiding the second card.
      */
     public void showFirstHand() {
         System.out.print("Карты Дилера: ");

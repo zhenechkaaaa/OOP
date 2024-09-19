@@ -1,5 +1,7 @@
 package nsu.odnostorontseva;
 
+import java.util.Objects;
+
 /**
  * representing a player in a game.
  * Provides common methods and properties for all players,
@@ -77,18 +79,17 @@ public abstract class Person {
      * takes a card from the deck.
      * checking to see if a new deck needs to be formed from the discarded cards.
      *
-     * @param deck (колода).
+     * @param deck    (колода).
      * @param discard (сброшенные карты).
      */
     public void hit(Deck deck, Deck discard) {
-        if(deck.empty()) {
+        if (deck.empty()) {
             deck.deckFromDiscard(discard);
         }
         this.hand.takeCardFromDeck(deck);
-        if(this.role == "Игрок") {
+        if (Objects.equals(this.role, "Игрок")) {
             System.out.println("Вы открыли карту: " + this.hand.getLastEdedCard());
-        }
-        else {
+        } else {
             System.out.println("Дилер открывает карту: " + this.hand.getLastEdedCard());
         }
 

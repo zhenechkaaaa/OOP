@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * Provides functionality for taking cards, scoring, resetting a hand, and displaying hand information.
  */
 public class Hand {
-    private ArrayList <Card> hand;
+    private final ArrayList<Card> hand;
 
     /**
      * creating a new empty hand.
@@ -34,14 +34,14 @@ public class Hand {
     public int countValues() {
         int val = 0;
         int aceCnt = 0;
-        for(Card card: hand) {
+        for (Card card : hand) {
             val += card.getValue();
-            if(card.getValue() == 11) {
+            if (card.getValue() == 11) {
                 aceCnt++;
             }
         }
 
-        if(val > 21 && aceCnt > 0) {
+        if (val > 21 && aceCnt > 0) {
             while (aceCnt > 0 && val > 21) {
                 aceCnt--;
                 val -= 10;
@@ -86,7 +86,7 @@ public class Hand {
      */
     public String toString() {
         String output = "";
-        for(int counter = 0; counter < (hand.size() - 1); counter++) {
+        for (int counter = 0; counter < (hand.size() - 1); counter++) {
             Card card = hand.get(counter);
             output += card + ", ";
         }

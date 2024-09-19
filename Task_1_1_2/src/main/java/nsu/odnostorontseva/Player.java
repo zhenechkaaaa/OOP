@@ -6,11 +6,9 @@ import java.util.Scanner;
 /**
  * representing a player in a game.
  * inherits the Person class.
- * adds logic for decision making.
+ * adds logic for decision-making.
  */
 public class Player extends Person {
-
-    Scanner input = new Scanner(System.in);
 
     /**
      * constructing a Player class.
@@ -21,30 +19,28 @@ public class Player extends Person {
     }
 
     /**
-     * implements the logic of the player's decision making.
+     * implements the logic of the player's decision-making.
      * hit or stop.
      *
-     * @param deck (колода).
+     * @param deck    (колода).
      * @param discard (сброшенные карты).
+     * @param input   (сканер для пользовательского ввода).
      */
-    public void decision(Deck deck, Deck discard) {
+    public void decision(Deck deck, Deck discard, Scanner input) {
         String inputStr = "";
         boolean getNum = true;
 
-        while (getNum){
-            try{
+        while (getNum) {
+            try {
                 System.out.println("Введите '1', чтобы взять карту, и '0', чтобы остановиться...");
                 inputStr = input.next();
 
                 if (!Objects.equals(inputStr, "1") && !Objects.equals(inputStr, "0")) {
                     throw new IllegalArgumentException("Некорректный ввод. Попробуйте снова.");
                 }
-
                 getNum = false;
-            }
-            catch (IllegalArgumentException e) {
-                System.out.println("ОШИБКА");
-                input.next();
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
             }
         }
 
@@ -53,15 +49,12 @@ public class Player extends Person {
         if (in == 1) {
             this.hit(deck, discard);
 
-            if(this.getHand().countValues() > 20) {
+            if (this.getHand().countValues() > 20) {
                 return;
+            } else {
+                this.decision(deck, discard, input);
             }
-
-            else {
-                this.decision(deck, discard);
-            }
-        }
-        else {
+        } else {
             System.out.println();
         }
     }

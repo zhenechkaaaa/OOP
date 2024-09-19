@@ -1,12 +1,12 @@
 package nsu.odnostorontseva;
 
 /**
- *
+ * representing the сard in a game.
  */
 public class Card {
 
-    private Suit suit;
-    private Rank rank;
+    private final Suit suit;
+    private final Rank rank;
 
     /**
      * assigns a suit and rank to a card.
@@ -62,6 +62,6 @@ public class Card {
      * @return (строковое представление карты).
      */
     public String toString() {
-        return (rank+" "+ suit + " ("+this.getValue()+")");
+        return (rank + " " + suit + " (" + this.getValue() + ")");
     }
 }

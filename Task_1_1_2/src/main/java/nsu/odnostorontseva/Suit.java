@@ -10,7 +10,7 @@ public enum Suit {
     DIAMONDS("Бубны"),
     SPADES("Пики");
 
-    String suitName;
+    final String suitName;
 
     /**
      * constructing the suit enumeration.

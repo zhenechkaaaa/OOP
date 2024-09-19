@@ -19,14 +19,14 @@ public enum Rank {
     QUEEN("Дама", 10),
     KING("Король", 10);
 
-    String rankName;
-    int rankValue;
+    final String rankName;
+    final int rankValue;
 
     /**
      * constructing of a Rank enumeration.
      * initializing the name and value of the rank.
      *
-     * @param rankName (название ранга).
+     * @param rankName  (название ранга).
      * @param rankValue (сколько очков присвоено этому рангу).
      */
     Rank(String rankName, int rankValue) {
