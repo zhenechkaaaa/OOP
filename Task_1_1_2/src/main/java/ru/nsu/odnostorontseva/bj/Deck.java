@@ -1,8 +1,8 @@
 package ru.nsu.odnostorontseva.bj;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 /**
