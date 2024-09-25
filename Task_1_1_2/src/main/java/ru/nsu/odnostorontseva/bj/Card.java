@@ -7,7 +7,7 @@ package ru.nsu.odnostorontseva.bj;
  * @param suit (масть карты).
  * @param rank (достоинство карты).
  */
-public record Card(Suit suit, Rank rank) {
+record Card(Suit suit, Rank rank) {
     /**
      * Shows how many points the card will give.
      *

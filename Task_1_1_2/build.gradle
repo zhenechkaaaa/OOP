@@ -6,6 +6,12 @@ plugins {
 group = 'ru.nsu.odnostorontseva.bj'
 version = '1.0-SNAPSHOT'
 
+java {
+    toolchain {
+        languageVersion= JavaLanguageVersion.of(21)
+    }
+}
+
 repositories {
     mavenCentral()
 }
