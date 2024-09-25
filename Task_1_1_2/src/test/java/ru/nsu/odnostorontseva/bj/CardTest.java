@@ -29,7 +29,7 @@ class CardTest {
     @Test
     void copyTest() {
         card = new Card(Suit.DIAMONDS, Rank.NINE);
-        Card copy = new Card(card);
+        Card copy = new Card(card.suit(), card.rank());
 
         assertEquals(card.getValue(), copy.getValue());
         assertEquals(card.getRank(), copy.getRank());

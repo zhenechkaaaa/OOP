@@ -1,24 +1,13 @@
 package ru.nsu.odnostorontseva.bj;
 
+
 /**
- * representing the сard in a game.
+ * representing a card in a game.
+ *
+ * @param suit (масть карты).
+ * @param rank (достоинство карты).
  */
-public class Card {
-
-    private final Suit suit;
-    private final Rank rank;
-
-    /**
-     * assigns a suit and rank to a card.
-     *
-     * @param suit (передаёт масть)
-     * @param rank (передаёт ранг)
-     */
-    public Card(Suit suit, Rank rank) {
-        this.suit = suit;
-        this.rank = rank;
-    }
-
+public record Card(Suit suit, Rank rank) {
     /**
      * Shows how many points the card will give.
      *
@@ -44,16 +33,6 @@ public class Card {
      */
     public Rank getRank() {
         return rank;
-    }
-
-    /**
-     * Copy constructor to create a new card with the same suit and rank.
-     *
-     * @param card (карта которую нужно скопировать).
-     */
-    public Card(Card card) {
-        this.suit = card.getSuit();
-        this.rank = card.getRank();
     }
 
     /**

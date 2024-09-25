@@ -55,7 +55,7 @@ public class Deck {
      * @return (верхняя карта колоды).
      */
     public Card takeCard() {
-        Card cardToTake = new Card(deck.get(0));
+        Card cardToTake = new Card(deck.get(0).suit(), deck.get(0).rank());
         deck.remove(0);
         return cardToTake;
     }
