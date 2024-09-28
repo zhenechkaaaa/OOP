@@ -29,7 +29,7 @@ public class Variable extends Expression {
         return new Number(0);
     }
 
-    public int eval(Map<String, Integer> variables) {
+    public double eval(Map<String, Double> variables) {
         if (variables.containsKey(variable)) {
             return variables.get(variable);
         }

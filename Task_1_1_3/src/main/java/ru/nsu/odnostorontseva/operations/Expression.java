@@ -29,10 +29,10 @@ public abstract class Expression {
      * Calculates the value of the expression.
      *
      * @param vars (строка с заданными згаченями переменной).
-     * @return (целочисленный результат вычисления выражения).
+     * @return (результат вычисления выражения).
      */
-    public int eval(String vars) {
-        Map<String, Integer> variables = parseVars(vars);
+    public double eval(String vars) {
+        Map<String, Double> variables = parseVars(vars);
         return eval(variables);
     }
 
@@ -42,7 +42,7 @@ public abstract class Expression {
      * @param variables (Map, где ключ - переменная, значение - числовое значение)
      * @return (целочисленный результат вычисления выражения)
      */
-    protected abstract int eval(Map<String, Integer> variables);
+    protected abstract double eval(Map<String, Double> variables);
 
     /**
      * Parses a string of variable meanings.
@@ -50,14 +50,14 @@ public abstract class Expression {
      * @param input (строка в формате "переменная = значение").
      * @return map переменной и значения.
      */
-    private Map<String, Integer> parseVars(String input) {
-        Map<String, Integer> variables = new HashMap<>();
+    private Map<String, Double> parseVars(String input) {
+        Map<String, Double> variables = new HashMap<>();
         String[] assignments = input.split(";");
         for (String i: assignments) {
             String[] parts = i.split("=");
             if (parts.length == 2) {
                 String varName = parts[0].trim();
-                int varValue = Integer.parseInt(parts[1].trim());
+                double varValue = Integer.parseInt(parts[1].trim());
                 variables.put(varName, varValue);
             }
         }

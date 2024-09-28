@@ -7,32 +7,32 @@ import java.util.Map;
  */
 public class Add extends Expression{
 
-    private final Expression lPrt;
-    private final Expression rPrt;
+    private final Expression leftPart;
+    private final Expression rightPart;
 
     /**
      * Constructing the adding operation.
      *
-     * @param lPrt (левая часть выражения).
-     * @param rPrt (правая часть выражения).
+     * @param leftPart (левая часть выражения).
+     * @param rightPart (правая часть выражения).
      */
-    public Add(Expression lPrt, Expression rPrt) {
-        this.lPrt = lPrt;
-        this.rPrt = rPrt;
+    public Add(Expression leftPart, Expression rightPart) {
+        this.leftPart = leftPart;
+        this.rightPart = rightPart;
     }
 
     @Override
     public String print() {
-        return "(" + lPrt.print() + " + " + rPrt.print() + ")";
+        return "(" + leftPart.print() + "+" + rightPart.print() + ")";
     }
 
     @Override
     public Expression derivative(String var) {
-        return new Add(lPrt.derivative(var), rPrt.derivative(var));
+        return new Add(leftPart.derivative(var), rightPart.derivative(var));
     }
 
     @Override
-    public int eval(Map<String, Integer> variables) {
-        return lPrt.eval(variables) + rPrt.eval(variables);
+    public double eval(Map<String, Double> variables) {
+        return leftPart.eval(variables) + rightPart.eval(variables);
     }
 }

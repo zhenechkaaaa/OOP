@@ -7,14 +7,14 @@ import java.util.Map;
  */
 public class Number extends Expression{
 
-    private final int num;
+    private final double num;
 
     /**
      * Constructing the constant.
      *
      * @param num (заничение константы).
      */
-    public Number(int num) {
+    public Number(double num) {
         this.num = num;
     }
 
@@ -29,7 +29,7 @@ public class Number extends Expression{
     }
 
     @Override
-    public int eval(Map<String, Integer> vars) {
+    public double eval(Map<String, Double> vars) {
         return num;
     }
 }

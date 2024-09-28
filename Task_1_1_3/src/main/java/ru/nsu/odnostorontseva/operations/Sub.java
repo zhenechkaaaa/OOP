@@ -7,32 +7,32 @@ import java.util.Map;
  */
 public class Sub extends Expression{
 
-    private final Expression lPrt;
-    private final Expression rPrt;
+    private final Expression leftPart;
+    private final Expression rightPart;
 
     /**
      * Constructing the subtraction operation.
      *
-     * @param lPrt (левая часть выражения).
-     * @param rPrt (правая часть выражения).
+     * @param leftPart (левая часть выражения).
+     * @param rightPart (правая часть выражения).
      */
-    public Sub(Expression lPrt, Expression rPrt) {
-        this.lPrt = lPrt;
-        this.rPrt = rPrt;
+    public Sub(Expression leftPart, Expression rightPart) {
+        this.leftPart = leftPart;
+        this.rightPart = rightPart;
     }
 
     @Override
     public String print() {
-        return "(" + lPrt.print() + " - " + rPrt.print() + ")";
+        return "(" + leftPart.print() + "-" + rightPart.print() + ")";
     }
 
     @Override
     public Expression derivative(String var) {
-        return new Sub(lPrt.derivative(var), rPrt.derivative(var));
+        return new Sub(leftPart.derivative(var), rightPart.derivative(var));
     }
 
     @Override
-    public int eval(Map<String, Integer> variables) {
-        return lPrt.eval(variables) - rPrt.eval(variables);
+    public double eval(Map<String, Double> variables) {
+        return leftPart.eval(variables) - rightPart.eval(variables);
     }
 }
