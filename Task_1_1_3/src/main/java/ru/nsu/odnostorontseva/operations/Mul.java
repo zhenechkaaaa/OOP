@@ -7,35 +7,35 @@ import java.util.Map;
  */
 public class Mul extends Expression{
 
-    private final Expression l_prt;
-    private final Expression r_prt;
+    private final Expression lPrt;
+    private final Expression rPrt;
 
     /**
      * Constructing the multiplication.
      *
-     * @param l_prt (левая часть выражения).
-     * @param r_prt (правая часть выражения).
+     * @param lPrt (левая часть выражения).
+     * @param rPrt (правая часть выражения).
      */
-    public Mul(Expression l_prt, Expression r_prt) {
-        this.l_prt = l_prt;
-        this.r_prt = r_prt;
+    public Mul(Expression lPrt, Expression rPrt) {
+        this.lPrt = lPrt;
+        this.rPrt = rPrt;
     }
 
     @Override
     public String print() {
-        return "(" + l_prt.print() + " * " + r_prt.print() + ")";
+        return "(" + lPrt.print() + " * " + rPrt.print() + ")";
     }
 
     @Override
     public Expression derivative(String var) {
         return new Add(
-                new Mul(l_prt.derivative(var), r_prt),
-                new Mul(l_prt, r_prt.derivative(var))
+                new Mul(lPrt.derivative(var), rPrt),
+                new Mul(lPrt, rPrt.derivative(var))
         );
     }
 
     @Override
     public int eval(Map<String, Integer> variables) {
-        return l_prt.eval(variables) * r_prt.eval(variables);
+        return lPrt.eval(variables) * rPrt.eval(variables);
     }
 }
