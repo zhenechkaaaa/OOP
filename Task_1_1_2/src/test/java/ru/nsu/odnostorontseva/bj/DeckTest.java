@@ -2,12 +2,14 @@ package ru.nsu.odnostorontseva.bj;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 
 class DeckTest {
 
@@ -44,6 +46,12 @@ class DeckTest {
         Card expected = emptyDeck.takeCard();
         assertEquals(expected.getValue(), card0.getValue());
         assertEquals(0, emptyDeck.cardsLeft());
+    }
+
+    @Test
+    void takeCardFromEmptyDEckTest() {
+        Card expected = emptyDeck.takeCard();
+        assertNull(expected);
     }
 
     @Test

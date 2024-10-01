@@ -17,13 +17,13 @@ class CardTest {
     @Test
     void getSuitTest() {
         card = new Card(Suit.DIAMONDS, Rank.NINE);
-        assertEquals(Suit.DIAMONDS, card.getSuit());
+        assertEquals(Suit.DIAMONDS, card.suit());
     }
 
     @Test
     void getRankTest() {
         card = new Card(Suit.DIAMONDS, Rank.NINE);
-        assertEquals(Rank.NINE, card.getRank());
+        assertEquals(Rank.NINE, card.rank());
     }
 
     @Test
@@ -32,14 +32,14 @@ class CardTest {
         Card copy = new Card(card.suit(), card.rank());
 
         assertEquals(card.getValue(), copy.getValue());
-        assertEquals(card.getRank(), copy.getRank());
-        assertEquals(card.getSuit(), copy.getSuit());
+        assertEquals(card.rank(), copy.rank());
+        assertEquals(card.suit(), copy.suit());
     }
 
     @Test
     void testToString() {
         card = new Card(Suit.DIAMONDS, Rank.NINE);
-        String expected = card.getRank() + " " + card.getSuit() + " (" + card.getValue() + ")";
+        String expected = card.rank() + " " + card.suit() + " (" + card.getValue() + ")";
         assertEquals(expected, card.toString());
     }
 }

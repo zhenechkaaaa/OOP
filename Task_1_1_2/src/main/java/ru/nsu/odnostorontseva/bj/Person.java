@@ -88,9 +88,17 @@ public abstract class Person {
         }
         this.hand.takeCardFromDeck(deck);
         if (Objects.equals(this.role, "Игрок")) {
-            System.out.println("Вы открыли карту: " + this.hand.getLastEdedCard());
+            if (this.hand.getLastAddedCard() == null) {
+                System.out.println("Упс, на руках нет карт...");
+                return;
+            }
+            System.out.println("Вы открыли карту: " + this.hand.getLastAddedCard());
         } else {
-            System.out.println("Дилер открывает карту: " + this.hand.getLastEdedCard());
+            if (this.hand.getLastAddedCard() == null) {
+                System.out.println("Упс, на руках нет карт...");
+                return;
+            }
+            System.out.println("Дилер открывает карту: " + this.hand.getLastAddedCard());
         }
 
         this.showHand();

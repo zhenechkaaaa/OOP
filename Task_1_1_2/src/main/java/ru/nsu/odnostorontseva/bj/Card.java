@@ -18,28 +18,13 @@ record Card(Suit suit, Rank rank) {
     }
 
     /**
-     * returns the card's suit.
-     *
-     * @return (возвращает масть)
-     */
-    public Suit getSuit() {
-        return suit;
-    }
-
-    /**
-     * returns the card's rank.
-     *
-     * @return (возвращает ранг).
-     */
-    public Rank getRank() {
-        return rank;
-    }
-
-    /**
      * Returns a string representation of the card in the format “rank suit (value)”.
      *
      * @return (строковое представление карты).
      */
+    //добавляем @Override, потому что метод toString() определён в классе Object
+    // @Override показывает, что я переопределяю метод toString(), а не создаю новый.
+    @Override
     public String toString() {
         return rank + " " + suit + " (" + this.getValue() + ")";
     }

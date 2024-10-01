@@ -1,6 +1,7 @@
 package ru.nsu.odnostorontseva.bj;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
 
@@ -59,7 +60,13 @@ class HandTest {
         hand.takeCardFromDeck(deck);
         hand.takeCardFromDeck(deck);
 
-        assertEquals(card1.getValue(), hand.getLastEdedCard().getValue());
+        assertEquals(card1.getValue(), hand.getLastAddedCard().getValue());
+    }
+
+    @Test
+    void getLastAddedCardTestEmptyHand() {
+        hand = new Hand();
+        assertNull(hand.getLastAddedCard());
     }
 
     @Test

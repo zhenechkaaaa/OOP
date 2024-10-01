@@ -52,9 +52,13 @@ public class Deck {
     /**
      * takes the top card from the deck.
      *
-     * @return (верхняя карта колоды).
+     * @return (верхняя карта колоды или нул, если колода пустая).
      */
     public Card takeCard() {
+        if (deck.isEmpty()) {
+            System.out.println("Упс, пустая колода...");
+            return null;
+        }
         Card cardToTake = new Card(deck.get(0).suit(), deck.get(0).rank());
         deck.remove(0);
         return cardToTake;
@@ -119,6 +123,9 @@ public class Deck {
      *
      * @return строковое представление колоды карт.
      */
+    //добавляем @Override, потому что метод toString() определён в классе Object
+    // @Override показывает, что я переопределяю метод toString(), а не создаю новый.
+    @Override
     public String toString() {
         StringBuilder output = new StringBuilder();
 

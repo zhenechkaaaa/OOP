@@ -1,8 +1,8 @@
 package ru.nsu.odnostorontseva.bj;
 
 /**
- *  representing the suits of cards in a game.
- *  each enumeration constant contains the suit name.
+ * representing the suits of cards in a game.
+ * each enumeration constant contains the suit name.
  */
 public enum Suit {
     HEARTS("Черви"),
@@ -18,7 +18,7 @@ public enum Suit {
      *
      * @param suitName (масть).
      */
-    Suit(String suitName) {
+    private Suit(String suitName) {
         this.suitName = suitName;
     }
 
@@ -27,6 +27,9 @@ public enum Suit {
      *
      * @return строковое значение масти.
      */
+    //добавляем @Override, потому что метод toString() определён в классе Object
+    // @Override показывает, что я переопределяю метод toString(), а не создаю новый.
+    @Override
     public String toString() {
         return suitName;
     }

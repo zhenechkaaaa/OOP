@@ -39,6 +39,9 @@ public enum Rank {
      *
      * @return строковое представлением ранга.
      */
+    //добавляем @Override, потому что метод toString() определён в классе Object
+    // @Override показывает, что я переопределяю метод toString(), а не создаю новый.
+    @Override
     public String toString() {
         return rankName;
     }

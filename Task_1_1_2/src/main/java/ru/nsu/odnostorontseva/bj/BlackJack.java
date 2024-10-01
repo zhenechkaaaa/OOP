@@ -99,19 +99,19 @@ public class BlackJack {
             dealer.showHand();
             if (player.blackJack()) {
                 nobody++;
-                System.out.println("У вас обоих блекджек. Ничья. Счёт " + wins + ":" + loses);
-                System.out.println();
+                System.out.print("У вас обоих блекджек. Ничья. ");
             } else {
                 loses++;
-                System.out.println("У дилера блекджек. Вы проиграли раунд. "
-                        + "Счёт " + wins + ":" + loses + ".");
+                System.out.print("У дилера блекджек. Вы проиграли раунд. ");
             }
+            scorePrinter();
             return;
         }
 
         if (player.blackJack()) {
             wins++;
-            System.out.println("У вас блекджек! Вы выиграли! Счёт " + wins + ":" + loses + ".");
+            System.out.print("У вас блекджек! Вы выиграли! ");
+            scorePrinter();
             return;
         }
 
@@ -120,7 +120,8 @@ public class BlackJack {
 
         if (player.getHand().countValues() > 21) {
             loses++;
-            System.out.println("Вы проиграли раунд. Счёт " + wins + ":" + loses + ".");
+            System.out.print("Вы проиграли раунд. ");
+            scorePrinter();
             return;
         }
 
@@ -130,19 +131,29 @@ public class BlackJack {
             dealer.hit(deck, discarded);
         }
 
+        int dealerValue = dealer.getHand().countValues();
+        int playerValue = player.getHand().countValues();
         //проверка результатов раунда
-        if (dealer.getHand().countValues() > 21) {
+        if (dealerValue > 21) {
             wins++;
-            System.out.println("Вы выиграли раунд! Счёт " + wins + ":" + loses + ".");
-        } else if (dealer.getHand().countValues() > player.getHand().countValues()) {
+            System.out.print("Вы выиграли раунд! ");
+        } else if (dealerValue > playerValue) {
             loses++;
-            System.out.println("Вы проиграли раунд. Счёт " + wins + ":" + loses + ".");
-        } else if (player.getHand().countValues() > dealer.getHand().countValues()) {
+            System.out.print("Вы проиграли раунд. ");
+        } else if (playerValue > dealerValue) {
             wins++;
-            System.out.println("Вы выиграли раунд! Счёт " + wins + ":" + loses + ".");
+            System.out.print("Вы выиграли раунд! ");
         } else {
             nobody++;
-            System.out.println("Ничья. Счёт " + wins + ":" + loses + ".");
+            System.out.print("Ничья. ");
         }
+        scorePrinter();
+    }
+
+    /**
+     * Method than helps to print the score of each round.
+     */
+    public void scorePrinter() {
+        System.out.println("Счёт " + wins + ":" + loses + ".");
     }
 }

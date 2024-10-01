@@ -25,6 +25,9 @@ public class Hand {
      * @param deck (колода, из которой берется карта).
      */
     public void takeCardFromDeck(Deck deck) {
+        if (deck.takeCard() == null) {
+            return;
+        }
         hand.add(deck.takeCard());
     }
 
@@ -68,7 +71,10 @@ public class Hand {
      *
      * @return последняя взятая карта.
      */
-    public Card getLastEdedCard() {
+    public Card getLastAddedCard() {
+        if (hand.isEmpty()) {
+            return null; // Возвращаем null, если рука пуста
+        }
         return hand.get(hand.size() - 1);
     }
 
@@ -87,9 +93,12 @@ public class Hand {
      *
      * @return карты на руке.
      */
+    //добавляем @Override, потому что метод toString() определён в классе Object
+    // @Override показывает, что я переопределяю метод toString(), а не создаю новый.
+    @Override
     public String toString() {
         StringBuilder output = new StringBuilder();
-        for (int counter = 0; counter < (hand.size() - 1); counter++) {
+        for (int counter = 0; counter < hand.size() - 1; counter++) {
             Card card = hand.get(counter);
             output.append(card).append(", ");
         }
