@@ -23,7 +23,7 @@ public class Add extends Expression{
 
     @Override
     public String print() {
-        return "(" + leftPart.print() + "+" + rightPart.print() + ")";
+        return "(" + leftPart.print() + " + " + rightPart.print() + ")";
     }
 
     @Override
