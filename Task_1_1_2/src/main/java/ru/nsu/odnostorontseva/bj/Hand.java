@@ -25,9 +25,6 @@ public class Hand {
      * @param deck (колода, из которой берется карта).
      */
     public void takeCardFromDeck(Deck deck) {
-        if (deck.takeCard() == null) {
-            return;
-        }
         hand.add(deck.takeCard());
     }
 

@@ -56,7 +56,6 @@ public class Deck {
      */
     public Card takeCard() {
         if (deck.isEmpty()) {
-            System.out.println("Упс, пустая колода...");
             return null;
         }
         Card cardToTake = new Card(deck.get(0).suit(), deck.get(0).rank());
