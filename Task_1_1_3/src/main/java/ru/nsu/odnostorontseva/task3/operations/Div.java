@@ -1,11 +1,14 @@
-package ru.nsu.odnostorontseva.operations;
+package ru.nsu.odnostorontseva.task3.operations;
+
+import ru.nsu.odnostorontseva.task3.operands.Number;
 
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Class for representing the division in expression.
  */
-public class Div extends Expression{
+public class Div extends Expression {
 
     private final Expression leftPart;
     private final Expression rightPart;
@@ -19,6 +22,30 @@ public class Div extends Expression{
     public Div(Expression leftPart, Expression rightPart) {
         this.leftPart = leftPart;
         this.rightPart = rightPart;
+    }
+
+    @Override
+    public Expression makeSimple() {
+        Expression moreSimpleLeftPart = leftPart.makeSimple();
+        Expression moreSimpleRightPart = rightPart.makeSimple();
+
+        if(moreSimpleLeftPart instanceof Number
+                && moreSimpleRightPart instanceof Number
+                && !Objects.equals(moreSimpleRightPart.print(), "0.0")) {
+            return new Number(moreSimpleLeftPart.eval("")
+                    / moreSimpleRightPart.eval(""));
+        } else if (moreSimpleRightPart instanceof Number
+                && moreSimpleRightPart.print().equals("1.0")) {
+            return moreSimpleLeftPart;
+        } else if (moreSimpleRightPart.equals(moreSimpleLeftPart)
+                && !Objects.equals(moreSimpleRightPart.print(), "0.0")) {
+            return new Number(1);
+        } else if(moreSimpleRightPart instanceof Number
+                && moreSimpleRightPart.print().equals("0.0")) {
+            throw new ArithmeticException("Деление на ноль.");
+        }
+
+        return new Div(moreSimpleLeftPart, moreSimpleRightPart);
     }
 
     @Override

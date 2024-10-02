@@ -1,11 +1,13 @@
-package ru.nsu.odnostorontseva.operations;
+package ru.nsu.odnostorontseva.task3.operations;
+
+import ru.nsu.odnostorontseva.task3.operands.Number;
 
 import java.util.Map;
 
 /**
  * Class for representing an add operation in expression.
  */
-public class Add extends Expression{
+public class Add extends Expression {
 
     private final Expression leftPart;
     private final Expression rightPart;
@@ -19,6 +21,18 @@ public class Add extends Expression{
     public Add(Expression leftPart, Expression rightPart) {
         this.leftPart = leftPart;
         this.rightPart = rightPart;
+    }
+
+    @Override
+    public Expression makeSimple() {
+        Expression moreSimpleLeftPart = leftPart.makeSimple();
+        Expression moreSimpleRightPart = rightPart.makeSimple();
+
+        if(moreSimpleLeftPart instanceof Number && moreSimpleRightPart instanceof Number) {
+            return new Number(moreSimpleLeftPart.eval("") + moreSimpleRightPart.eval(""));
+        }
+
+        return new Add(moreSimpleLeftPart, moreSimpleRightPart);
     }
 
     @Override

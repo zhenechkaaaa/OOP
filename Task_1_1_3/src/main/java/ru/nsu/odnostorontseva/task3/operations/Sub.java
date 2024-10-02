@@ -1,11 +1,13 @@
-package ru.nsu.odnostorontseva.operations;
+package ru.nsu.odnostorontseva.task3.operations;
+
+import ru.nsu.odnostorontseva.task3.operands.Number;
 
 import java.util.Map;
 
 /**
  * Class for representing a subtraction in expression.
  */
-public class Sub extends Expression{
+public class Sub extends Expression {
 
     private final Expression leftPart;
     private final Expression rightPart;
@@ -22,8 +24,23 @@ public class Sub extends Expression{
     }
 
     @Override
+    public Expression makeSimple() {
+        Expression moreSimpleLeftPart = leftPart.makeSimple();
+        Expression moreSimpleRightPart = rightPart.makeSimple();
+
+        if(moreSimpleLeftPart instanceof Number && moreSimpleRightPart instanceof Number) {
+            return new Number(moreSimpleLeftPart.eval("") - moreSimpleRightPart.eval(""));
+        }
+        if (moreSimpleLeftPart.equals(moreSimpleRightPart)) {
+            return new Number(0);
+        }
+
+        return new Sub(moreSimpleLeftPart, moreSimpleRightPart);
+    }
+
+    @Override
     public String print() {
-        return "(" + leftPart.print() + "-" + rightPart.print() + ")";
+        return "(" + leftPart.print() + " - " + rightPart.print() + ")";
     }
 
     @Override

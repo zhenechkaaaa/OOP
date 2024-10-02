@@ -1,4 +1,6 @@
-package ru.nsu.odnostorontseva.operations;
+package ru.nsu.odnostorontseva.task3.operands;
+
+import ru.nsu.odnostorontseva.task3.operations.Expression;
 
 import java.util.Map;
 
@@ -18,17 +20,25 @@ public class Variable extends Expression {
         this.variable = variable;
     }
 
+    @Override
+    public Expression makeSimple() {
+        return this;
+    }
+
+    @Override
     public String print() {
         return variable;
     }
 
+    @Override
     public Expression derivative (String var) {
         if(variable.equals(var)) {
-            return new Number(1);
+            return new ru.nsu.odnostorontseva.task3.operands.Number(1);
         }
         return new Number(0);
     }
 
+    @Override
     public double eval(Map<String, Double> variables) {
         if (variables.containsKey(variable)) {
             return variables.get(variable);

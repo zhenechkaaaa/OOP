@@ -1,4 +1,4 @@
-# Created by https://www.toptal.com/developers/gitignore/api/gradle,java,intellij+all
+ Created by https://www.toptal.com/developers/gitignore/api/gradle,java,intellij+all
 # Edit at https://www.toptal.com/developers/gitignore?templates=gradle,java,intellij+all
 
 ### Intellij+all ###
@@ -144,3 +144,4 @@ gradle-app.setting
 
 # End of https://www.toptal.com/developers/gitignore/api/gradle,java,intellij+all
 /.idea/
+

@@ -1,11 +1,13 @@
-package ru.nsu.odnostorontseva.operations;
+package ru.nsu.odnostorontseva.task3.operands;
+
+import ru.nsu.odnostorontseva.task3.operations.Expression;
 
 import java.util.Map;
 
 /**
  * Class for representing a constant in expression.
  */
-public class Number extends Expression{
+public class Number extends Expression {
 
     private final double num;
 
@@ -17,6 +19,11 @@ public class Number extends Expression{
     public Number(double num) {
         this.num = num;
     }
+
+     @Override
+     public Expression makeSimple() {
+        return this;
+     }
 
     @Override
     public String print() {

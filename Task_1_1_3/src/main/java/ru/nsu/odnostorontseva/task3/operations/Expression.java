@@ -1,4 +1,4 @@
-package ru.nsu.odnostorontseva.operations;
+package ru.nsu.odnostorontseva.task3.operations;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,9 +11,16 @@ import java.util.Map;
 public abstract class Expression {
 
     /**
-     * Returns string representation of expression
+     * Method which will help make an expression more simple.
      *
-     * @return (строковое представление строки).
+     * @return (упрощенное выражение).
+     */
+    public abstract Expression makeSimple();
+
+    /**
+     * Method which helps print the expression.
+     *
+     * @return (строковое представление выражения)
      */
     public abstract String print();
 
@@ -21,7 +28,7 @@ public abstract class Expression {
      * Performs symbolic differentiation of an expression.
      *
      * @param var (пременная по которой происходит дифференцирование).
-     * @return (строковое представление производной).
+     * @return (производная в виде выражения).
      */
     public abstract Expression derivative(String var);
 
@@ -48,7 +55,7 @@ public abstract class Expression {
      * Parses a string of variable meanings.
      *
      * @param input (строка в формате "переменная = значение").
-     * @return map переменной и значения.
+     * @return (отображение переменной и значения).
      */
     private Map<String, Double> parseVars(String input) {
         Map<String, Double> variables = new HashMap<>();
