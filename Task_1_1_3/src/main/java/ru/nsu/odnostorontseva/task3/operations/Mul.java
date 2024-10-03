@@ -2,8 +2,6 @@ package ru.nsu.odnostorontseva.task3.operations;
 
 import ru.nsu.odnostorontseva.task3.operands.Number;
 
-import java.util.Map;
-
 /**
  * Class for representing a multiplication in expression.
  */
@@ -57,7 +55,7 @@ public class Mul extends Expression {
     }
 
     @Override
-    public double eval(Map<String, Double> variables) {
+    public double eval(String variables) {
         return leftPart.eval(variables) * rightPart.eval(variables);
     }
 }

@@ -2,7 +2,6 @@ package ru.nsu.odnostorontseva.task3.operands;
 
 import ru.nsu.odnostorontseva.task3.operations.Expression;
 
-import java.util.Map;
 
 /**
  * Class for representing a constant in expression.
@@ -36,7 +35,7 @@ public class Number extends Expression {
     }
 
     @Override
-    public double eval(Map<String, Double> vars) {
+    public double eval(String vars) {
         return num;
     }
 }

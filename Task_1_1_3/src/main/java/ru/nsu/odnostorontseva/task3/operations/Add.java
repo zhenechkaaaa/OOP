@@ -2,7 +2,6 @@ package ru.nsu.odnostorontseva.task3.operations;
 
 import ru.nsu.odnostorontseva.task3.operands.Number;
 
-import java.util.Map;
 
 /**
  * Class for representing an add operation in expression.
@@ -46,7 +45,7 @@ public class Add extends Expression {
     }
 
     @Override
-    public double eval(Map<String, Double> variables) {
+    public double eval(String variables) {
         return leftPart.eval(variables) + rightPart.eval(variables);
     }
 }

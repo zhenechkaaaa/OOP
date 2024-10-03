@@ -2,7 +2,6 @@ package ru.nsu.odnostorontseva.task3.operations;
 
 import ru.nsu.odnostorontseva.task3.operands.Number;
 
-import java.util.Map;
 
 /**
  * Class for representing a subtraction in expression.
@@ -49,7 +48,7 @@ public class Sub extends Expression {
     }
 
     @Override
-    public double eval(Map<String, Double> variables) {
+    public double eval(String variables) {
         return leftPart.eval(variables) - rightPart.eval(variables);
     }
 }

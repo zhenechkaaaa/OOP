@@ -2,7 +2,6 @@ package ru.nsu.odnostorontseva.task3.operations;
 
 import ru.nsu.odnostorontseva.task3.operands.Number;
 
-import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -40,9 +39,15 @@ public class Div extends Expression {
         } else if (moreSimpleRightPart.equals(moreSimpleLeftPart)
                 && !Objects.equals(moreSimpleRightPart.print(), "0.0")) {
             return new Number(1);
-        } else if(moreSimpleRightPart instanceof Number
-                && moreSimpleRightPart.print().equals("0.0")) {
-            throw new ArithmeticException("Деление на ноль.");
+        }
+
+        try {
+            if (moreSimpleRightPart instanceof Number
+                    && moreSimpleRightPart.print().equals("0.0")) {
+                throw new ArithmeticException("Деление на ноль.");
+            }
+        }catch (ArithmeticException e) {
+            System.err.println(e.getMessage());
         }
 
         return new Div(moreSimpleLeftPart, moreSimpleRightPart);
@@ -65,11 +70,15 @@ public class Div extends Expression {
     }
 
     @Override
-    public double eval(Map<String, Double> variables) {
+    public double eval(String variables) {
         double left = leftPart.eval(variables);
         double right = rightPart.eval(variables);
-        if (right == 0) {
-            throw new ArithmeticException("Деление на ноль.");
+        try{
+            if (right == 0) {
+                throw new ArithmeticException("Деление на ноль.");
+            }
+        } catch (ArithmeticException e) {
+            System.err.println(e.getMessage());
         }
         return left/right;
     }
