@@ -27,8 +27,8 @@
     catch(err) {
     }
 //-->
-var data = {"i0":6,"i1":10,"i2":6,"i3":6,"i4":6};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
+var data = {"i0":6,"i1":6,"i2":6,"i3":6};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -175,7 +175,7 @@ extends java.lang.Object</pre>
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colSecond" scope="col">Method</th>
@@ -189,27 +189,20 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>double</code></td>
+<td class="colFirst"><code>abstract double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#eval(java.lang.String)">eval</a></span>&#8203;(java.lang.String&nbsp;vars)</code></th>
 <td class="colLast">
 <div class="block">Calculates the value of the expression.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>protected abstract double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#eval(java.util.Map)">eval</a></span>&#8203;(java.util.Map&lt;java.lang.String,&#8203;java.lang.Double&gt;&nbsp;variables)</code></th>
-<td class="colLast">
-<div class="block">Calculates the value of the expression.</div>
-</td>
-</tr>
-<tr id="i3" class="rowColor">
 <td class="colFirst"><code>abstract <a href="Expression.html" title="class in ru.nsu.odnostorontseva.task3.operations">Expression</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#makeSimple()">makeSimple</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Method which will help make an expression more simple.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>abstract java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#print()">print</a></span>()</code></th>
 <td class="colLast">
@@ -306,32 +299,14 @@ extends java.lang.Object</pre>
 <a id="eval(java.lang.String)">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>eval</h4>
-<pre class="methodSignature">public&nbsp;double&nbsp;eval&#8203;(java.lang.String&nbsp;vars)</pre>
+<pre class="methodSignature">public abstract&nbsp;double&nbsp;eval&#8203;(java.lang.String&nbsp;vars)</pre>
 <div class="block">Calculates the value of the expression.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>vars</code> - (строка с заданными згаченями переменной).</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>(результат вычисления выражения).</dd>
-</dl>
-</li>
-</ul>
-<a id="eval(java.util.Map)">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>eval</h4>
-<pre class="methodSignature">protected abstract&nbsp;double&nbsp;eval&#8203;(java.util.Map&lt;java.lang.String,&#8203;java.lang.Double&gt;&nbsp;variables)</pre>
-<div class="block">Calculates the value of the expression.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>variables</code> - (Map, где ключ - переменная, значение - числовое значение)</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>(целочисленный результат вычисления выражения)</dd>
 </dl>
 </li>
 </ul>
