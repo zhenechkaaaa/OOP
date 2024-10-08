@@ -1,6 +1,7 @@
 package ru.nsu.odnostorontseva.task3.operations;
 
 import ru.nsu.odnostorontseva.task3.operands.Number;
+
 /**
  * Class for representing the division in expression.
  */
