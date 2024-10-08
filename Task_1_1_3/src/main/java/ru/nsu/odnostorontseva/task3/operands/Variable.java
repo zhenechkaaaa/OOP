@@ -49,8 +49,8 @@ public class Variable extends Expression {
     }
 
     @Override
-    public String print() {
-        return variable;
+    public String toString() {
+        return this.variable;
     }
 
     @Override
@@ -76,7 +76,7 @@ public class Variable extends Expression {
                             varValue = Double.parseDouble(parts[1].trim());
                         } catch (NumberFormatException e) {
                             System.err.println(e.getMessage());
-                            varValue = Double.NaN;
+                            varValue = 0;
                         }
                         return varValue;
                     }

@@ -21,7 +21,7 @@ class MulTest {
 
         Expression moreSimpleE = e.makeSimple();
 
-        assertEquals("25.0", moreSimpleE.print());
+        assertEquals(new Number(25), moreSimpleE);
     }
 
     @Test
@@ -32,7 +32,7 @@ class MulTest {
 
         Expression moreSimpleE = e.makeSimple();
 
-        assertEquals("0.0", moreSimpleE.print());
+        assertEquals(new Number(0), moreSimpleE);
     }
 
     @Test
@@ -43,7 +43,7 @@ class MulTest {
 
         Expression moreSimpleE = e.makeSimple();
 
-        assertEquals("0.0", moreSimpleE.print());
+        assertEquals(new Number(0), moreSimpleE);
     }
 
     @Test
@@ -54,7 +54,7 @@ class MulTest {
 
         Expression moreSimpleE = e.makeSimple();
 
-        assertEquals("5.0", moreSimpleE.print());
+        assertEquals(new Number(5), moreSimpleE);
     }
 
     @Test
@@ -65,7 +65,7 @@ class MulTest {
 
         Expression moreSimpleE = e.makeSimple();
 
-        assertEquals("5.0", moreSimpleE.print());
+        assertEquals(new Number(5), moreSimpleE);
     }
 
     @Test

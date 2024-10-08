@@ -61,8 +61,8 @@ public class Add extends Expression {
     }
 
     @Override
-    public String print() {
-        return "(" + leftPart.print() + " + " + rightPart.print() + ")";
+    public String toString() {
+        return "(" + leftPart.toString() + " + " + rightPart.toString() + ")";
     }
 
     @Override

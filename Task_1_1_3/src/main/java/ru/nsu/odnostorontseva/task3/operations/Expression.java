@@ -19,7 +19,9 @@ public abstract class Expression {
      *
      * @return (строковое представление выражения)
      */
-    public abstract String print();
+    public String print() {
+        return toString();
+    }
 
     /**
      * Performs symbolic differentiation of an expression.

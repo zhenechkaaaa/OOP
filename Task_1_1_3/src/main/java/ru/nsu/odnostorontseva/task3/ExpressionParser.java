@@ -30,8 +30,8 @@ public class ExpressionParser {
      * Starts the recursion.
      *
      * @return (строка представленная в виде выражения типа:
-     * "Expression e = new Add(new Number(3), new Mul(new Number(2),
-     * new Variable("x")));").
+     *      Expression e = new Add(new Number(3), new Mul(new Number(2),
+     *      new Variable("x")));).
      */
     public Expression parse() {
         pos = 0; // Сброс позиции
@@ -76,23 +76,28 @@ public class ExpressionParser {
      */
     private Expression parseAtom() {
         String token = readToken();
-        if ("(".equals(token)) {
-            Expression expr = parseAdd();
-            readToken(); // Убираем ')'
-            return expr;
-        } else if (token.matches("-?\\d+(\\.\\d+)?")) {
-            return new Number(Double.parseDouble(token)); // Если это число
-        } else if (token.matches("[a-zA-Z]+")) {
-            return new Variable(token); // Если это переменная
+        try {
+            if ("(".equals(token)) {
+                Expression expr = parseAdd();
+                readToken(); // Убираем ')'
+                return expr;
+            } else if (token.matches("-?\\d+(\\.\\d+)?")) {
+                return new Number(Double.parseDouble(token)); // Если это число
+            } else if (token.matches("[a-zA-Z]+")) {
+                return new Variable(token); // Если это переменная
+            }
+            throw new IllegalArgumentException("Неправильно введённое выражение: " + text);
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
         }
-        throw new IllegalArgumentException("Неправильно введённое выражение: " + text);
+        return null;
     }
 
     /**
      * Method which "read" text token in user-enter string.
      *
      * @return (строку или один символ, представляющий собой:
-     * число, или переменную, или символ операции, или скобки).
+     *      число, или переменную, или символ операции, или скобки).
      */
     private String readToken() {
         StringBuilder sb = new StringBuilder();

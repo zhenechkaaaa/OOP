@@ -17,7 +17,7 @@ class SubTest {
         Expression e = new Sub(l, r);
         Expression moreSimpleE = e.makeSimple();
 
-        assertEquals("2.0", moreSimpleE.print());
+        assertEquals(new Number(2), moreSimpleE);
     }
 
     @Test
@@ -27,7 +27,7 @@ class SubTest {
         Expression e = new Sub(l, r);
         Expression moreSimpleE = e.makeSimple();
 
-        assertEquals("0.0", moreSimpleE.print());
+        assertEquals(new Number(0), moreSimpleE);
     }
 
     @Test

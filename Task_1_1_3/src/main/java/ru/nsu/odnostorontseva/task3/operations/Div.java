@@ -57,7 +57,6 @@ public class Div extends Expression {
             }
         } catch (ArithmeticException e) {
             System.err.println(e.getMessage());
-            return null;
         }
 
         if (moreSimpleLeftPart instanceof Number
@@ -73,9 +72,10 @@ public class Div extends Expression {
         return new Div(moreSimpleLeftPart, moreSimpleRightPart);
     }
 
+
     @Override
-    public String print() {
-        return "(" + leftPart.print() + " / " + rightPart.print() + ")";
+    public String toString() {
+        return "(" + leftPart.toString() + " / " + rightPart.toString() + ")";
     }
 
     @Override
@@ -99,7 +99,6 @@ public class Div extends Expression {
             }
         } catch (ArithmeticException e) {
             System.err.println(e.getMessage());
-            return Double.NaN;
         }
         return left / right;
     }

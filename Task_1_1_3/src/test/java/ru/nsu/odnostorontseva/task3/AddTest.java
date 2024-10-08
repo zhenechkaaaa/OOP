@@ -17,7 +17,7 @@ class AddTest {
         Expression e = new Add(l, r);
         Expression moreSimpleE = e.makeSimple();
 
-        assertEquals("10.0", moreSimpleE.print());
+        assertEquals(moreSimpleE, new Number(10));
     }
 
     @Test
@@ -33,7 +33,7 @@ class AddTest {
     void derivativeTest() {
         Expression l = new Variable("x");
         Expression r = new Variable("y");
-        Expression e = new Add(l,r);
+        Expression e = new Add(l, r);
         Expression der = e.derivative("x");
 
         assertEquals("(1.0 + 0.0)", der.print());
