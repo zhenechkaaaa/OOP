@@ -7,13 +7,13 @@ import ru.nsu.odnostorontseva.task3.operands.Number;
  */
 public class Mul extends Expression {
 
-    private final Expression leftPart;
-    private final Expression rightPart;
+    public final Expression leftPart;
+    public final Expression rightPart;
 
     /**
      * Constructing the multiplication.
      *
-     * @param leftPart (левая часть выражения).
+     * @param leftPart  (левая часть выражения).
      * @param rightPart (правая часть выражения).
      */
     public Mul(Expression leftPart, Expression rightPart) {
@@ -21,20 +21,45 @@ public class Mul extends Expression {
         this.rightPart = rightPart;
     }
 
+    /**
+     * Method which overrides the equals method to compare Expressions.
+     *
+     * @param o (объкт для сравнивания)
+     * @return (запускает рекурсию для сравнения или t / f)
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null) {
+            return false;
+        }
+        if (o instanceof Mul e) {
+            return this.leftPart.equals(e.leftPart) && rightPart.equals(e.leftPart);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.leftPart.hashCode() * this.rightPart.hashCode();
+    }
+
     @Override
     public Expression makeSimple() {
         Expression moreSimpleLeftPart = leftPart.makeSimple();
         Expression moreSimpleRightPart = rightPart.makeSimple();
 
-        if(moreSimpleLeftPart instanceof Number && moreSimpleRightPart instanceof Number) {
+        if (moreSimpleLeftPart instanceof Number && moreSimpleRightPart instanceof Number) {
             return new Number(moreSimpleLeftPart.eval("") * moreSimpleRightPart.eval(""));
-        } else if (moreSimpleLeftPart instanceof Number && moreSimpleLeftPart.print().equals("0.0")) {
+        } else if (moreSimpleLeftPart.equals(new Number(0))) {
             return new Number(0);
-        } else if (moreSimpleRightPart instanceof Number && moreSimpleRightPart.print().equals("0.0")) {
+        } else if (moreSimpleRightPart.equals(new Number(0))) {
             return new Number(0);
-        } else if (moreSimpleLeftPart instanceof Number && moreSimpleLeftPart.print().equals("1.0")) {
+        } else if (moreSimpleLeftPart.equals(new Number(1))) {
             return moreSimpleRightPart;
-        } else if (moreSimpleRightPart instanceof Number && moreSimpleRightPart.print().equals("1.0")) {
+        } else if (moreSimpleRightPart.equals(new Number(1))) {
             return moreSimpleLeftPart;
         }
 

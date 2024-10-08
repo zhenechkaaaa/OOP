@@ -8,13 +8,13 @@ import ru.nsu.odnostorontseva.task3.operands.Number;
  */
 public class Add extends Expression {
 
-    private final Expression leftPart;
-    private final Expression rightPart;
+    public final Expression leftPart;
+    public final Expression rightPart;
 
     /**
      * Constructing the adding operation.
      *
-     * @param leftPart (левая часть выражения).
+     * @param leftPart  (левая часть выражения).
      * @param rightPart (правая часть выражения).
      */
     public Add(Expression leftPart, Expression rightPart) {
@@ -22,12 +22,38 @@ public class Add extends Expression {
         this.rightPart = rightPart;
     }
 
+
+    /**
+     * Method which overrides the equals method to compare Expressions.
+     *
+     * @param o (объкт для сравнивания)
+     * @return (запускает рекурсию для сравнения или t / f)
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null) {
+            return false;
+        }
+        if (o instanceof Add e) {
+            return this.leftPart.equals(e.leftPart) && rightPart.equals(e.leftPart);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.leftPart.hashCode() + this.rightPart.hashCode();
+    }
+
     @Override
     public Expression makeSimple() {
         Expression moreSimpleLeftPart = leftPart.makeSimple();
         Expression moreSimpleRightPart = rightPart.makeSimple();
 
-        if(moreSimpleLeftPart instanceof Number && moreSimpleRightPart instanceof Number) {
+        if (moreSimpleLeftPart instanceof Number && moreSimpleRightPart instanceof Number) {
             return new Number(moreSimpleLeftPart.eval("") + moreSimpleRightPart.eval(""));
         }
 

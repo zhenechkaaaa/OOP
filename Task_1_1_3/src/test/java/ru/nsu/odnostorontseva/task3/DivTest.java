@@ -64,6 +64,10 @@ class DivTest {
 
     @Test
     void eval() {
+        Expression l = new Add(new Number(5), new Variable("x"));
+        Expression r = new Variable("x");
 
+        Expression e = new Div(l, r);
+        assertEquals(6.0, e.eval("x = 1"));
     }
 }

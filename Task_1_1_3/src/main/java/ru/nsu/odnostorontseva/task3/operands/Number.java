@@ -2,7 +2,6 @@ package ru.nsu.odnostorontseva.task3.operands;
 
 import ru.nsu.odnostorontseva.task3.operations.Expression;
 
-
 /**
  * Class for representing a constant in expression.
  */
@@ -19,10 +18,35 @@ public class Number extends Expression {
         this.num = num;
     }
 
-     @Override
-     public Expression makeSimple() {
+    /**
+     * Method which overrides the equals method to compare Expressions.
+     *
+     * @param o (объкт для сравнивания)
+     * @return (t / f)
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null) {
+            return false;
+        }
+        if (o instanceof Number e) {
+            return this.num == e.num;
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.toString().hashCode();
+    }
+
+    @Override
+    public Expression makeSimple() {
         return this;
-     }
+    }
 
     @Override
     public String print() {

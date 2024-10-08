@@ -22,6 +22,11 @@ public class Main {
         Expression expr = parser.parse();
         Expression moreSimpleExpr = expr.makeSimple();
 
+        if(moreSimpleExpr == null)
+        {
+            return;
+        }
+
         // Печать введенного выражения
         System.out.println("Введенное выражение: " + moreSimpleExpr.print());
 
@@ -31,7 +36,11 @@ public class Main {
             String variables = scanner.nextLine();
 
             // Вычисление значения выражения
-            System.out.println("Результат вычисления: " + moreSimpleExpr.eval(variables));
+            double res = moreSimpleExpr.eval(variables);
+            if (Double.isNaN(res)){
+                return;
+            }
+            System.out.println("Результат вычисления: " + res);
 
             // Ввод переменной для дифференцирования
             System.out.println("Введите переменную для дифференцирования:");

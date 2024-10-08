@@ -18,6 +18,31 @@ public class Variable extends Expression {
         this.variable = variable;
     }
 
+    /**
+     * Method which overrides the equals method to compare Expressions.
+     *
+     * @param o (объкт для сравнивания)
+     * @return (t / f)
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null) {
+            return false;
+        }
+        if (o instanceof Variable e) {
+            return this.variable.equals(e.variable);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.variable.hashCode();
+    }
+
     @Override
     public Expression makeSimple() {
         return this;
@@ -31,7 +56,7 @@ public class Variable extends Expression {
     @Override
     public Expression derivative(String var) {
         if (variable.equals(var)) {
-            return new ru.nsu.odnostorontseva.task3.operands.Number(1);
+            return new Number(1);
         }
         return new Number(0);
     }
@@ -40,22 +65,27 @@ public class Variable extends Expression {
     public double eval(String variables) {
         String vars = variables.trim();
         String[] assignments = vars.split(";");
-        for (String i : assignments) {
-            String[] parts = i.split("=");
-            if (parts.length == 2) {
-                String varName = parts[0].trim();
-                if (varName.equals(variable)) {
-                    double varValue;
-                    try {
-                        varValue = Double.parseDouble(parts[1]);
-                    } catch (Exception e) {
-                        System.err.println("Неправильный формат((");
-                        varValue = 1;
+        double varValue;
+        try {
+            for (String i : assignments) {
+                String[] parts = i.split("=");
+                if (parts.length == 2) {
+                    String varName = parts[0].trim();
+                    if (varName.equals(variable)) {
+                        try {
+                            varValue = Double.parseDouble(parts[1].trim());
+                        } catch (NumberFormatException e) {
+                            System.err.println(e.getMessage());
+                            varValue = Double.NaN;
+                        }
+                        return varValue;
                     }
-                    return varValue;
                 }
             }
+            throw new IllegalArgumentException("Переменная " + variable + " не определена.");
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
         }
-        throw new IllegalArgumentException("Переменная " + variable + " не определена.");
+        return Double.NaN;
     }
 }

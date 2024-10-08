@@ -15,8 +15,8 @@ class MulTest {
 
     @Test
     void makeSimpleWithNoVarsTest() {
-        Expression l = new ru.nsu.odnostorontseva.task3.operands.Number(5);
-        Expression r = new ru.nsu.odnostorontseva.task3.operands.Number(5);
+        Expression l = new Number(5);
+        Expression r = new Number(5);
         Expression e = new Mul(l, r);
 
         Expression moreSimpleE = e.makeSimple();
@@ -26,8 +26,8 @@ class MulTest {
 
     @Test
     void makeSimpleWithLeftZeroTest() {
-        Expression l = new ru.nsu.odnostorontseva.task3.operands.Number(0);
-        Expression r = new ru.nsu.odnostorontseva.task3.operands.Number(5);
+        Expression l = new Number(0);
+        Expression r = new Number(5);
         Expression e = new Mul(l, r);
 
         Expression moreSimpleE = e.makeSimple();
@@ -37,8 +37,8 @@ class MulTest {
 
     @Test
     void makeSimpleWithRightZeroTest() {
-        Expression l = new ru.nsu.odnostorontseva.task3.operands.Number(5);
-        Expression r = new ru.nsu.odnostorontseva.task3.operands.Number(0);
+        Expression l = new Number(5);
+        Expression r = new Number(0);
         Expression e = new Mul(l, r);
 
         Expression moreSimpleE = e.makeSimple();
@@ -48,8 +48,8 @@ class MulTest {
 
     @Test
     void makeSimpleWithLeftOneTest() {
-        Expression l = new ru.nsu.odnostorontseva.task3.operands.Number(1);
-        Expression r = new ru.nsu.odnostorontseva.task3.operands.Number(5);
+        Expression l = new Number(1);
+        Expression r = new Number(5);
         Expression e = new Mul(l, r);
 
         Expression moreSimpleE = e.makeSimple();
@@ -59,8 +59,8 @@ class MulTest {
 
     @Test
     void makeSimpleWithRightOneTest() {
-        Expression l = new ru.nsu.odnostorontseva.task3.operands.Number(5);
-        Expression r = new ru.nsu.odnostorontseva.task3.operands.Number(1);
+        Expression l = new Number(5);
+        Expression r = new Number(1);
         Expression e = new Mul(l, r);
 
         Expression moreSimpleE = e.makeSimple();

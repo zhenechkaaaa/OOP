@@ -1,21 +1,18 @@
 package ru.nsu.odnostorontseva.task3.operations;
 
 import ru.nsu.odnostorontseva.task3.operands.Number;
-
-import java.util.Objects;
-
 /**
  * Class for representing the division in expression.
  */
 public class Div extends Expression {
 
-    private final Expression leftPart;
-    private final Expression rightPart;
+    public final Expression leftPart;
+    public final Expression rightPart;
 
     /**
      * Constructing the division.
      *
-     * @param leftPart (левая часть выражения).
+     * @param leftPart  (левая часть выражения).
      * @param rightPart (правая часть выражения).
      */
     public Div(Expression leftPart, Expression rightPart) {
@@ -23,33 +20,55 @@ public class Div extends Expression {
         this.rightPart = rightPart;
     }
 
+    /**
+     * Method which overrides the equals method to compare Expressions.
+     *
+     * @param o (объкт для сравнивания)
+     * @return (запускает рекурсию для сравнения или t / f)
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null) {
+            return false;
+        }
+        if (o instanceof Div e) {
+            return this.leftPart.equals(e.leftPart) && rightPart.equals(e.leftPart);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.leftPart.hashCode() / this.rightPart.hashCode();
+    }
+
     @Override
     public Expression makeSimple() {
         Expression moreSimpleLeftPart = leftPart.makeSimple();
         Expression moreSimpleRightPart = rightPart.makeSimple();
 
-        if(moreSimpleLeftPart instanceof Number
-                && moreSimpleRightPart instanceof Number
-                && !Objects.equals(moreSimpleRightPart.print(), "0.0")) {
+        try {
+            if (moreSimpleRightPart.equals(new Number(0))) {
+                throw new ArithmeticException("Деление на ноль.");
+            }
+        } catch (ArithmeticException e) {
+            System.err.println(e.getMessage());
+            return null;
+        }
+
+        if (moreSimpleLeftPart instanceof Number
+                && moreSimpleRightPart instanceof Number) {
             return new Number(moreSimpleLeftPart.eval("")
                     / moreSimpleRightPart.eval(""));
         } else if (moreSimpleRightPart instanceof Number
-                && moreSimpleRightPart.print().equals("1.0")) {
+                && moreSimpleRightPart.equals(new Number(1))) {
             return moreSimpleLeftPart;
-        } else if (moreSimpleRightPart.equals(moreSimpleLeftPart)
-                && !Objects.equals(moreSimpleRightPart.print(), "0.0")) {
+        } else if (moreSimpleRightPart.equals(moreSimpleLeftPart)) {
             return new Number(1);
         }
-
-        try {
-            if (moreSimpleRightPart instanceof Number
-                    && moreSimpleRightPart.print().equals("0.0")) {
-                throw new ArithmeticException("Деление на ноль.");
-            }
-        }catch (ArithmeticException e) {
-            System.err.println(e.getMessage());
-        }
-
         return new Div(moreSimpleLeftPart, moreSimpleRightPart);
     }
 
@@ -73,13 +92,14 @@ public class Div extends Expression {
     public double eval(String variables) {
         double left = leftPart.eval(variables);
         double right = rightPart.eval(variables);
-        try{
+        try {
             if (right == 0) {
                 throw new ArithmeticException("Деление на ноль.");
             }
         } catch (ArithmeticException e) {
             System.err.println(e.getMessage());
+            return Double.NaN;
         }
-        return left/right;
+        return left / right;
     }
 }

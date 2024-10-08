@@ -2,7 +2,6 @@ package ru.nsu.odnostorontseva.task3.operations;
 
 import ru.nsu.odnostorontseva.task3.operands.Number;
 
-
 /**
  * Class for representing a subtraction in expression.
  */
@@ -14,7 +13,7 @@ public class Sub extends Expression {
     /**
      * Constructing the subtraction operation.
      *
-     * @param leftPart (левая часть выражения).
+     * @param leftPart  (левая часть выражения).
      * @param rightPart (правая часть выражения).
      */
     public Sub(Expression leftPart, Expression rightPart) {
@@ -22,12 +21,37 @@ public class Sub extends Expression {
         this.rightPart = rightPart;
     }
 
+    /**
+     * Method which overrides the equals method to compare Expressions.
+     *
+     * @param o (объкт для сравнивания)
+     * @return (запускает рекурсию для сравнения или t / f)
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null) {
+            return false;
+        }
+        if (o instanceof Sub e) {
+            return this.leftPart.equals(e.leftPart) && rightPart.equals(e.leftPart);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return leftPart.hashCode() + rightPart.hashCode();
+    }
+
     @Override
     public Expression makeSimple() {
         Expression moreSimpleLeftPart = leftPart.makeSimple();
         Expression moreSimpleRightPart = rightPart.makeSimple();
 
-        if(moreSimpleLeftPart instanceof Number && moreSimpleRightPart instanceof Number) {
+        if (moreSimpleLeftPart instanceof Number && moreSimpleRightPart instanceof Number) {
             return new Number(moreSimpleLeftPart.eval("") - moreSimpleRightPart.eval(""));
         }
         if (moreSimpleLeftPart.equals(moreSimpleRightPart)) {
