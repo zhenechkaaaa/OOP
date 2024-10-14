@@ -2,9 +2,17 @@ package ru.nsu.odnostorontseva.graph.BasicParts;
 
 import java.util.Objects;
 
+/**
+ * Class for representing a vertex.
+ */
 public class Vertex {
     private final String name;  // Уникальный идентификатор вершины
 
+    /**
+     * Constructing the vertex.
+     *
+     * @param name (name of vertex).
+     */
     public Vertex(String name) {
         this.name = name;
     }
