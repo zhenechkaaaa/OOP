@@ -1,9 +1,8 @@
 package ru.nsu.odnostorontseva.bj;
 
-import org.jetbrains.annotations.Nullable;
-
 import java.util.ArrayList;
 import java.util.List;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * represents a player's hand in a game.
