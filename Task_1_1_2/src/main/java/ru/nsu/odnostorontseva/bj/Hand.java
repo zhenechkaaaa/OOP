@@ -1,5 +1,7 @@
 package ru.nsu.odnostorontseva.bj;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,6 +70,8 @@ public class Hand {
      *
      * @return последняя взятая карта.
      */
+
+    @Nullable
     public Card getLastAddedCard() {
         if (hand.isEmpty()) {
             return null; // Возвращаем null, если рука пуста

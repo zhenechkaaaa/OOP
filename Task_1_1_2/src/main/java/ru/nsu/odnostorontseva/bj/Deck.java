@@ -1,5 +1,7 @@
 package ru.nsu.odnostorontseva.bj;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -54,6 +56,7 @@ public class Deck {
      *
      * @return (верхняя карта колоды или нул, если колода пустая).
      */
+    @Nullable
     public Card takeCard() {
         if (deck.isEmpty()) {
             return null;
