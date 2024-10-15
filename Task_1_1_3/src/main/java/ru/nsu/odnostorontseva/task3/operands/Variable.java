@@ -29,13 +29,10 @@ public class Variable extends Expression {
         if (this == o) {
             return true;
         }
-        if (o == null) {
+        if (!(o instanceof Variable e)) {
             return false;
         }
-        if (o instanceof Variable e) {
-            return this.variable.equals(e.variable);
-        }
-        return false;
+        return this.variable.equals(e.variable);
     }
 
     @Override
