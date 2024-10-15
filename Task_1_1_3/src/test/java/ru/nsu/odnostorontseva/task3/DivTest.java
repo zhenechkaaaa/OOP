@@ -2,11 +2,16 @@ package ru.nsu.odnostorontseva.task3;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import org.junit.jupiter.api.Test;
 import ru.nsu.odnostorontseva.task3.operands.Number;
 import ru.nsu.odnostorontseva.task3.operands.Variable;
-import ru.nsu.odnostorontseva.task3.operations.*;
+import ru.nsu.odnostorontseva.task3.operations.Add;
+import ru.nsu.odnostorontseva.task3.operations.Div;
+import ru.nsu.odnostorontseva.task3.operations.Expression;
+import ru.nsu.odnostorontseva.task3.operations.Mul;
+import ru.nsu.odnostorontseva.task3.operations.Sub;
 
 class DivTest {
 
@@ -28,6 +33,36 @@ class DivTest {
         Expression moreSimpE = e.makeSimple();
 
         assertEquals(new Number(4), moreSimpE);
+    }
+
+    @Test
+    void equalsTest() {
+        Expression l = new Variable("x");
+        Expression r = new Variable("y");
+
+        Expression e = new Div(l, r);
+        Expression expected = new Div(new Variable("x"), new Variable("y"));
+
+        assertEquals(expected, e);
+    }
+
+    @Test
+    void equalsNullTest() {
+        Expression l = new Variable("x");
+        Expression r = new Variable("y");
+        Expression e = new Div(l, r);
+
+        assertNotEquals(null, e);
+    }
+
+    @Test
+    void hashCodeTest() {
+        Expression l = new Variable("x");
+        Expression r = new Variable("y");
+        Expression e = new Div(l, r);
+        Expression expected = new Div(new Variable("x"), new Variable("y"));
+
+        assertEquals(expected.hashCode(), e.hashCode());
     }
 
     @Test

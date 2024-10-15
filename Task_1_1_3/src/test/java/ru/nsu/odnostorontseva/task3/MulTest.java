@@ -1,6 +1,7 @@
 package ru.nsu.odnostorontseva.task3;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import org.junit.jupiter.api.Test;
 import ru.nsu.odnostorontseva.task3.operands.Number;
@@ -8,8 +9,6 @@ import ru.nsu.odnostorontseva.task3.operands.Variable;
 import ru.nsu.odnostorontseva.task3.operations.Add;
 import ru.nsu.odnostorontseva.task3.operations.Expression;
 import ru.nsu.odnostorontseva.task3.operations.Mul;
-
-
 
 class MulTest {
 
@@ -69,7 +68,37 @@ class MulTest {
     }
 
     @Test
-    void print() {
+    void equalsTest() {
+        Expression l = new Variable("x");
+        Expression r = new Variable("y");
+
+        Expression e = new Mul(l, r);
+        Expression expected = new Mul(new Variable("x"), new Variable("y"));
+
+        assertEquals(expected, e);
+    }
+
+    @Test
+    void equalsNullTest() {
+        Expression l = new Variable("x");
+        Expression r = new Variable("y");
+        Expression e = new Mul(l, r);
+
+        assertNotEquals(null, e);
+    }
+
+    @Test
+    void hashCodeTest() {
+        Expression l = new Variable("x");
+        Expression r = new Variable("y");
+        Expression e = new Mul(l, r);
+        Expression expected = new Mul(new Variable("x"), new Variable("y"));
+
+        assertEquals(expected.hashCode(), e.hashCode());
+    }
+
+    @Test
+    void printTest() {
         Expression l = new Number(5);
         Expression r = new Variable("x");
         Expression e = new Mul(l, r);
@@ -78,7 +107,7 @@ class MulTest {
     }
 
     @Test
-    void derivative() {
+    void derivativeTest() {
         Expression l = new Add(new Number(5), new Variable("x")); //((5+x)*x)
         Expression r = new Variable("x");
 
@@ -90,7 +119,7 @@ class MulTest {
     }
 
     @Test
-    void eval() {
+    void evalTest() {
         Expression l = new Number(5);
         Expression r = new Variable("x");
         Expression e = new Mul(l, r);

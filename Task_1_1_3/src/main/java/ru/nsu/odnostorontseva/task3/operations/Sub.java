@@ -32,13 +32,10 @@ public class Sub extends Expression {
         if (this == o) {
             return true;
         }
-        if (o == null) {
+        if (!(o instanceof Sub e)) {
             return false;
         }
-        if (o instanceof Sub e) {
-            return this.leftPart.equals(e.leftPart) && rightPart.equals(e.leftPart);
-        }
-        return false;
+        return this.leftPart.equals(e.leftPart) && this.rightPart.equals(e.rightPart);
     }
 
     @Override

@@ -38,13 +38,10 @@ public class Number extends Expression {
         if (this == o) {
             return true;
         }
-        if (o == null) {
+        if (!(o instanceof Number e)) {
             return false;
         }
-        if (o instanceof Number e) {
             return this.num == e.num;
-        }
-        return false;
     }
 
     @Override

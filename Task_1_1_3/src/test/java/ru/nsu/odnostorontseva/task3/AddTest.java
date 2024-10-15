@@ -1,6 +1,7 @@
 package ru.nsu.odnostorontseva.task3;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import org.junit.jupiter.api.Test;
 import ru.nsu.odnostorontseva.task3.operands.Number;
@@ -18,6 +19,36 @@ class AddTest {
         Expression moreSimpleE = e.makeSimple();
 
         assertEquals(moreSimpleE, new Number(10));
+    }
+
+    @Test
+    void equalsTest() {
+        Expression l = new Variable("x");
+        Expression r = new Variable("y");
+
+        Expression e = new Add(l, r);
+        Expression expected = new Add(new Variable("x"), new Variable("y"));
+
+        assertEquals(expected, e);
+    }
+
+    @Test
+    void equalsNullTest() {
+        Expression l = new Variable("x");
+        Expression r = new Variable("y");
+        Expression e = new Add(l, r);
+
+        assertNotEquals(null, e);
+    }
+
+    @Test
+    void hashCodeTest() {
+        Expression l = new Variable("x");
+        Expression r = new Variable("y");
+        Expression e = new Add(l, r);
+        Expression expected = new Add(new Variable("x"), new Variable("y"));
+
+        assertEquals(expected.hashCode(), e.hashCode());
     }
 
     @Test
