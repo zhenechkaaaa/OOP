@@ -1,11 +1,11 @@
-package ru.nsu.odnostorontseva.graph.Implementations;
+package ru.nsu.odnostorontseva.graph.implementations;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-import ru.nsu.odnostorontseva.graph.BasicParts.Edge;
-import ru.nsu.odnostorontseva.graph.BasicParts.Vertex;
+import ru.nsu.odnostorontseva.graph.basicparts.Edge;
+import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 import ru.nsu.odnostorontseva.graph.Graph;
 
 
@@ -22,7 +22,7 @@ public class AdjacencyMatrix implements Graph {
      * @param vertices (список вершин графа)
      */
     public AdjacencyMatrix(List<Vertex> vertices) {
-        this.vertices = new ArrayList<>();
+        this.vertices = new ArrayList<>(vertices);
         this.matrix = new int[0][0];
     }
 
@@ -199,9 +199,9 @@ public class AdjacencyMatrix implements Graph {
     /**
      * Method making a dfs in graph.
      *
-     * @param vertex (вершина, от которой мы запускаем алгоритм).
+     * @param vertex  (вершина, от которой мы запускаем алгоритм).
      * @param visited (мн-во посещенных вершин).
-     * @param stack (стек вершин).
+     * @param stack   (стек вершин).
      */
     private void dfs(Vertex vertex, Set<Vertex> visited, Stack<Vertex> stack) {
         visited.add(vertex);

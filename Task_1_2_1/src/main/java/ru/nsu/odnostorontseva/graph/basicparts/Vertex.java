@@ -1,4 +1,4 @@
-package ru.nsu.odnostorontseva.graph.BasicParts;
+package ru.nsu.odnostorontseva.graph.basicparts;
 
 import java.util.Objects;
 

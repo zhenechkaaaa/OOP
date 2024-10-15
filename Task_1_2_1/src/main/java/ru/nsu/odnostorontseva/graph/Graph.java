@@ -1,10 +1,12 @@
 package ru.nsu.odnostorontseva.graph;
 
-import ru.nsu.odnostorontseva.graph.BasicParts.Edge;
-import ru.nsu.odnostorontseva.graph.BasicParts.Vertex;
-
 import java.util.List;
+import ru.nsu.odnostorontseva.graph.basicparts.Edge;
+import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 
+/**
+ * Determine the overall contract between the graph-objects.
+ */
 public interface Graph {
     /**
      * Method for adding a vertex into graph.
@@ -52,9 +54,6 @@ public interface Graph {
      * @param filename (имя файла).
      */
     void readFromFile(String filename);
-
-    boolean equals(Object o);
-    String toString();
 
     /**
      * Method which make a topological sort in graph.

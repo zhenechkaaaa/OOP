@@ -1,4 +1,4 @@
-package ru.nsu.odnostorontseva.graph.BasicParts;
+package ru.nsu.odnostorontseva.graph.basicparts;
 
 import java.util.Objects;
 
@@ -77,8 +77,12 @@ public class Edge {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Edge edge)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Edge edge)) {
+            return false;
+        }
         if (directed) {
             return Objects.equals(vertex1, edge.vertex1) &&
                     Objects.equals(vertex2, edge.vertex2) &&

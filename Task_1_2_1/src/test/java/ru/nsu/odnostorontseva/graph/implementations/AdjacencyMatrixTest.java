@@ -1,17 +1,18 @@
-package ru.nsu.odnostorontseva.graph.Implementations;
+package ru.nsu.odnostorontseva.graph.implementations;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.nsu.odnostorontseva.graph.BasicParts.Edge;
-import ru.nsu.odnostorontseva.graph.BasicParts.Vertex;
+import ru.nsu.odnostorontseva.graph.basicparts.Edge;
+import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 
 class AdjacencyMatrixTest {
     private AdjacencyMatrix graph;
