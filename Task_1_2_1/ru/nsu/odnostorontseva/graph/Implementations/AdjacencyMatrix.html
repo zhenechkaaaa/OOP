@@ -175,7 +175,7 @@ implements <a href="../Graph.html" title="interface in ru.nsu.odnostorontseva.gr
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a><wbr>&lt;<a href="../BasicParts/Vertex.html" title="class in ru.nsu.odnostorontseva.graph.BasicParts">Vertex</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#topologicalSort()" class="member-name-link">topologicalSort</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Method which make a toposort in graph.</div>
+<div class="block">Method which make a topological sort in graph.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#toString()" class="member-name-link">toString</a>()</code></div>
@@ -262,7 +262,7 @@ implements <a href="../Graph.html" title="interface in ru.nsu.odnostorontseva.gr
 <dt>Specified by:</dt>
 <dd><code><a href="../Graph.html#removeVertex(ru.nsu.odnostorontseva.graph.BasicParts.Vertex)">removeVertex</a></code>&nbsp;in interface&nbsp;<code><a href="../Graph.html" title="interface in ru.nsu.odnostorontseva.graph">Graph</a></code></dd>
 <dt>Parameters:</dt>
-<dd><code>vertex</code> - ().</dd>
+<dd><code>vertex</code> - (вершина, которую нужно удалить).</dd>
 </dl>
 </section>
 </li>
@@ -276,7 +276,7 @@ implements <a href="../Graph.html" title="interface in ru.nsu.odnostorontseva.gr
 <dt>Specified by:</dt>
 <dd><code><a href="../Graph.html#addEdge(ru.nsu.odnostorontseva.graph.BasicParts.Edge)">addEdge</a></code>&nbsp;in interface&nbsp;<code><a href="../Graph.html" title="interface in ru.nsu.odnostorontseva.graph">Graph</a></code></dd>
 <dt>Parameters:</dt>
-<dd><code>edge</code> - ().</dd>
+<dd><code>edge</code> - (ребро, которое нужно добавить).</dd>
 </dl>
 </section>
 </li>
@@ -290,7 +290,7 @@ implements <a href="../Graph.html" title="interface in ru.nsu.odnostorontseva.gr
 <dt>Specified by:</dt>
 <dd><code><a href="../Graph.html#removeEdge(ru.nsu.odnostorontseva.graph.BasicParts.Edge)">removeEdge</a></code>&nbsp;in interface&nbsp;<code><a href="../Graph.html" title="interface in ru.nsu.odnostorontseva.graph">Graph</a></code></dd>
 <dt>Parameters:</dt>
-<dd><code>edge</code> - ().</dd>
+<dd><code>edge</code> - (ребро, которое нужно удалить).</dd>
 </dl>
 </section>
 </li>
@@ -304,9 +304,9 @@ implements <a href="../Graph.html" title="interface in ru.nsu.odnostorontseva.gr
 <dt>Specified by:</dt>
 <dd><code><a href="../Graph.html#getNeighbors(ru.nsu.odnostorontseva.graph.BasicParts.Vertex)">getNeighbors</a></code>&nbsp;in interface&nbsp;<code><a href="../Graph.html" title="interface in ru.nsu.odnostorontseva.graph">Graph</a></code></dd>
 <dt>Parameters:</dt>
-<dd><code>vertex</code> - ().</dd>
+<dd><code>vertex</code> - (вершина, соседи которой нам нужны).</dd>
 <dt>Returns:</dt>
-<dd>().</dd>
+<dd>(список всех соседей вершины).</dd>
 </dl>
 </section>
 </li>
@@ -320,7 +320,7 @@ implements <a href="../Graph.html" title="interface in ru.nsu.odnostorontseva.gr
 <dt>Specified by:</dt>
 <dd><code><a href="../Graph.html#readFromFile(java.lang.String)">readFromFile</a></code>&nbsp;in interface&nbsp;<code><a href="../Graph.html" title="interface in ru.nsu.odnostorontseva.graph">Graph</a></code></dd>
 <dt>Parameters:</dt>
-<dd><code>filename</code> - ().</dd>
+<dd><code>filename</code> - (имя файла).</dd>
 </dl>
 </section>
 </li>
@@ -363,12 +363,12 @@ implements <a href="../Graph.html" title="interface in ru.nsu.odnostorontseva.gr
 <h3>topologicalSort</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../BasicParts/Vertex.html" title="class in ru.nsu.odnostorontseva.graph.BasicParts">Vertex</a>&gt;</span>&nbsp;<span class="element-name">topologicalSort</span>()</div>
 <div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../Graph.html#topologicalSort()">Graph</a></code></span></div>
-<div class="block">Method which make a toposort in graph.</div>
+<div class="block">Method which make a topological sort in graph.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="../Graph.html#topologicalSort()">topologicalSort</a></code>&nbsp;in interface&nbsp;<code><a href="../Graph.html" title="interface in ru.nsu.odnostorontseva.graph">Graph</a></code></dd>
 <dt>Returns:</dt>
-<dd>().</dd>
+<dd>(топологически отсортированный список вершин).</dd>
 </dl>
 </section>
 </li>

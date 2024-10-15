@@ -141,7 +141,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a><wbr>&lt;<a href="BasicParts/Vertex.html" title="class in ru.nsu.odnostorontseva.graph.BasicParts">Vertex</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#topologicalSort()" class="member-name-link">topologicalSort</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
-<div class="block">Method which make a toposort in graph.</div>
+<div class="block">Method which make a topological sort in graph.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#toString()" class="member-name-link">toString</a>()</code></div>
@@ -178,7 +178,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Method for removing a vertex from graph.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>vertex</code> - ().</dd>
+<dd><code>vertex</code> - (вершина, которую нужно удалить).</dd>
 </dl>
 </section>
 </li>
@@ -189,7 +189,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Method for adding an edge into graph.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>edge</code> - ().</dd>
+<dd><code>edge</code> - (ребро, которое нужно добавить).</dd>
 </dl>
 </section>
 </li>
@@ -200,7 +200,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Method for removing an edge from graph.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>edge</code> - ().</dd>
+<dd><code>edge</code> - (ребро, которое нужно удалить).</dd>
 </dl>
 </section>
 </li>
@@ -211,9 +211,9 @@ loadScripts(document, 'script');</script>
 <div class="block">Method, which returns all neighbors of vertex.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>vertex</code> - ().</dd>
+<dd><code>vertex</code> - (вершина, соседи которой нам нужны).</dd>
 <dt>Returns:</dt>
-<dd>().</dd>
+<dd>(список всех соседей вершины).</dd>
 </dl>
 </section>
 </li>
@@ -224,7 +224,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Method which read an information about graph from file.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>filename</code> - ().</dd>
+<dd><code>filename</code> - (имя файла).</dd>
 </dl>
 </section>
 </li>
@@ -252,10 +252,10 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="topologicalSort()">
 <h3>topologicalSort</h3>
 <div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="BasicParts/Vertex.html" title="class in ru.nsu.odnostorontseva.graph.BasicParts">Vertex</a>&gt;</span>&nbsp;<span class="element-name">topologicalSort</span>()</div>
-<div class="block">Method which make a toposort in graph.</div>
+<div class="block">Method which make a topological sort in graph.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>().</dd>
+<dd>(топологически отсортированный список вершин).</dd>
 </dl>
 </section>
 </li>
