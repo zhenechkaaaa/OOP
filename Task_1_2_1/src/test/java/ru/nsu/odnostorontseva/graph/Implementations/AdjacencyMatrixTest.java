@@ -2,7 +2,12 @@ package ru.nsu.odnostorontseva.graph.Implementations;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.nsu.odnostorontseva.graph.BasicParts.Edge;
@@ -96,11 +101,33 @@ class AdjacencyMatrixTest {
     }
 
     @Test
-    void readFromFileTest() {
+    void readFromFileTest() throws IOException {
+        String txt = "a b false";
+        File file = new File("file.txt");
+        if (file.createNewFile()) {
+            try {
+                FileOutputStream fos = new FileOutputStream(file);
+                fos.write(txt.getBytes());
+                fos.close();
+            } catch (IOException e) {
+                throw new FileNotFoundException();
+            }
+        }
+
+        graph.readFromFile("file.txt");
+
+        int[][] matrix = graph.getMatrix();
+        int indexA = graph.getVertices().indexOf(graph.getVertices().get(0));
+        int indexB = graph.getVertices().indexOf(graph.getVertices().get(1));
+
+        assertEquals(1, matrix[indexA][indexB]);
+        assertEquals(1, matrix[indexB][indexA]);
+
+        file.deleteOnExit();
     }
 
     @Test
-    void testToString() {
+    void toStringTest() {
         Vertex a = new Vertex("a");
         Vertex b = new Vertex("b");
         Vertex c = new Vertex("c");
@@ -111,15 +138,18 @@ class AdjacencyMatrixTest {
         graph.addEdge(edge1);
         graph.addEdge(edge2);
 
-        //assertEquals("  a b c \n" +
-        //                       "a 0 1 0 \n" +
-        //                       "b 1 0 1 \n" +
-        //                       "c 0 1 0 ",
-        //        graph.toString());
+        String expected = """
+                  a b c\s
+                a 0 1 0\s
+                b 1 0 1\s
+                c 0 1 0\s
+                """;
+
+        assertEquals(expected, graph.toString());
     }
 
     @Test
-    void topologicalSort() {
+    void topologicalSortTest() {
         Vertex a = new Vertex("a");
         Vertex b = new Vertex("b");
         Vertex c = new Vertex("c");

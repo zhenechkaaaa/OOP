@@ -199,9 +199,9 @@ public class AdjacencyMatrix implements Graph {
     /**
      * Method making a dfs in graph.
      *
-     * @param vertex
-     * @param visited
-     * @param stack
+     * @param vertex (вершина, от которой мы запускаем алгоритм).
+     * @param visited (мн-во посещенных вершин).
+     * @param stack (стек вершин).
      */
     private void dfs(Vertex vertex, Set<Vertex> visited, Stack<Vertex> stack) {
         visited.add(vertex);

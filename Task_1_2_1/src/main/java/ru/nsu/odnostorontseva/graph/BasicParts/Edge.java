@@ -2,12 +2,23 @@ package ru.nsu.odnostorontseva.graph.BasicParts;
 
 import java.util.Objects;
 
+/**
+ *  Class for representing an edge.
+ */
 public class Edge {
     private final Vertex vertex1;
     private final Vertex vertex2;
     private final int weight;
     private final boolean directed;
 
+    /**
+     * Constructing an edge.
+     *
+     * @param vertex1 (вершина 1).
+     * @param vertex2 (вершина 2).
+     * @param weight (вес ребра).
+     * @param directed (является ли направленным).
+     */
     public Edge(Vertex vertex1, Vertex vertex2, int weight, boolean directed) {
         this.vertex1 = vertex1;
         this.vertex2 = vertex2;
@@ -15,22 +26,51 @@ public class Edge {
         this.directed = directed;
     }
 
+    /**
+     * Method to get "from" vertex.
+     *
+     * @return ().
+     */
     public Vertex getStartVertex() {
         return vertex1;
     }
 
+    /**
+     * Method to get "to" vertex.
+     *
+     * @return ().
+     */
     public Vertex getFinishVertex() {
         return vertex2;
     }
 
+    /**
+     * Method to get edge's weight.
+     *
+     * @return ().
+     */
     public int getWeight() {
         return weight;
     }
 
+    /**
+     * Method to check is the edge is directed.
+     *
+     * @return ().
+     */
     public boolean isDirected() {
         return directed;
     }
 
+    /**
+     * Method to create an edge.
+     *
+     * @param vertex1 (вершина 1).
+     * @param vertex2 (вершина 2).
+     * @param weight (вес ребра).
+     * @param directed (является ли направленным).
+     * @return a new edge.
+     */
     public static Edge createEdge(Vertex vertex1, Vertex vertex2, int weight, boolean directed) {
         return new Edge(vertex1, vertex2, weight, directed);
     }
@@ -61,7 +101,7 @@ public class Edge {
 
     @Override
     public String toString() {
-        if(directed) {
+        if (directed) {
             return vertex1 + " -> " + vertex2 + " (w: " + weight + ")";
         } else {
             return vertex1 + " - " + vertex2 + " (w: " + weight + ")";

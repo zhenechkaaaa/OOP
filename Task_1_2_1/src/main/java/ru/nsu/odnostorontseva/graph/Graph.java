@@ -16,7 +16,7 @@ public interface Graph {
     /**
      * Method for removing a vertex from graph.
      *
-     * @param vertex ().
+     * @param vertex (вершина, которую нужно удалить).
      */
     void removeVertex(Vertex vertex);
 
@@ -24,7 +24,7 @@ public interface Graph {
     /**
      * Method for adding an edge into graph.
      *
-     * @param edge ().
+     * @param edge (ребро, которое нужно добавить).
      */
     void addEdge(Edge edge);
 
@@ -32,7 +32,7 @@ public interface Graph {
     /**
      * Method for removing an edge from graph.
      *
-     * @param edge ().
+     * @param edge (ребро, которое нужно удалить).
      */
     void removeEdge(Edge edge);
 
@@ -40,8 +40,8 @@ public interface Graph {
     /**
      * Method, which returns all neighbors of vertex.
      *
-     * @param vertex ().
-     * @return ().
+     * @param vertex (вершина, соседи которой нам нужны).
+     * @return (список всех соседей вершины).
      */
     List<Vertex> getNeighbors(Vertex vertex);
 
@@ -49,7 +49,7 @@ public interface Graph {
     /**
      * Method which read an information about graph from file.
      *
-     * @param filename ().
+     * @param filename (имя файла).
      */
     void readFromFile(String filename);
 
@@ -57,9 +57,9 @@ public interface Graph {
     String toString();
 
     /**
-     * Method which make a toposort in graph.
+     * Method which make a topological sort in graph.
      *
-     * @return ().
+     * @return (топологически отсортированный список вершин).
      */
     List<Vertex> topologicalSort();
 }
