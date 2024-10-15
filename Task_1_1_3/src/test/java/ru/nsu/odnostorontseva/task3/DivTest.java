@@ -6,11 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import org.junit.jupiter.api.Test;
 import ru.nsu.odnostorontseva.task3.operands.Number;
 import ru.nsu.odnostorontseva.task3.operands.Variable;
-import ru.nsu.odnostorontseva.task3.operations.Add;
-import ru.nsu.odnostorontseva.task3.operations.Div;
-import ru.nsu.odnostorontseva.task3.operations.Expression;
-import ru.nsu.odnostorontseva.task3.operations.Sub;
-
+import ru.nsu.odnostorontseva.task3.operations.*;
 
 class DivTest {
 
@@ -90,7 +86,7 @@ class DivTest {
     @Test
     void evalDivisionByZeroTest() {
         Expression l = new Add(new Number(5), new Variable("x"));
-        Expression r = new Sub(new Variable("x"), new Variable("x"));
+        Expression r = new Variable("x");
         Expression e = new Div(l, r);
 
         try {
@@ -100,5 +96,12 @@ class DivTest {
         }
     }
 
+    @Test
+    void evalDiffExpTest() {
+        Expression l = new Sub(new Add(new Number(5), new Variable("x")), new Sub(new Add(new Number(5), new Variable("y")), new Variable("z")));
+        Expression r = new Mul(new Variable("x"), new Add(new Variable("y"), new Variable("z")));
+        Expression e = new Div(l, r);
 
+        assertEquals(0.1, e.eval("x = 1; y = 5; z = 5"));
+    }
 }
