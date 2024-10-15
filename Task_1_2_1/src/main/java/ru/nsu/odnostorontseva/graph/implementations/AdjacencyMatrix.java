@@ -2,12 +2,16 @@ package ru.nsu.odnostorontseva.graph.implementations;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.*;
-
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.Scanner;
+import java.util.Stack;
 import ru.nsu.odnostorontseva.graph.basicparts.Edge;
 import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 import ru.nsu.odnostorontseva.graph.Graph;
-
 
 /**
  * Implementation of graph, using Adjacency Matrix.
@@ -146,8 +150,12 @@ public class AdjacencyMatrix implements Graph {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof AdjacencyMatrix other)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof AdjacencyMatrix other)) {
+            return false;
+        }
         return Arrays.deepEquals(matrix, other.matrix) && vertices.equals(other.vertices);
     }
 

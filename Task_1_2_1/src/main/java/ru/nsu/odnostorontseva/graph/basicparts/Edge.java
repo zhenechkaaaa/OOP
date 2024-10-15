@@ -84,13 +84,13 @@ public class Edge {
             return false;
         }
         if (directed) {
-            return Objects.equals(vertex1, edge.vertex1) &&
-                    Objects.equals(vertex2, edge.vertex2) &&
-                    (weight == edge.weight);
+            return Objects.equals(vertex1, edge.vertex1)
+                    && Objects.equals(vertex2, edge.vertex2)
+                    && (weight == edge.weight);
         } else {
-            return (Objects.equals(vertex1, edge.vertex1) && Objects.equals(vertex2, edge.vertex2) ||
-                    Objects.equals(vertex1, edge.vertex2) && Objects.equals(vertex2, edge.vertex1)) &&
-                    (weight == edge.weight);
+            return (Objects.equals(vertex1, edge.vertex1) && Objects.equals(vertex2, edge.vertex2)
+                    || Objects.equals(vertex1, edge.vertex2) && Objects.equals(vertex2, edge.vertex1))
+                    && (weight == edge.weight);
         }
     }
 
