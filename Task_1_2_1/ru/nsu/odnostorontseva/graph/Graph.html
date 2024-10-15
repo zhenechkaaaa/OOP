@@ -87,10 +87,11 @@ loadScripts(document, 'script');</script>
 <section class="class-description" id="class-description">
 <dl class="notes">
 <dt>All Known Implementing Classes:</dt>
-<dd><code><a href="Implementations/AdjacencyMatrix.html" title="class in ru.nsu.odnostorontseva.graph.Implementations">AdjacencyMatrix</a></code></dd>
+<dd><code><a href="implementations/AdjacencyMatrix.html" title="class in ru.nsu.odnostorontseva.graph.implementations">AdjacencyMatrix</a></code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public interface </span><span class="element-name type-name-label">Graph</span></div>
+<div class="block">Determine the overall contract between the graph-objects.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -106,46 +107,40 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#addEdge(ru.nsu.odnostorontseva.graph.BasicParts.Edge)" class="member-name-link">addEdge</a><wbr>(<a href="BasicParts/Edge.html" title="class in ru.nsu.odnostorontseva.graph.BasicParts">Edge</a>&nbsp;edge)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#addEdge(ru.nsu.odnostorontseva.graph.basicparts.Edge)" class="member-name-link">addEdge</a><wbr>(<a href="basicparts/Edge.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Edge</a>&nbsp;edge)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Method for adding an edge into graph.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#addVertex(ru.nsu.odnostorontseva.graph.BasicParts.Vertex)" class="member-name-link">addVertex</a><wbr>(<a href="BasicParts/Vertex.html" title="class in ru.nsu.odnostorontseva.graph.BasicParts">Vertex</a>&nbsp;vertex)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#addVertex(ru.nsu.odnostorontseva.graph.basicparts.Vertex)" class="member-name-link">addVertex</a><wbr>(<a href="basicparts/Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a>&nbsp;vertex)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Method for adding a vertex into graph.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>boolean</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#equals(java.lang.Object)" class="member-name-link">equals</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;o)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a><wbr>&lt;<a href="BasicParts/Vertex.html" title="class in ru.nsu.odnostorontseva.graph.BasicParts">Vertex</a>&gt;</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getNeighbors(ru.nsu.odnostorontseva.graph.BasicParts.Vertex)" class="member-name-link">getNeighbors</a><wbr>(<a href="BasicParts/Vertex.html" title="class in ru.nsu.odnostorontseva.graph.BasicParts">Vertex</a>&nbsp;vertex)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a><wbr>&lt;<a href="basicparts/Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getNeighbors(ru.nsu.odnostorontseva.graph.basicparts.Vertex)" class="member-name-link">getNeighbors</a><wbr>(<a href="basicparts/Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a>&nbsp;vertex)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Method, which returns all neighbors of vertex.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#readFromFile(java.lang.String)" class="member-name-link">readFromFile</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#readFromFile(java.lang.String)" class="member-name-link">readFromFile</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Method which read an information about graph from file.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#removeEdge(ru.nsu.odnostorontseva.graph.BasicParts.Edge)" class="member-name-link">removeEdge</a><wbr>(<a href="BasicParts/Edge.html" title="class in ru.nsu.odnostorontseva.graph.BasicParts">Edge</a>&nbsp;edge)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#removeEdge(ru.nsu.odnostorontseva.graph.basicparts.Edge)" class="member-name-link">removeEdge</a><wbr>(<a href="basicparts/Edge.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Edge</a>&nbsp;edge)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Method for removing an edge from graph.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#removeVertex(ru.nsu.odnostorontseva.graph.BasicParts.Vertex)" class="member-name-link">removeVertex</a><wbr>(<a href="BasicParts/Vertex.html" title="class in ru.nsu.odnostorontseva.graph.BasicParts">Vertex</a>&nbsp;vertex)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#removeVertex(ru.nsu.odnostorontseva.graph.basicparts.Vertex)" class="member-name-link">removeVertex</a><wbr>(<a href="basicparts/Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a>&nbsp;vertex)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Method for removing a vertex from graph.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a><wbr>&lt;<a href="BasicParts/Vertex.html" title="class in ru.nsu.odnostorontseva.graph.BasicParts">Vertex</a>&gt;</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#topologicalSort()" class="member-name-link">topologicalSort</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a><wbr>&lt;<a href="basicparts/Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#topologicalSort()" class="member-name-link">topologicalSort</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Method which make a topological sort in graph.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#toString()" class="member-name-link">toString</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
 </div>
 </div>
 </div>
@@ -161,9 +156,9 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="addVertex(ru.nsu.odnostorontseva.graph.BasicParts.Vertex)">
+<section class="detail" id="addVertex(ru.nsu.odnostorontseva.graph.basicparts.Vertex)">
 <h3>addVertex</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">addVertex</span><wbr><span class="parameters">(<a href="BasicParts/Vertex.html" title="class in ru.nsu.odnostorontseva.graph.BasicParts">Vertex</a>&nbsp;vertex)</span></div>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">addVertex</span><wbr><span class="parameters">(<a href="basicparts/Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a>&nbsp;vertex)</span></div>
 <div class="block">Method for adding a vertex into graph.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -172,9 +167,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="removeVertex(ru.nsu.odnostorontseva.graph.BasicParts.Vertex)">
+<section class="detail" id="removeVertex(ru.nsu.odnostorontseva.graph.basicparts.Vertex)">
 <h3>removeVertex</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">removeVertex</span><wbr><span class="parameters">(<a href="BasicParts/Vertex.html" title="class in ru.nsu.odnostorontseva.graph.BasicParts">Vertex</a>&nbsp;vertex)</span></div>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">removeVertex</span><wbr><span class="parameters">(<a href="basicparts/Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a>&nbsp;vertex)</span></div>
 <div class="block">Method for removing a vertex from graph.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -183,9 +178,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="addEdge(ru.nsu.odnostorontseva.graph.BasicParts.Edge)">
+<section class="detail" id="addEdge(ru.nsu.odnostorontseva.graph.basicparts.Edge)">
 <h3>addEdge</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">addEdge</span><wbr><span class="parameters">(<a href="BasicParts/Edge.html" title="class in ru.nsu.odnostorontseva.graph.BasicParts">Edge</a>&nbsp;edge)</span></div>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">addEdge</span><wbr><span class="parameters">(<a href="basicparts/Edge.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Edge</a>&nbsp;edge)</span></div>
 <div class="block">Method for adding an edge into graph.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -194,9 +189,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="removeEdge(ru.nsu.odnostorontseva.graph.BasicParts.Edge)">
+<section class="detail" id="removeEdge(ru.nsu.odnostorontseva.graph.basicparts.Edge)">
 <h3>removeEdge</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">removeEdge</span><wbr><span class="parameters">(<a href="BasicParts/Edge.html" title="class in ru.nsu.odnostorontseva.graph.BasicParts">Edge</a>&nbsp;edge)</span></div>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">removeEdge</span><wbr><span class="parameters">(<a href="basicparts/Edge.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Edge</a>&nbsp;edge)</span></div>
 <div class="block">Method for removing an edge from graph.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -205,9 +200,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="getNeighbors(ru.nsu.odnostorontseva.graph.BasicParts.Vertex)">
+<section class="detail" id="getNeighbors(ru.nsu.odnostorontseva.graph.basicparts.Vertex)">
 <h3>getNeighbors</h3>
-<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="BasicParts/Vertex.html" title="class in ru.nsu.odnostorontseva.graph.BasicParts">Vertex</a>&gt;</span>&nbsp;<span class="element-name">getNeighbors</span><wbr><span class="parameters">(<a href="BasicParts/Vertex.html" title="class in ru.nsu.odnostorontseva.graph.BasicParts">Vertex</a>&nbsp;vertex)</span></div>
+<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="basicparts/Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a>&gt;</span>&nbsp;<span class="element-name">getNeighbors</span><wbr><span class="parameters">(<a href="basicparts/Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a>&nbsp;vertex)</span></div>
 <div class="block">Method, which returns all neighbors of vertex.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -229,29 +224,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="equals(java.lang.Object)">
-<h3>equals</h3>
-<div class="member-signature"><span class="return-type">boolean</span>&nbsp;<span class="element-name">equals</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;o)</span></div>
-<dl class="notes">
-<dt>Overrides:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object)" title="class or interface in java.lang" class="external-link">equals</a></code>&nbsp;in class&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></code></dd>
-</dl>
-</section>
-</li>
-<li>
-<section class="detail" id="toString()">
-<h3>toString</h3>
-<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">toString</span>()</div>
-<dl class="notes">
-<dt>Overrides:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html#toString()" title="class or interface in java.lang" class="external-link">toString</a></code>&nbsp;in class&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></code></dd>
-</dl>
-</section>
-</li>
-<li>
 <section class="detail" id="topologicalSort()">
 <h3>topologicalSort</h3>
-<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="BasicParts/Vertex.html" title="class in ru.nsu.odnostorontseva.graph.BasicParts">Vertex</a>&gt;</span>&nbsp;<span class="element-name">topologicalSort</span>()</div>
+<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="basicparts/Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a>&gt;</span>&nbsp;<span class="element-name">topologicalSort</span>()</div>
 <div class="block">Method which make a topological sort in graph.</div>
 <dl class="notes">
 <dt>Returns:</dt>
