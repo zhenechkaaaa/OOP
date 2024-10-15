@@ -51,18 +51,13 @@ public class Div extends Expression {
         Expression moreSimpleLeftPart = leftPart.makeSimple();
         Expression moreSimpleRightPart = rightPart.makeSimple();
 
-        try {
-            if (moreSimpleRightPart.equals(new Number(0))) {
-                throw new ArithmeticException("Деление на ноль.");
-            }
-        } catch (ArithmeticException e) {
-            System.err.println(e.getMessage());
+        if (moreSimpleRightPart.equals(new Number(0))) {
+            throw new ArithmeticException("Деление на ноль.");
         }
 
-        if (moreSimpleLeftPart instanceof Number
-                && moreSimpleRightPart instanceof Number) {
-            return new Number(moreSimpleLeftPart.eval("")
-                    / moreSimpleRightPart.eval(""));
+        if (moreSimpleLeftPart instanceof Number nl
+                && moreSimpleRightPart instanceof Number nr) {
+            return new Number(nl.getNum() / nr.getNum());
         } else if (moreSimpleRightPart instanceof Number
                 && moreSimpleRightPart.equals(new Number(1))) {
             return moreSimpleLeftPart;
@@ -93,13 +88,12 @@ public class Div extends Expression {
     public double eval(String variables) {
         double left = leftPart.eval(variables);
         double right = rightPart.eval(variables);
+        double res;
         try {
-            if (right == 0) {
-                throw new ArithmeticException("Деление на ноль.");
-            }
+            res = left / right;
         } catch (ArithmeticException e) {
-            System.err.println(e.getMessage());
+            throw new ArithmeticException("Деление на ноль.");
         }
-        return left / right;
+        return res;
     }
 }

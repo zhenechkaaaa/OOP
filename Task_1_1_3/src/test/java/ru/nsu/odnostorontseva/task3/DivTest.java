@@ -9,6 +9,7 @@ import ru.nsu.odnostorontseva.task3.operands.Variable;
 import ru.nsu.odnostorontseva.task3.operations.Add;
 import ru.nsu.odnostorontseva.task3.operations.Div;
 import ru.nsu.odnostorontseva.task3.operations.Expression;
+import ru.nsu.odnostorontseva.task3.operations.Sub;
 
 
 class DivTest {
@@ -89,13 +90,12 @@ class DivTest {
     @Test
     void evalDivisionByZeroTest() {
         Expression l = new Add(new Number(5), new Variable("x"));
-        Expression r = new Variable("x");
+        Expression r = new Sub(new Variable("x"), new Variable("x"));
         Expression e = new Div(l, r);
 
         try {
             e.eval("x = 0");
-        }
-        catch (ArithmeticException ex) {
+        } catch (ArithmeticException ex) {
             assertInstanceOf(Exception.class, ex);
         }
     }

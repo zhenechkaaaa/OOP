@@ -19,6 +19,15 @@ public class Number extends Expression {
     }
 
     /**
+     * Method returns a nam.
+     *
+     * @return (num).
+     */
+    public double getNum() {
+        return num;
+    }
+
+    /**
      * Method which overrides the equals method to compare Expressions.
      *
      * @param o (объкт для сравнивания)

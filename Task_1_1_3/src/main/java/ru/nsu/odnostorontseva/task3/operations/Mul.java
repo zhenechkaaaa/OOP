@@ -51,8 +51,8 @@ public class Mul extends Expression {
         Expression moreSimpleLeftPart = leftPart.makeSimple();
         Expression moreSimpleRightPart = rightPart.makeSimple();
 
-        if (moreSimpleLeftPart instanceof Number && moreSimpleRightPart instanceof Number) {
-            return new Number(moreSimpleLeftPart.eval("") * moreSimpleRightPart.eval(""));
+        if (moreSimpleLeftPart instanceof Number nl && moreSimpleRightPart instanceof Number nr) {
+            return new Number(nl.getNum() * nr.getNum());
         } else if (moreSimpleLeftPart.equals(new Number(0))) {
             return new Number(0);
         } else if (moreSimpleRightPart.equals(new Number(0))) {
