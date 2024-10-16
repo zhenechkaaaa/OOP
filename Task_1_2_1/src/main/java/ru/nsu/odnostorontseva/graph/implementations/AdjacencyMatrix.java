@@ -1,14 +1,10 @@
 package ru.nsu.odnostorontseva.graph.implementations;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.Scanner;
-import java.util.Stack;
+import ru.nsu.odnostorontseva.graph.Algorithm;
+import ru.nsu.odnostorontseva.graph.Reader;
 import ru.nsu.odnostorontseva.graph.basicparts.Edge;
 import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 import ru.nsu.odnostorontseva.graph.Graph;
@@ -30,12 +26,8 @@ public class AdjacencyMatrix implements Graph {
         this.matrix = new int[0][0];
     }
 
-    /**
-     * Method to get the list of all vertices in graph.
-     *
-     * @return list.
-     */
-    public List<Vertex> getVertices() {
+    @Override
+    public List<Vertex> getAllVertices() {
         return this.vertices;
     }
 
@@ -124,28 +116,7 @@ public class AdjacencyMatrix implements Graph {
 
     @Override
     public void readFromFile(String filename) {
-        try {
-            Scanner scanner = new Scanner(new File(filename));
-            while (scanner.hasNextLine()) {
-                String[] line = scanner.nextLine().trim().split(" ");
-                Edge e;
-                try {
-                    if (line.length == 3) {
-                        e = Edge.createEdge(new Vertex(line[0]), new Vertex(line[1]), 1, Boolean.parseBoolean(line[2]));
-                    } else if (line.length == 4) {
-                        e = Edge.createEdge(new Vertex(line[0]), new Vertex(line[1]), Integer.parseInt(line[2]), Boolean.parseBoolean(line[3]));
-                    } else {
-                        throw new IllegalArgumentException("Wrong number of arguments");
-                    }
-                } catch (IllegalArgumentException ex) {
-                    throw new IllegalArgumentException("Wrong type of arguments");
-                }
-                this.addEdge(e);
-            }
-            scanner.close();
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        Reader.readFromFile(filename, this);
     }
 
     @Override
@@ -184,45 +155,8 @@ public class AdjacencyMatrix implements Graph {
         return sb.toString();
     }
 
-
     @Override
-    public List<Vertex> topologicalSort() {
-        Stack<Vertex> stack = new Stack<>();
-        Set<Vertex> visited = new HashSet<>();
-        List<Vertex> sortedList = new ArrayList<>();
-
-        for (Vertex vertex : vertices) {
-            if (!visited.contains(vertex)) {
-                dfs(vertex, visited, stack);
-            }
-        }
-
-        while (!stack.isEmpty()) {
-            sortedList.add(stack.pop());
-        }
-
-        return sortedList;
-    }
-
-    /**
-     * Method making a dfs in graph.
-     *
-     * @param vertex  (вершина, от которой мы запускаем алгоритм).
-     * @param visited (мн-во посещенных вершин).
-     * @param stack   (стек вершин).
-     */
-    private void dfs(Vertex vertex, Set<Vertex> visited, Stack<Vertex> stack) {
-        visited.add(vertex);
-
-        int index = vertices.indexOf(vertex);
-        for (int i = 0; i < matrix.length; i++) {
-            if (matrix[index][i] != 0) {
-                Vertex neighbor = vertices.get(i);
-                if (!visited.contains(neighbor)) {
-                    dfs(neighbor, visited, stack);
-                }
-            }
-        }
-        stack.push(vertex);
+    public List<Vertex> sort(Algorithm sorter) {
+        return sorter.sort(this);
     }
 }

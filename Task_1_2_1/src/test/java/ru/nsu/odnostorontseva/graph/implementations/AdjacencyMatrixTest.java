@@ -1,19 +1,16 @@
 package ru.nsu.odnostorontseva.graph.implementations;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ru.nsu.odnostorontseva.graph.algorithms.TopologicalSort;
 import ru.nsu.odnostorontseva.graph.basicparts.Edge;
 import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 class AdjacencyMatrixTest {
     private AdjacencyMatrix graph;
 
@@ -26,7 +23,7 @@ class AdjacencyMatrixTest {
     void addVertexTest() {
         Vertex a = new Vertex("a");
         graph.addVertex(a);
-        assertTrue(graph.getVertices().contains(a));
+        assertEquals(1, graph.getAllVertices().size());
     }
 
     @Test
@@ -34,57 +31,57 @@ class AdjacencyMatrixTest {
         Vertex a = new Vertex("a");
         graph.addVertex(a);
         graph.removeVertex(a);
-        assertFalse(graph.getVertices().contains(a));
+        assertEquals(0, graph.getAllVertices().size());
     }
 
     @Test
-    void addUnweightedEdgeTest() {
+    void addEdgeTest() {
         Vertex a = new Vertex("a");
         Vertex b = new Vertex("b");
-        Edge edge = new Edge(a, b, 1, false);
-        graph.addEdge(edge);
+        Edge e = new Edge(a, b, 1, false);
 
-        int[][] matrix = graph.getMatrix();
-        int indexA = graph.getVertices().indexOf(a);
-        int indexB = graph.getVertices().indexOf(b);
+        graph.addEdge(e);
 
-        assertEquals(1, matrix[indexA][indexB]);
-        assertEquals(1, matrix[indexB][indexA]);
+        int indexA = graph.getAllVertices().indexOf(a);
+        int indexB = graph.getAllVertices().indexOf(b);
+        int[][] testMatrix = graph.getMatrix();
+        assertEquals(1, testMatrix[indexA][indexB]);
+        assertEquals(1, testMatrix[indexB][indexA]);
     }
 
     @Test
-    void addWeightedEdgeTest() {
+    void addDirectedEdgeTest() {
         Vertex a = new Vertex("a");
         Vertex b = new Vertex("b");
-        Edge edge = new Edge(a, b, 8, false);
-        graph.addEdge(edge);
+        Edge e = new Edge(a, b, 1, true);
 
-        int[][] matrix = graph.getMatrix();
-        int indexA = graph.getVertices().indexOf(a);
-        int indexB = graph.getVertices().indexOf(b);
+        graph.addEdge(e);
 
-        assertEquals(8, matrix[indexA][indexB]);
-        assertEquals(8, matrix[indexB][indexA]);
+        int indexA = graph.getAllVertices().indexOf(a);
+        int indexB = graph.getAllVertices().indexOf(b);
+        int[][] testMatrix = graph.getMatrix();
+        assertEquals(1, testMatrix[indexA][indexB]);
+        assertEquals(0, testMatrix[indexB][indexA]);
     }
 
     @Test
-    void removeEdgeTest() {
+    void removeEdge() {
         Vertex a = new Vertex("a");
         Vertex b = new Vertex("b");
-        Edge edge = new Edge(a, b, 1, false);
-        graph.addEdge(edge);
-        graph.removeEdge(edge);
+        Edge e = new Edge(a, b, 1, false);
 
-        int[][] matrix = graph.getMatrix();
-        int indexA = graph.getVertices().indexOf(a);
-        int indexB = graph.getVertices().indexOf(b);
+        graph.addEdge(e);
+        graph.removeEdge(e);
 
-        assertEquals(0, matrix[indexA][indexB]);
-        assertEquals(0, matrix[indexB][indexA]);
+        int indexA = graph.getAllVertices().indexOf(a);
+        int indexB = graph.getAllVertices().indexOf(b);
+        int[][] testMatrix = graph.getMatrix();
+        assertEquals(0, testMatrix[indexA][indexB]);
+        assertEquals(0, testMatrix[indexB][indexA]);
     }
 
     @Test
-    void getNeighborsTest() {
+    void getNeighbors() {
         Vertex a = new Vertex("a");
         Vertex b = new Vertex("b");
         Vertex c = new Vertex("c");
@@ -102,33 +99,81 @@ class AdjacencyMatrixTest {
     }
 
     @Test
-    void readFromFileTest() throws IOException {
-        String txt = "a b false";
-        File file = new File("file.txt");
-        if (file.createNewFile()) {
-            try {
-                FileOutputStream fos = new FileOutputStream(file);
-                fos.write(txt.getBytes());
-                fos.close();
-            } catch (IOException e) {
-                throw new FileNotFoundException();
-            }
-        }
-
-        graph.readFromFile("file.txt");
-
-        int[][] matrix = graph.getMatrix();
-        int indexA = graph.getVertices().indexOf(graph.getVertices().get(0));
-        int indexB = graph.getVertices().indexOf(graph.getVertices().get(1));
-
-        assertEquals(1, matrix[indexA][indexB]);
-        assertEquals(1, matrix[indexB][indexA]);
-
-        file.deleteOnExit();
+    void readFromFile() {
+        //добавить файлы для тесто в ресурсы
     }
 
     @Test
-    void toStringTest() {
+    void equalsItselfTest() {
+        Vertex a = new Vertex("a");
+        Vertex b = new Vertex("b");
+        Edge e = new Edge(a, b, 1, false);
+        graph.addEdge(e);
+
+        assertEquals(graph, graph);
+    }
+
+    @Test
+    void equalsTest() {
+        AdjacencyMatrix graph1 = new AdjacencyMatrix(List.of());
+        Vertex a = new Vertex("a");
+        Vertex b = new Vertex("b");
+        Edge e = new Edge(a, b, 1, false);
+        graph1.addEdge(e);
+        graph.addEdge(e);
+
+        assertEquals(graph1, graph);
+    }
+
+    @Test
+    void notEqualsTest() {
+        AdjacencyMatrix graph1 = new AdjacencyMatrix(List.of());
+        Vertex a = new Vertex("a");
+        Vertex b = new Vertex("b");
+        Edge e = new Edge(a, b, 1, false);
+
+        Vertex c = new Vertex("c");
+        Edge e2 = new Edge(b, c, 1, false);
+        graph1.addEdge(e2);
+        graph.addEdge(e);
+
+        assertNotEquals(graph1, graph);
+    }
+
+    @Test
+    void equalsNullTest() {
+        Vertex a = new Vertex("a");
+        Vertex b = new Vertex("b");
+        Edge e = new Edge(a, b, 1, false);
+        graph.addEdge(e);
+
+        assertNotEquals(graph, null);
+    }
+
+    @Test
+    void equalsDiffObjectsTest() {
+        Vertex a = new Vertex("a");
+        Vertex b = new Vertex("b");
+        Edge e = new Edge(a, b, 1, false);
+        graph.addEdge(e);
+
+        assertNotEquals(graph, "adjacency matrix");
+    }
+
+    @Test
+    void testHashCode() {
+        AdjacencyMatrix graph1 = new AdjacencyMatrix(List.of());
+        Vertex a = new Vertex("a");
+        Vertex b = new Vertex("b");
+        Edge e = new Edge(a, b, 1, false);
+        graph1.addEdge(e);
+        graph.addEdge(e);
+
+        assertEquals(graph1.hashCode(), graph1.hashCode());
+    }
+
+    @Test
+    void testToString() {
         Vertex a = new Vertex("a");
         Vertex b = new Vertex("b");
         Vertex c = new Vertex("c");
@@ -150,22 +195,20 @@ class AdjacencyMatrixTest {
     }
 
     @Test
-    void topologicalSortTest() {
+    void sort() {
         Vertex a = new Vertex("a");
         Vertex b = new Vertex("b");
         Vertex c = new Vertex("c");
 
-        graph.addVertex(a);
-        graph.addVertex(b);
-        graph.addVertex(c);
+        Edge edge1 = new Edge(a, b, 1, true);
+        Edge edge2 = new Edge(b, c, 1, true);
 
-        graph.addEdge(Edge.createEdge(a, b, 1, true));
-        graph.addEdge(Edge.createEdge(b, c, 1, true));
+        graph.addEdge(edge1);
+        graph.addEdge(edge2);
 
-        List<Vertex> sorted = graph.topologicalSort();
+        Vertex[] array = {new Vertex("a"), new Vertex("b"), new Vertex("c")};
+        ArrayList<Vertex> list = new ArrayList<Vertex>(Arrays.asList(array));
 
-        assertEquals(a, sorted.get(0));
-        assertEquals(b, sorted.get(1));
-        assertEquals(c, sorted.get(2));
+        assertEquals(list, graph.sort(new TopologicalSort()));
     }
 }

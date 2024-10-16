@@ -47,6 +47,12 @@ public interface Graph {
      */
     List<Vertex> getNeighbors(Vertex vertex);
 
+    /**
+     * Method, which returns all vertices in graph.
+     *
+     * @return (список всех вершин графа).
+     */
+    List<Vertex> getAllVertices();
 
     /**
      * Method which read an information about graph from file.
@@ -56,9 +62,10 @@ public interface Graph {
     void readFromFile(String filename);
 
     /**
-     * Method which make a topological sort in graph.
+     * Method which using to make a vertex-sort.
      *
-     * @return (топологически отсортированный список вершин).
+     * @param sorter (алгоритм сортировки).
+     * @return (список отсортированных вершин).
      */
-    List<Vertex> topologicalSort();
+    List<Vertex> sort(Algorithm sorter);
 }

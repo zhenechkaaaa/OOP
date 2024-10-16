@@ -88,8 +88,10 @@ public class Edge {
                     && Objects.equals(vertex2, edge.vertex2)
                     && (weight == edge.weight);
         } else {
-            return (Objects.equals(vertex1, edge.vertex1) && Objects.equals(vertex2, edge.vertex2)
-                    || Objects.equals(vertex1, edge.vertex2) && Objects.equals(vertex2, edge.vertex1))
+            return ((Objects.equals(vertex1, edge.vertex1)
+                    && Objects.equals(vertex2, edge.vertex2))
+                    || (Objects.equals(vertex1, edge.vertex2)
+                    && Objects.equals(vertex2, edge.vertex1)))
                     && (weight == edge.weight);
         }
     }
@@ -99,7 +101,9 @@ public class Edge {
         if (directed) {
             return Objects.hash(vertex1, vertex2, weight);
         } else {
-            return Objects.hash(vertex1, vertex2) + Objects.hash(vertex2, vertex1) + Integer.hashCode(weight);
+            return Objects.hash(vertex1, vertex2)
+                    + Objects.hash(vertex2, vertex1)
+                    + Integer.hashCode(weight);
         }
     }
 

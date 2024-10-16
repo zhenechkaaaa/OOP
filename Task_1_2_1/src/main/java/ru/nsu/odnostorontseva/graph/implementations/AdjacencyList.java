@@ -1,24 +1,37 @@
 package ru.nsu.odnostorontseva.graph.implementations;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.*;
-
+import java.util.ArrayList;
+import java.util.List;
+import ru.nsu.odnostorontseva.graph.Algorithm;
 import ru.nsu.odnostorontseva.graph.Graph;
+import ru.nsu.odnostorontseva.graph.Reader;
 import ru.nsu.odnostorontseva.graph.basicparts.Edge;
 import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 
 
+/**
+ * Implementation of graph, using Adjacency List.
+ */
 public class AdjacencyList implements Graph {
     private final List<Vertex> vertices;
     private final List<List<Vertex>> adjacencyList;
 
+    /**
+     * Class constructor.
+     *
+     * @param vertices (список вершин графа)
+     */
     public AdjacencyList(List<Vertex> vertices) {
         this.vertices = vertices;
         adjacencyList = new ArrayList<>(vertices.size());
         for (Vertex v : vertices) {
             adjacencyList.add(new ArrayList<>());
         }
+    }
+
+    @Override
+    public List<Vertex> getAllVertices() {
+        return vertices;
     }
 
     @Override
@@ -61,28 +74,7 @@ public class AdjacencyList implements Graph {
 
     @Override
     public void readFromFile(String filename) {
-        try {
-            Scanner scanner = new Scanner(new File(filename));
-            while (scanner.hasNextLine()) {
-                String[] line = scanner.nextLine().trim().split(" ");
-                Edge e;
-                try {
-                    if (line.length == 3) {
-                        e = Edge.createEdge(new Vertex(line[0]), new Vertex(line[1]), 1, Boolean.parseBoolean(line[2]));
-                    } else if (line.length == 4) {
-                        e = Edge.createEdge(new Vertex(line[0]), new Vertex(line[1]), Integer.parseInt(line[2]), Boolean.parseBoolean(line[3]));
-                    } else {
-                        throw new IllegalArgumentException("Wrong number of arguments");
-                    }
-                } catch (IllegalArgumentException ex) {
-                    throw new IllegalArgumentException("Wrong type of arguments");
-                }
-                this.addEdge(e);
-            }
-            scanner.close();
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        Reader.readFromFile(filename, this);
     }
 
     @Override
@@ -104,6 +96,17 @@ public class AdjacencyList implements Graph {
 
     @Override
     public String toString() {
+        StringBuilder sb = new StringBuilder();
 
+        for (Vertex v : vertices) {
+            sb.append(v).append(": ").append(adjacencyList.get(vertices.indexOf(v))).append(", ");
+        }
+        sb.append("\n");
+        return sb.toString();
+    }
+
+    @Override
+    public List<Vertex> sort(Algorithm sorter) {
+        return sorter.sort(this);
     }
 }
