@@ -21,7 +21,7 @@ class AdjacencyMatrixTest {
 
     @Test
     void addVertexTest() {
-        Vertex a = new Vertex("a");
+        Vertex a = new Vertex("A");
         graph.addVertex(a);
         assertEquals(1, graph.getAllVertices().size());
     }
