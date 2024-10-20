@@ -9,11 +9,11 @@ import ru.nsu.odnostorontseva.graph.Graph;
 import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 
 
-public class TopologicalSort implements Algorithm {
+public class TopologicalSort<T> implements Algorithm<T> {
 
     @Override
-    public List<Vertex> sort(Graph graph) {
-        List<Vertex> res = new ArrayList<>();
+    public List<Vertex<T>> sort(Graph<T> graph) {
+        List<Vertex<T>> res = new ArrayList<>();
         int numOfVertices = graph.getAllVertices().size();
         boolean[] visited = new boolean[numOfVertices];
         boolean[] tempMarked = new boolean[numOfVertices];
@@ -30,10 +30,18 @@ public class TopologicalSort implements Algorithm {
         return res;
     }
 
-    private boolean dfs(Vertex v, boolean[] visited, boolean[] tempMarked, List<Vertex> res, Graph graph) {
+    private boolean dfs(Vertex<T> v, boolean[] visited, boolean[] tempMarked, List<Vertex<T>> res, Graph<T> graph) {
         tempMarked[graph.getAllVertices().indexOf(v)] = true;
 
-        for (Vertex n : graph.getNeighbors(v)) {
+        List<Vertex<T>> neighbors = graph.getNeighbors(v);
+        if(neighbors == null)
+        {
+            tempMarked[graph.getAllVertices().indexOf(v)] = false;
+            visited[graph.getAllVertices().indexOf(v)] = true;
+            res.add(v);
+            return true;
+        }
+        for (Vertex<T> n : neighbors) {
             if (tempMarked[graph.getAllVertices().indexOf(n)]) {
                 return false;
             }

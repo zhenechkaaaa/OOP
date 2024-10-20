@@ -1,34 +1,38 @@
 package ru.nsu.odnostorontseva.graph.implementations;
 
-import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import ru.nsu.odnostorontseva.graph.algorithms.TopologicalSort;
 import ru.nsu.odnostorontseva.graph.basicparts.Edge;
 import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-class AdjacencyMatrixTest {
-    private AdjacencyMatrix graph;
 
-    @BeforeEach
-    void setUp() {
-        graph = new AdjacencyMatrix(List.of());
+class AdjacencyMatrixTest{
+
+    @Test
+    void addStringVertexTest() {
+        AdjacencyMatrix<String> graph = new AdjacencyMatrix<>(List.of());
+        Vertex<String> a = new Vertex<>("A");
+        graph.addVertex(a);
+        assertEquals(1, graph.getAllVertices().size());
     }
 
     @Test
-    void addVertexTest() {
-        Vertex a = new Vertex("A");
+    void addIntVertexTest() {
+        AdjacencyMatrix<Integer> graph = new AdjacencyMatrix<>(List.of());
+        Vertex<Integer> a = new Vertex<>(5);
         graph.addVertex(a);
         assertEquals(1, graph.getAllVertices().size());
     }
 
     @Test
     void removeVertexTest() {
-        Vertex a = new Vertex("a");
+        AdjacencyMatrix<String> graph = new AdjacencyMatrix<>(List.of());
+        Vertex<String> a = new Vertex<>("a");
         graph.addVertex(a);
         graph.removeVertex(a);
         assertEquals(0, graph.getAllVertices().size());
@@ -36,9 +40,10 @@ class AdjacencyMatrixTest {
 
     @Test
     void addEdgeTest() {
-        Vertex a = new Vertex("a");
-        Vertex b = new Vertex("b");
-        Edge e = new Edge(a, b, 1, false);
+        AdjacencyMatrix<String> graph = new AdjacencyMatrix<>(List.of());
+        Vertex<String> a = new Vertex<>("a");
+        Vertex<String> b = new Vertex<>("b");
+        Edge<String> e = new Edge<>(a, b, 1, false);
 
         graph.addEdge(e);
 
@@ -51,9 +56,10 @@ class AdjacencyMatrixTest {
 
     @Test
     void addDirectedEdgeTest() {
-        Vertex a = new Vertex("a");
-        Vertex b = new Vertex("b");
-        Edge e = new Edge(a, b, 1, true);
+        AdjacencyMatrix<String> graph = new AdjacencyMatrix<>(List.of());
+        Vertex<String> a = new Vertex<>("a");
+        Vertex<String> b = new Vertex<>("b");
+        Edge<String> e = new Edge<>(a, b, 1, true);
 
         graph.addEdge(e);
 
@@ -66,9 +72,10 @@ class AdjacencyMatrixTest {
 
     @Test
     void removeEdge() {
-        Vertex a = new Vertex("a");
-        Vertex b = new Vertex("b");
-        Edge e = new Edge(a, b, 1, false);
+        AdjacencyMatrix<String> graph = new AdjacencyMatrix<>(List.of());
+        Vertex<String> a = new Vertex<>("a");
+        Vertex<String> b = new Vertex<>("b");
+        Edge<String> e = new Edge<>(a, b, 1, false);
 
         graph.addEdge(e);
         graph.removeEdge(e);
@@ -82,17 +89,18 @@ class AdjacencyMatrixTest {
 
     @Test
     void getNeighbors() {
-        Vertex a = new Vertex("a");
-        Vertex b = new Vertex("b");
-        Vertex c = new Vertex("c");
+        AdjacencyMatrix<String> graph = new AdjacencyMatrix<>(List.of());
+        Vertex<String> a = new Vertex<>("a");
+        Vertex<String> b = new Vertex<>("b");
+        Vertex<String> c = new Vertex<>("c");
 
-        Edge edge1 = new Edge(a, b, 1, false);
+        Edge<String> edge1 = new Edge<>(a, b, 1, false);
         graph.addEdge(edge1);
 
-        Edge edge2 = new Edge(b, c, 1, false);
+        Edge<String> edge2 = new Edge<>(b, c, 1, false);
         graph.addEdge(edge2);
 
-        List<Vertex> neighbors = graph.getNeighbors(b);
+        List<Vertex<String>> neighbors = graph.getNeighbors(b);
         assertEquals(2, neighbors.size());
         assertTrue(neighbors.contains(a));
         assertTrue(neighbors.contains(c));
@@ -105,9 +113,10 @@ class AdjacencyMatrixTest {
 
     @Test
     void equalsItselfTest() {
-        Vertex a = new Vertex("a");
-        Vertex b = new Vertex("b");
-        Edge e = new Edge(a, b, 1, false);
+        AdjacencyMatrix<String> graph = new AdjacencyMatrix<>(List.of());
+        Vertex<String> a = new Vertex<>("a");
+        Vertex<String> b = new Vertex<>("b");
+        Edge<String> e = new Edge<>(a, b, 1, false);
         graph.addEdge(e);
 
         assertEquals(graph, graph);
@@ -115,10 +124,11 @@ class AdjacencyMatrixTest {
 
     @Test
     void equalsTest() {
-        AdjacencyMatrix graph1 = new AdjacencyMatrix(List.of());
-        Vertex a = new Vertex("a");
-        Vertex b = new Vertex("b");
-        Edge e = new Edge(a, b, 1, false);
+        AdjacencyMatrix<String> graph = new AdjacencyMatrix<>(List.of());
+        AdjacencyMatrix<String> graph1 = new AdjacencyMatrix<>(List.of());
+        Vertex<String> a = new Vertex<>("a");
+        Vertex<String> b = new Vertex<>("b");
+        Edge<String> e = new Edge<>(a, b, 1, false);
         graph1.addEdge(e);
         graph.addEdge(e);
 
@@ -127,13 +137,14 @@ class AdjacencyMatrixTest {
 
     @Test
     void notEqualsTest() {
-        AdjacencyMatrix graph1 = new AdjacencyMatrix(List.of());
-        Vertex a = new Vertex("a");
-        Vertex b = new Vertex("b");
-        Edge e = new Edge(a, b, 1, false);
+        AdjacencyMatrix<String> graph = new AdjacencyMatrix<>(List.of());
+        AdjacencyMatrix<String> graph1 = new AdjacencyMatrix<>(List.of());
+        Vertex<String> a = new Vertex<>("a");
+        Vertex<String> b = new Vertex<>("b");
+        Edge<String> e = new Edge<>(a, b, 1, false);
 
-        Vertex c = new Vertex("c");
-        Edge e2 = new Edge(b, c, 1, false);
+        Vertex<String> c = new Vertex<>("c");
+        Edge<String> e2 = new Edge<>(b, c, 1, false);
         graph1.addEdge(e2);
         graph.addEdge(e);
 
@@ -142,9 +153,10 @@ class AdjacencyMatrixTest {
 
     @Test
     void equalsNullTest() {
-        Vertex a = new Vertex("a");
-        Vertex b = new Vertex("b");
-        Edge e = new Edge(a, b, 1, false);
+        AdjacencyMatrix<String> graph = new AdjacencyMatrix<>(List.of());
+        Vertex<String> a = new Vertex<>("a");
+        Vertex<String> b = new Vertex<>("b");
+        Edge<String> e = new Edge<>(a, b, 1, false);
         graph.addEdge(e);
 
         assertNotEquals(graph, null);
@@ -152,9 +164,10 @@ class AdjacencyMatrixTest {
 
     @Test
     void equalsDiffObjectsTest() {
-        Vertex a = new Vertex("a");
-        Vertex b = new Vertex("b");
-        Edge e = new Edge(a, b, 1, false);
+        AdjacencyMatrix<String> graph = new AdjacencyMatrix<>(List.of());
+        Vertex<String> a = new Vertex<>("a");
+        Vertex<String> b = new Vertex<>("b");
+        Edge<String> e = new Edge<>(a, b, 1, false);
         graph.addEdge(e);
 
         assertNotEquals(graph, "adjacency matrix");
@@ -162,24 +175,26 @@ class AdjacencyMatrixTest {
 
     @Test
     void testHashCode() {
-        AdjacencyMatrix graph1 = new AdjacencyMatrix(List.of());
-        Vertex a = new Vertex("a");
-        Vertex b = new Vertex("b");
-        Edge e = new Edge(a, b, 1, false);
+        AdjacencyMatrix<String> graph = new AdjacencyMatrix<>(List.of());
+        AdjacencyMatrix<String> graph1 = new AdjacencyMatrix<>(List.of());
+        Vertex<String> a = new Vertex<>("a");
+        Vertex<String> b = new Vertex<>("b");
+        Edge<String> e = new Edge<>(a, b, 1, false);
         graph1.addEdge(e);
         graph.addEdge(e);
 
-        assertEquals(graph1.hashCode(), graph1.hashCode());
+        assertEquals(graph.hashCode(), graph1.hashCode());
     }
 
     @Test
     void testToString() {
-        Vertex a = new Vertex("a");
-        Vertex b = new Vertex("b");
-        Vertex c = new Vertex("c");
+        AdjacencyMatrix<String> graph = new AdjacencyMatrix<>(List.of());
+        Vertex<String> a = new Vertex<>("a");
+        Vertex<String> b = new Vertex<>("b");
+        Vertex<String> c = new Vertex<>("c");
 
-        Edge edge1 = new Edge(a, b, 1, false);
-        Edge edge2 = new Edge(b, c, 1, false);
+        Edge<String> edge1 = new Edge<>(a, b, 1, false);
+        Edge<String> edge2 = new Edge<>(b, c, 1, false);
 
         graph.addEdge(edge1);
         graph.addEdge(edge2);
@@ -196,19 +211,19 @@ class AdjacencyMatrixTest {
 
     @Test
     void sort() {
-        Vertex a = new Vertex("a");
-        Vertex b = new Vertex("b");
-        Vertex c = new Vertex("c");
+        AdjacencyMatrix<String> graph = new AdjacencyMatrix<>(List.of());
+        Vertex<String> a = new Vertex<>("a");
+        Vertex<String> b = new Vertex<>("b");
+        Vertex<String> c = new Vertex<>("c");
 
-        Edge edge1 = new Edge(a, b, 1, true);
-        Edge edge2 = new Edge(b, c, 1, true);
+        Edge<String> edge1 = new Edge<>(a, b, 1, true);
+        Edge<String> edge2 = new Edge<>(b, c, 1, true);
 
         graph.addEdge(edge1);
         graph.addEdge(edge2);
 
-        Vertex[] array = {new Vertex("a"), new Vertex("b"), new Vertex("c")};
-        ArrayList<Vertex> list = new ArrayList<Vertex>(Arrays.asList(array));
+        List<Vertex<String>> list = Arrays.asList(a, b, c);
 
-        assertEquals(list, graph.sort(new TopologicalSort()));
+        assertEquals(list, graph.sort(new TopologicalSort<>()));
     }
 }

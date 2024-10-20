@@ -5,9 +5,9 @@ import java.util.Objects;
 /**
  *  Class for representing an edge.
  */
-public class Edge {
-    private final Vertex vertex1;
-    private final Vertex vertex2;
+public class Edge<T> {
+    private final Vertex<T> vertex1;
+    private final Vertex<T> vertex2;
     private final int weight;
     private final boolean directed;
 
@@ -19,7 +19,7 @@ public class Edge {
      * @param weight (вес ребра).
      * @param directed (является ли направленным).
      */
-    public Edge(Vertex vertex1, Vertex vertex2, int weight, boolean directed) {
+    public Edge(Vertex<T> vertex1, Vertex<T> vertex2, int weight, boolean directed) {
         this.vertex1 = vertex1;
         this.vertex2 = vertex2;
         this.weight = weight;
@@ -31,7 +31,7 @@ public class Edge {
      *
      * @return ().
      */
-    public Vertex getStartVertex() {
+    public Vertex<T> getStartVertex() {
         return vertex1;
     }
 
@@ -40,7 +40,7 @@ public class Edge {
      *
      * @return ().
      */
-    public Vertex getFinishVertex() {
+    public Vertex<T> getFinishVertex() {
         return vertex2;
     }
 
@@ -62,25 +62,13 @@ public class Edge {
         return directed;
     }
 
-    /**
-     * Method to create an edge.
-     *
-     * @param vertex1 (вершина 1).
-     * @param vertex2 (вершина 2).
-     * @param weight (вес ребра).
-     * @param directed (является ли направленным).
-     * @return a new edge.
-     */
-    public static Edge createEdge(Vertex vertex1, Vertex vertex2, int weight, boolean directed) {
-        return new Edge(vertex1, vertex2, weight, directed);
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof Edge edge)) {
+        if (!(o instanceof Edge<?> edge)) {
             return false;
         }
         if (directed) {

@@ -1,80 +1,96 @@
 package ru.nsu.odnostorontseva.graph.implementations;
 
-import java.util.ArrayList;
-import java.util.List;
 import ru.nsu.odnostorontseva.graph.Algorithm;
 import ru.nsu.odnostorontseva.graph.Graph;
 import ru.nsu.odnostorontseva.graph.Reader;
 import ru.nsu.odnostorontseva.graph.basicparts.Edge;
 import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 
 /**
  * Implementation of graph, using Adjacency List.
  */
-public class AdjacencyList implements Graph {
-    private final List<Vertex> vertices;
-    private final List<List<Vertex>> adjacencyList;
+public class AdjacencyList<T> implements Graph<T> {
+    public final Map<Vertex<T>, ArrayList<Vertex<T>>> adjacencyList;
 
-    /**
-     * Class constructor.
-     *
-     * @param vertices (список вершин графа)
-     */
-    public AdjacencyList(List<Vertex> vertices) {
-        this.vertices = vertices;
-        adjacencyList = new ArrayList<>(vertices.size());
-        for (Vertex v : vertices) {
-            adjacencyList.add(new ArrayList<>());
+    public AdjacencyList() {
+        adjacencyList = new HashMap<>();
+    }
+
+    public Map<Vertex<T>, ArrayList<Vertex<T>>> getAdjacencyList() {
+        return adjacencyList;
+    }
+
+    @Override
+    public void addVertex(Vertex<T> vertex) {
+        if(!adjacencyList.containsKey(vertex)) {
+            adjacencyList.put(vertex, new ArrayList<>());
         }
     }
 
     @Override
-    public List<Vertex> getAllVertices() {
+    public void removeVertex(Vertex<T> vertex) {
+        adjacencyList.remove(vertex);
+        for(Vertex<T> v : adjacencyList.keySet()) {
+            adjacencyList.get(v).remove(vertex);
+        }
+    }
+
+    @Override
+    public void addEdge(Edge<T> edge) {
+        if(!adjacencyList.containsKey(edge.getStartVertex())) {
+            adjacencyList.put(edge.getStartVertex(), new ArrayList<>());
+        }
+        adjacencyList.get(edge.getStartVertex()).add(edge.getFinishVertex());
+        if(!edge.isDirected()) {
+            if(!adjacencyList.containsKey(edge.getFinishVertex())) {
+                adjacencyList.put(edge.getFinishVertex(), new ArrayList<>());
+            }
+            adjacencyList.get(edge.getFinishVertex()).add(edge.getStartVertex());
+        }
+    }
+
+    @Override
+    public void removeEdge(Edge<T> edge) {
+        adjacencyList.get(edge.getStartVertex()).remove(edge.getFinishVertex());
+        if(adjacencyList.get(edge.getStartVertex()).isEmpty()) {
+            removeVertex(edge.getStartVertex());
+        }
+        if(!edge.isDirected()) {
+            adjacencyList.get(edge.getFinishVertex()).remove(edge.getStartVertex());
+            if (adjacencyList.get(edge.getFinishVertex()).isEmpty()) {
+                removeVertex(edge.getFinishVertex());
+            }
+        }
+
+    }
+
+    @Override
+    public List<Vertex<T>> getNeighbors(Vertex<T> vertex) {
+        return adjacencyList.get(vertex);
+    }
+
+    @Override
+    public List<Vertex<T>> getAllVertices() {
+        List<Vertex<T>>  vertices = new ArrayList<>();
+        for(Vertex<T> v : adjacencyList.keySet()) {
+            if(!vertices.contains(v)) {
+                vertices.add(v);
+            }
+            vertices.addAll(adjacencyList.get(v));
+        }
         return vertices;
     }
 
     @Override
-    public void addVertex(Vertex vertex) {
-        if (!vertices.contains(vertex)) {
-            vertices.add(vertex);
-        }
-    }
-
-    @Override
-    public void removeVertex(Vertex vertex) {
-        vertices.remove(vertex);
-    }
-
-    @Override
-    public void addEdge(Edge edge) {
-        if (!vertices.contains(edge.getStartVertex())) {
-            addVertex(edge.getStartVertex());
-        } else if (!vertices.contains(edge.getFinishVertex())) {
-            addVertex(edge.getFinishVertex());
-        }
-        adjacencyList.get(vertices.indexOf(edge.getStartVertex())).add(edge.getFinishVertex());
-        if (!edge.isDirected()) {
-            adjacencyList.get(vertices.indexOf(edge.getFinishVertex())).add(edge.getStartVertex());
-        }
-    }
-
-    @Override
-    public void removeEdge(Edge edge) {
-        adjacencyList.get(vertices.indexOf(edge.getStartVertex())).remove(edge.getFinishVertex());
-        if (!edge.isDirected()) {
-            adjacencyList.get(vertices.indexOf(edge.getFinishVertex())).add(edge.getStartVertex());
-        }
-    }
-
-    @Override
-    public List<Vertex> getNeighbors(Vertex vertex) {
-        return adjacencyList.get(vertices.indexOf(vertex));
-    }
-
-    @Override
-    public void readFromFile(String filename) {
-        Reader.readFromFile(filename, this);
+    public void readFromFile(String fileName, Function<String, T> parse) {
+        Reader<T> r = new Reader<>();
+        r.readFromFile(fileName, this, parse);
     }
 
     @Override
@@ -82,31 +98,31 @@ public class AdjacencyList implements Graph {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof AdjacencyList other)) {
+        if (!(o instanceof AdjacencyList<?> other)) {
             return false;
         }
-
-        return vertices.equals(other.vertices) && adjacencyList.equals(other.adjacencyList);
+        return adjacencyList.equals(other.adjacencyList);
     }
 
     @Override
     public int hashCode() {
-        return vertices.hashCode() + adjacencyList.hashCode();
+        return adjacencyList.hashCode();
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        for (Vertex v : vertices) {
-            sb.append(v).append(": ").append(adjacencyList.get(vertices.indexOf(v))).append(", ");
+        for (Vertex<T> vertex : adjacencyList.keySet()) {
+            sb.append(vertex).append(": ");
+            sb.append(adjacencyList.get(vertex)).append("\n"); // Добавляем соседей в строку
         }
-        sb.append("\n");
+
         return sb.toString();
     }
 
     @Override
-    public List<Vertex> sort(Algorithm sorter) {
+    public List<Vertex<T>> sort(Algorithm<T> sorter) {
         return sorter.sort(this);
     }
 }

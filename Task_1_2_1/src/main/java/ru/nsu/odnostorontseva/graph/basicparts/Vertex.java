@@ -5,15 +5,15 @@ import java.util.Objects;
 /**
  * Class for representing a vertex.
  */
-public class Vertex {
-    private final String name;  // Уникальный идентификатор вершины
+public class Vertex<T> {
+    private final T name;  // Уникальный идентификатор вершины
 
     /**
      * Constructing the vertex.
      *
      * @param name (name of vertex).
      */
-    public Vertex(String name) {
+    public Vertex(T name) {
         this.name = name;
     }
 
@@ -22,7 +22,7 @@ public class Vertex {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof Vertex vertex)) {
+        if (!(o instanceof Vertex<?> vertex)) {
             return false;
         }
         return Objects.equals(name, vertex.name);
@@ -35,6 +35,6 @@ public class Vertex {
 
     @Override
     public String toString() {
-        return name;
+        return name.toString();
     }
 }

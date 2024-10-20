@@ -3,6 +3,8 @@ package ru.nsu.odnostorontseva.graph.implementations;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
+
 import ru.nsu.odnostorontseva.graph.Algorithm;
 import ru.nsu.odnostorontseva.graph.Reader;
 import ru.nsu.odnostorontseva.graph.basicparts.Edge;
@@ -12,8 +14,8 @@ import ru.nsu.odnostorontseva.graph.Graph;
 /**
  * Implementation of graph, using Adjacency Matrix.
  */
-public class AdjacencyMatrix implements Graph {
-    private final List<Vertex> vertices;
+public class AdjacencyMatrix<T> implements Graph<T> {
+    private final List<Vertex<T>> vertices;
     private int[][] matrix;
 
     /**
@@ -21,13 +23,13 @@ public class AdjacencyMatrix implements Graph {
      *
      * @param vertices (список вершин графа)
      */
-    public AdjacencyMatrix(List<Vertex> vertices) {
+    public AdjacencyMatrix(List<Vertex<T>> vertices) {
         this.vertices = new ArrayList<>(vertices);
         this.matrix = new int[0][0];
     }
 
     @Override
-    public List<Vertex> getAllVertices() {
+    public List<Vertex<T>> getAllVertices() {
         return this.vertices;
     }
 
@@ -42,7 +44,7 @@ public class AdjacencyMatrix implements Graph {
 
 
     @Override
-    public void addVertex(Vertex vertex) {
+    public void addVertex(Vertex<T> vertex) {
         if (!vertices.contains(vertex)) {
             vertices.add(vertex);
             int newSize = vertices.size();
@@ -55,7 +57,7 @@ public class AdjacencyMatrix implements Graph {
     }
 
     @Override
-    public void removeVertex(Vertex vertex) {
+    public void removeVertex(Vertex<T> vertex) {
         int index = vertices.indexOf(vertex);
         if (index != -1) {
             vertices.remove(index);
@@ -73,7 +75,7 @@ public class AdjacencyMatrix implements Graph {
     }
 
     @Override
-    public void addEdge(Edge edge) {
+    public void addEdge(Edge<T> edge) {
         int index1 = vertices.indexOf(edge.getStartVertex());
         int index2 = vertices.indexOf(edge.getFinishVertex());
         if (index1 != -1 && index2 != -1) {
@@ -89,7 +91,7 @@ public class AdjacencyMatrix implements Graph {
     }
 
     @Override
-    public void removeEdge(Edge edge) {
+    public void removeEdge(Edge<T> edge) {
         int index1 = vertices.indexOf(edge.getStartVertex());
         int index2 = vertices.indexOf(edge.getFinishVertex());
         if (index1 != -1 && index2 != -1) {
@@ -101,8 +103,8 @@ public class AdjacencyMatrix implements Graph {
     }
 
     @Override
-    public List<Vertex> getNeighbors(Vertex vertex) {
-        List<Vertex> neighbors = new ArrayList<>();
+    public List<Vertex<T>> getNeighbors(Vertex<T> vertex) {
+        List<Vertex<T>> neighbors = new ArrayList<>();
         int index = vertices.indexOf(vertex);
         if (index != -1) {
             for (int i = 0; i < matrix.length; i++) {
@@ -115,8 +117,9 @@ public class AdjacencyMatrix implements Graph {
     }
 
     @Override
-    public void readFromFile(String filename) {
-        Reader.readFromFile(filename, this);
+    public void readFromFile(String fileName, Function<String, T> parse) {
+        Reader<T> r = new Reader<>();
+        r.readFromFile(fileName, this, parse);
     }
 
     @Override
@@ -124,7 +127,7 @@ public class AdjacencyMatrix implements Graph {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof AdjacencyMatrix other)) {
+        if (!(o instanceof AdjacencyMatrix<?> other)) {
             return false;
         }
         return Arrays.deepEquals(matrix, other.matrix) && vertices.equals(other.vertices);
@@ -140,7 +143,7 @@ public class AdjacencyMatrix implements Graph {
         StringBuilder sb = new StringBuilder();
 
         sb.append("  ");
-        for (Vertex v : vertices) {
+        for (Vertex<T> v : vertices) {
             sb.append(v).append(" ");
         }
         sb.append("\n");
@@ -156,7 +159,7 @@ public class AdjacencyMatrix implements Graph {
     }
 
     @Override
-    public List<Vertex> sort(Algorithm sorter) {
+    public List<Vertex<T>> sort(Algorithm<T> sorter) {
         return sorter.sort(this);
     }
 }

@@ -3,37 +3,42 @@ package ru.nsu.odnostorontseva.graph;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.function.Function;
+
 import ru.nsu.odnostorontseva.graph.basicparts.Edge;
 import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 
-public class Reader {
+public class Reader<T> {
 
     /**
      * Read edges from file and add them into a graph.
      *
-     * @param filename (имя файла).
+     * @param fileName (имя файла).
      * @param graph (тип представления гарфа).
      */
-    public static void readFromFile(String filename, Graph graph) {
+    public void readFromFile(String fileName, Graph<T> graph, Function<String, T> parse) {
         try {
-            Scanner scanner = new Scanner(new File(filename));
+            File newStream = new File(fileName);
+            Scanner scanner = new Scanner(newStream);
+
             while (scanner.hasNextLine()) {
                 String[] line = scanner.nextLine().trim().split(" ");
-                Edge e;
+                Edge<T> e;
                 try {
                     if (line.length == 3) {
-                        e = Edge.createEdge(new Vertex(line[0]), new Vertex(line[1]), 1, Boolean.parseBoolean(line[2]));
+                        e = new Edge<>(new Vertex<>(parse.apply(line[0])),
+                                new Vertex<>(parse.apply(line[1])), Integer.parseInt(line[2]), false);
                     } else if (line.length == 4) {
-                        e = Edge.createEdge(new Vertex(line[0]), new Vertex(line[1]), Integer.parseInt(line[2]), Boolean.parseBoolean(line[3]));
+                        e = new Edge<>(new Vertex<>(parse.apply(line[0])),
+                                new Vertex<>(parse.apply(line[1])), Integer.parseInt(line[2]), true);
                     } else {
                         throw new IllegalArgumentException("Wrong number of arguments");
                     }
-                } catch (IllegalArgumentException ex) {
+                } catch (NumberFormatException ex) {
                     throw new IllegalArgumentException("Wrong type of arguments");
                 }
                 graph.addEdge(e);
             }
-            scanner.close();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

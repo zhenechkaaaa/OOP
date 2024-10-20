@@ -1,26 +1,28 @@
 package ru.nsu.odnostorontseva.graph;
 
 import java.util.List;
+import java.util.function.Function;
+
 import ru.nsu.odnostorontseva.graph.basicparts.Edge;
 import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 
 /**
  * Determine the overall contract between the graph-objects.
  */
-public interface Graph {
+public interface Graph<T> {
     /**
      * Method for adding a vertex into graph.
      *
      * @param vertex (вершина, которую нужно добавить)
      */
-    void addVertex(Vertex vertex);
+    void addVertex(Vertex<T> vertex);
 
     /**
      * Method for removing a vertex from graph.
      *
      * @param vertex (вершина, которую нужно удалить).
      */
-    void removeVertex(Vertex vertex);
+    void removeVertex(Vertex<T> vertex);
 
 
     /**
@@ -28,7 +30,7 @@ public interface Graph {
      *
      * @param edge (ребро, которое нужно добавить).
      */
-    void addEdge(Edge edge);
+    void addEdge(Edge<T> edge);
 
 
     /**
@@ -36,7 +38,7 @@ public interface Graph {
      *
      * @param edge (ребро, которое нужно удалить).
      */
-    void removeEdge(Edge edge);
+    void removeEdge(Edge<T> edge);
 
 
     /**
@@ -45,21 +47,21 @@ public interface Graph {
      * @param vertex (вершина, соседи которой нам нужны).
      * @return (список всех соседей вершины).
      */
-    List<Vertex> getNeighbors(Vertex vertex);
+    List<Vertex<T>> getNeighbors(Vertex<T> vertex);
 
     /**
      * Method, which returns all vertices in graph.
      *
      * @return (список всех вершин графа).
      */
-    List<Vertex> getAllVertices();
+    List<Vertex<T>> getAllVertices();
 
     /**
      * Method which read an information about graph from file.
      *
-     * @param filename (имя файла).
+     * @param fileName (имя файла).
      */
-    void readFromFile(String filename);
+    void readFromFile(String fileName, Function<String, T> parse);
 
     /**
      * Method which using to make a vertex-sort.
@@ -67,5 +69,5 @@ public interface Graph {
      * @param sorter (алгоритм сортировки).
      * @return (список отсортированных вершин).
      */
-    List<Vertex> sort(Algorithm sorter);
+    List<Vertex<T>> sort(Algorithm<T> sorter);
 }
