@@ -82,14 +82,14 @@ loadScripts(document, 'script');</script>
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
 <div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">ru.nsu.odnostorontseva.graph.basicparts</a></div>
-<h1 title="Class Edge" class="title">Class Edge</h1>
+<h1 title="Class Edge" class="title">Class Edge&lt;T&gt;</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-<div class="inheritance">ru.nsu.odnostorontseva.graph.basicparts.Edge</div>
+<div class="inheritance">ru.nsu.odnostorontseva.graph.basicparts.Edge&lt;T&gt;</div>
 </div>
 <section class="class-description" id="class-description">
 <hr>
-<div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Edge</span>
+<div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Edge&lt;T&gt;</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
 <div class="block">Class for representing an edge.</div>
 </section>
@@ -103,8 +103,8 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(ru.nsu.odnostorontseva.graph.basicparts.Vertex,ru.nsu.odnostorontseva.graph.basicparts.Vertex,int,boolean)" class="member-name-link">Edge</a><wbr>(<a href="Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a>&nbsp;vertex1,
- <a href="Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a>&nbsp;vertex2,
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(ru.nsu.odnostorontseva.graph.basicparts.Vertex,ru.nsu.odnostorontseva.graph.basicparts.Vertex,int,boolean)" class="member-name-link">Edge</a><wbr>(<a href="Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;&nbsp;vertex1,
+ <a href="Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;&nbsp;vertex2,
  int&nbsp;weight,
  boolean&nbsp;directed)</code></div>
 <div class="col-last even-row-color">
@@ -118,49 +118,41 @@ loadScripts(document, 'script');</script>
 <section class="method-summary" id="method-summary">
 <h2>Method Summary</h2>
 <div id="method-summary-table">
-<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="method-summary-table-tab0" role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table', 3)" class="active-table-tab">All Methods</button><button id="method-summary-table-tab1" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab1', 3)" class="table-tab">Static Methods</button><button id="method-summary-table-tab2" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab2', 3)" class="table-tab">Instance Methods</button><button id="method-summary-table-tab4" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab4', 3)" class="table-tab">Concrete Methods</button></div>
+<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="method-summary-table-tab0" role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table', 3)" class="active-table-tab">All Methods</button><button id="method-summary-table-tab2" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab2', 3)" class="table-tab">Instance Methods</button><button id="method-summary-table-tab4" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab4', 3)" class="table-tab">Concrete Methods</button></div>
 <div id="method-summary-table.tabpanel" role="tabpanel" aria-labelledby="method-summary-table-tab0">
 <div class="summary-table three-column-summary">
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="Edge.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Edge</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#createEdge(ru.nsu.odnostorontseva.graph.basicparts.Vertex,ru.nsu.odnostorontseva.graph.basicparts.Vertex,int,boolean)" class="member-name-link">createEdge</a><wbr>(<a href="Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a>&nbsp;vertex1,
- <a href="Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a>&nbsp;vertex2,
- int&nbsp;weight,
- boolean&nbsp;directed)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Method to create an edge.</div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#equals(java.lang.Object)" class="member-name-link">equals</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;o)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getFinishVertex()" class="member-name-link">getFinishVertex</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#equals(java.lang.Object)" class="member-name-link">equals</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;o)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a><wbr>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getFinishVertex()" class="member-name-link">getFinishVertex</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Method to get "to" vertex.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getStartVertex()" class="member-name-link">getStartVertex</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a><wbr>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getStartVertex()" class="member-name-link">getStartVertex</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Method to get "from" vertex.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getWeight()" class="member-name-link">getWeight</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getWeight()" class="member-name-link">getWeight</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Method to get edge's weight.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#hashCode()" class="member-name-link">hashCode</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isDirected()" class="member-name-link">isDirected</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#hashCode()" class="member-name-link">hashCode</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isDirected()" class="member-name-link">isDirected</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Method to check is the edge is directed.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#toString()" class="member-name-link">toString</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#toString()" class="member-name-link">toString</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 </div>
 </div>
 </div>
@@ -181,8 +173,8 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="&lt;init&gt;(ru.nsu.odnostorontseva.graph.basicparts.Vertex,ru.nsu.odnostorontseva.graph.basicparts.Vertex,int,boolean)">
 <h3>Edge</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Edge</span><wbr><span class="parameters">(<a href="Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a>&nbsp;vertex1,
- <a href="Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a>&nbsp;vertex2,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Edge</span><wbr><span class="parameters">(<a href="Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;&nbsp;vertex1,
+ <a href="Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;&nbsp;vertex2,
  int&nbsp;weight,
  boolean&nbsp;directed)</span></div>
 <div class="block">Constructing an edge.</div>
@@ -206,7 +198,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="getStartVertex()">
 <h3>getStartVertex</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a></span>&nbsp;<span class="element-name">getStartVertex</span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;</span>&nbsp;<span class="element-name">getStartVertex</span>()</div>
 <div class="block">Method to get "from" vertex.</div>
 <dl class="notes">
 <dt>Returns:</dt>
@@ -217,7 +209,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="getFinishVertex()">
 <h3>getFinishVertex</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a></span>&nbsp;<span class="element-name">getFinishVertex</span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;</span>&nbsp;<span class="element-name">getFinishVertex</span>()</div>
 <div class="block">Method to get "to" vertex.</div>
 <dl class="notes">
 <dt>Returns:</dt>
@@ -244,25 +236,6 @@ loadScripts(document, 'script');</script>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>().</dd>
-</dl>
-</section>
-</li>
-<li>
-<section class="detail" id="createEdge(ru.nsu.odnostorontseva.graph.basicparts.Vertex,ru.nsu.odnostorontseva.graph.basicparts.Vertex,int,boolean)">
-<h3>createEdge</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="Edge.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Edge</a></span>&nbsp;<span class="element-name">createEdge</span><wbr><span class="parameters">(<a href="Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a>&nbsp;vertex1,
- <a href="Vertex.html" title="class in ru.nsu.odnostorontseva.graph.basicparts">Vertex</a>&nbsp;vertex2,
- int&nbsp;weight,
- boolean&nbsp;directed)</span></div>
-<div class="block">Method to create an edge.</div>
-<dl class="notes">
-<dt>Parameters:</dt>
-<dd><code>vertex1</code> - (вершина 1).</dd>
-<dd><code>vertex2</code> - (вершина 2).</dd>
-<dd><code>weight</code> - (вес ребра).</dd>
-<dd><code>directed</code> - (является ли направленным).</dd>
-<dt>Returns:</dt>
-<dd>a new edge.</dd>
 </dl>
 </section>
 </li>
