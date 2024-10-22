@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import ru.nsu.odnostorontseva.graph.Algorithm;
-import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 import ru.nsu.odnostorontseva.graph.Graph;
+import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 
 /**
  * Special class representing toposort.
  *
- * @param <T>
+ * @param <T> параметр.
  */
 public class TopologicalSort<T> implements Algorithm<T> {
 
@@ -24,7 +24,8 @@ public class TopologicalSort<T> implements Algorithm<T> {
         for (int i = 0; i < numOfVertices; i++) {
             if (!visited[i]) {
                 if (!dfs(graph.getAllVertices().get(i), visited, tempMarked, res, graph)) {
-                    throw new IllegalStateException("Граф содержит цикл, топологическая сортировка невозможна.");
+                    throw new IllegalStateException(
+                            "Граф содержит цикл, топологическая сортировка невозможна.");
                 }
             }
         }
@@ -33,7 +34,11 @@ public class TopologicalSort<T> implements Algorithm<T> {
         return res;
     }
 
-    private boolean dfs(Vertex<T> v, boolean[] visited, boolean[] tempMarked, List<Vertex<T>> res, Graph<T> graph) {
+    private boolean dfs(Vertex<T> v,
+                        boolean[] visited,
+                        boolean[] tempMarked,
+                        List<Vertex<T>> res, 
+                        Graph<T> graph) {
         tempMarked[graph.getAllVertices().indexOf(v)] = true;
 
         List<Vertex<T>> neighbors = graph.getNeighbors(v);
