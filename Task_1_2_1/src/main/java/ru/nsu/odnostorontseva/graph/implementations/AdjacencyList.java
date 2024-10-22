@@ -19,14 +19,16 @@ public class AdjacencyList<T> implements Graph<T> {
     public final Map<Vertex<T>, ArrayList<Vertex<T>>> adjacencyList;
 
     /**
-     *
+     * Constructor.
      */
     public AdjacencyList() {
         adjacencyList = new HashMap<>();
     }
 
     /**
-     * @return список смежности
+     * Method to return an Adjacency List.
+     *
+     * @return список смежности.
      */
     public Map<Vertex<T>, ArrayList<Vertex<T>>> getAdjacencyList() {
         return adjacencyList;
@@ -49,12 +51,12 @@ public class AdjacencyList<T> implements Graph<T> {
 
     @Override
     public void addEdge(Edge<T> edge) {
-        if(!adjacencyList.containsKey(edge.getStartVertex())) {
+        if (!adjacencyList.containsKey(edge.getStartVertex())) {
             adjacencyList.put(edge.getStartVertex(), new ArrayList<>());
         }
         adjacencyList.get(edge.getStartVertex()).add(edge.getFinishVertex());
-        if(!edge.isDirected()) {
-            if(!adjacencyList.containsKey(edge.getFinishVertex())) {
+        if (!edge.isDirected()) {
+            if (!adjacencyList.containsKey(edge.getFinishVertex())) {
                 adjacencyList.put(edge.getFinishVertex(), new ArrayList<>());
             }
             adjacencyList.get(edge.getFinishVertex()).add(edge.getStartVertex());
@@ -64,10 +66,10 @@ public class AdjacencyList<T> implements Graph<T> {
     @Override
     public void removeEdge(Edge<T> edge) {
         adjacencyList.get(edge.getStartVertex()).remove(edge.getFinishVertex());
-        if(adjacencyList.get(edge.getStartVertex()).isEmpty()) {
+        if (adjacencyList.get(edge.getStartVertex()).isEmpty()) {
             removeVertex(edge.getStartVertex());
         }
-        if(!edge.isDirected()) {
+        if (!edge.isDirected()) {
             adjacencyList.get(edge.getFinishVertex()).remove(edge.getStartVertex());
             if (adjacencyList.get(edge.getFinishVertex()).isEmpty()) {
                 removeVertex(edge.getFinishVertex());
@@ -84,8 +86,8 @@ public class AdjacencyList<T> implements Graph<T> {
     @Override
     public List<Vertex<T>> getAllVertices() {
         List<Vertex<T>>  vertices = new ArrayList<>();
-        for(Vertex<T> v : adjacencyList.keySet()) {
-            if(!vertices.contains(v)) {
+        for (Vertex<T> v : adjacencyList.keySet()) {
+            if (!vertices.contains(v)) {
                 vertices.add(v);
             }
             vertices.addAll(adjacencyList.get(v));
