@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 import ru.nsu.odnostorontseva.graph.Algorithm;
-import ru.nsu.odnostorontseva.graph.basicparts.Edge;
-import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 import ru.nsu.odnostorontseva.graph.Graph;
 import ru.nsu.odnostorontseva.graph.Reader;
+import ru.nsu.odnostorontseva.graph.basicparts.Edge;
+import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 
 
 /**

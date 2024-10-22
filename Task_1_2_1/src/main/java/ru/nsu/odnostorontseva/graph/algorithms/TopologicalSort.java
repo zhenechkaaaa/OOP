@@ -37,13 +37,12 @@ public class TopologicalSort<T> implements Algorithm<T> {
     private boolean dfs(Vertex<T> v,
                         boolean[] visited,
                         boolean[] tempMarked,
-                        List<Vertex<T>> res, 
+                        List<Vertex<T>> res,
                         Graph<T> graph) {
         tempMarked[graph.getAllVertices().indexOf(v)] = true;
 
         List<Vertex<T>> neighbors = graph.getNeighbors(v);
-        if(neighbors == null)
-        {
+        if (neighbors == null) {
             tempMarked[graph.getAllVertices().indexOf(v)] = false;
             visited[graph.getAllVertices().indexOf(v)] = true;
             res.add(v);
@@ -54,8 +53,8 @@ public class TopologicalSort<T> implements Algorithm<T> {
                 return false;
             }
 
-            if(!visited[graph.getAllVertices().indexOf(n)]) {
-                if(!dfs(n, visited, tempMarked, res, graph)) {
+            if (!visited[graph.getAllVertices().indexOf(n)]) {
+                if (!dfs(n, visited, tempMarked, res, graph)) {
                     return false;
                 }
             }

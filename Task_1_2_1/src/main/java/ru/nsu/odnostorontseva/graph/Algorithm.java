@@ -6,7 +6,7 @@ import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 /**
  * Interface for Algorithms.
  *
- * @param <T>
+ * @param <T> параметр.
  */
 public interface Algorithm<T> {
     List<Vertex<T>> sort(Graph<T> graph);
