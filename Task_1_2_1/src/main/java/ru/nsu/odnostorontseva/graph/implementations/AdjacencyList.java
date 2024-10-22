@@ -36,7 +36,7 @@ public class AdjacencyList<T> implements Graph<T> {
 
     @Override
     public void addVertex(Vertex<T> vertex) {
-        if(!adjacencyList.containsKey(vertex)) {
+        if (!adjacencyList.containsKey(vertex)) {
             adjacencyList.put(vertex, new ArrayList<>());
         }
     }
@@ -44,7 +44,7 @@ public class AdjacencyList<T> implements Graph<T> {
     @Override
     public void removeVertex(Vertex<T> vertex) {
         adjacencyList.remove(vertex);
-        for(Vertex<T> v : adjacencyList.keySet()) {
+        for (Vertex<T> v : adjacencyList.keySet()) {
             adjacencyList.get(v).remove(vertex);
         }
     }
