@@ -2,7 +2,6 @@ package ru.nsu.odnostorontseva.graph;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -114,7 +113,7 @@ class IncidenceMatrixTest {
     }
 
     @Test
-    void readFromFileTest() throws IOException {
+    void readFromFileTest(){
         //to do
     }
 
