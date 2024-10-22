@@ -4,10 +4,14 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.function.Function;
-
 import ru.nsu.odnostorontseva.graph.basicparts.Edge;
 import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 
+/**
+ * Special class to read an info from file.
+ *
+ * @param <T>
+ */
 public class Reader<T> {
 
     /**

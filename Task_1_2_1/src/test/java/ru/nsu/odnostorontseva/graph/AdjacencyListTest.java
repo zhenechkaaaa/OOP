@@ -11,9 +11,9 @@ import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
 import ru.nsu.odnostorontseva.graph.algorithms.TopologicalSort;
-import ru.nsu.odnostorontseva.graph.implementations.AdjacencyList;
 import ru.nsu.odnostorontseva.graph.basicparts.Edge;
 import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
+import ru.nsu.odnostorontseva.graph.implementations.AdjacencyList;
 
 class AdjacencyListTest {
 
@@ -24,6 +24,7 @@ class AdjacencyListTest {
         graph.addVertex(a);
         assertEquals(1, graph.getAllVertices().size());
     }
+
     @Test
     void addIntVertexTest() {
         AdjacencyList<Integer> graph = new AdjacencyList<>();
@@ -50,9 +51,9 @@ class AdjacencyListTest {
 
         graph.addEdge(edge);
 
-        Map<Vertex<String>, ArrayList<Vertex<String>>> aL = graph.getAdjacencyList();
-        assertTrue(aL.get(a).contains(b));
-        assertTrue(aL.get(b).contains(a));
+        Map<Vertex<String>, ArrayList<Vertex<String>>> aList = graph.getAdjacencyList();
+        assertTrue(aList.get(a).contains(b));
+        assertTrue(aList.get(b).contains(a));
     }
 
     @Test
@@ -64,9 +65,9 @@ class AdjacencyListTest {
 
         graph.addEdge(edge);
 
-        Map<Vertex<String>, ArrayList<Vertex<String>>> aL = graph.getAdjacencyList();
-        assertTrue(aL.get(a).contains(b));
-        assertFalse(aL.containsKey(b));
+        Map<Vertex<String>, ArrayList<Vertex<String>>> aList = graph.getAdjacencyList();
+        assertTrue(aList.get(a).contains(b));
+        assertFalse(aList.containsKey(b));
     }
 
     @Test
@@ -135,7 +136,7 @@ class AdjacencyListTest {
     }
 
     @Test
-    void equalsNullTest() {
+    void equalNullTest() {
         AdjacencyList<String> graph = new AdjacencyList<>();
         Vertex<String> a = new Vertex<>("a");
         Vertex<String> b = new Vertex<>("b");
@@ -181,7 +182,7 @@ class AdjacencyListTest {
 
     @Test
     void sort() {
-        AdjacencyList<String> graph= new AdjacencyList<>();
+        AdjacencyList<String> graph = new AdjacencyList<>();
         Vertex<String> a = new Vertex<>("a");
         Vertex<String> b = new Vertex<>("b");
         Vertex<String> c = new Vertex<>("c");

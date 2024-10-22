@@ -3,12 +3,15 @@ package ru.nsu.odnostorontseva.graph.algorithms;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 import ru.nsu.odnostorontseva.graph.Algorithm;
-import ru.nsu.odnostorontseva.graph.Graph;
 import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
+import ru.nsu.odnostorontseva.graph.Graph;
 
-
+/**
+ * Special class representing toposort.
+ *
+ * @param <T>
+ */
 public class TopologicalSort<T> implements Algorithm<T> {
 
     @Override

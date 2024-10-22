@@ -2,7 +2,6 @@ package ru.nsu.odnostorontseva.graph;
 
 import java.util.List;
 import java.util.function.Function;
-
 import ru.nsu.odnostorontseva.graph.basicparts.Edge;
 import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 

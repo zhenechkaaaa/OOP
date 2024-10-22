@@ -14,7 +14,7 @@ import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 import ru.nsu.odnostorontseva.graph.implementations.AdjacencyMatrix;
 
 
-class AdjacencyMatrixTest{
+class AdjacencyMatrixTest {
 
     @Test
     void addStringVertexTest() {

@@ -1,16 +1,16 @@
 package ru.nsu.odnostorontseva.graph.implementations;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 import ru.nsu.odnostorontseva.graph.Algorithm;
 import ru.nsu.odnostorontseva.graph.Graph;
 import ru.nsu.odnostorontseva.graph.Reader;
 import ru.nsu.odnostorontseva.graph.basicparts.Edge;
 import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
 
 /**
  * Implementation of graph, using Adjacency List.
