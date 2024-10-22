@@ -16,6 +16,7 @@ import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 public class AdjacencyMatrix<T> implements Graph<T> {
     private final List<Vertex<T>> vertices;
     private final ArrayList<ArrayList<Integer>> adjacencyMatrix;
+
     /**
      * Class constructor.
      *
@@ -38,7 +39,7 @@ public class AdjacencyMatrix<T> implements Graph<T> {
     }
 
     /**
-     * Method to get the matrix
+     * Method to get the matrix.
      *
      * @return matrix.
      */
@@ -97,12 +98,12 @@ public class AdjacencyMatrix<T> implements Graph<T> {
     @Override
     public void removeEdge(Edge<T> edge) {
         int startId = vertices.indexOf(edge.getStartVertex());
-        int FinishId = vertices.indexOf(edge.getFinishVertex());
+        int finishId = vertices.indexOf(edge.getFinishVertex());
 
-        if (startId != -1 && FinishId != -1) {
-            adjacencyMatrix.get(startId).set(FinishId, 0);
+        if (startId != -1 && finishId != -1) {
+            adjacencyMatrix.get(startId).set(finishId, 0);
             if (!edge.isDirected()) {
-                adjacencyMatrix.get(FinishId).set(startId, 0);
+                adjacencyMatrix.get(finishId).set(startId, 0);
             }
         }
     }

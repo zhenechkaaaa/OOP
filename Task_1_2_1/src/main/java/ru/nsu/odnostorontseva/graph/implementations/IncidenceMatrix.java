@@ -9,6 +9,11 @@ import ru.nsu.odnostorontseva.graph.Reader;
 import ru.nsu.odnostorontseva.graph.basicparts.Edge;
 import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 
+/**
+ * Implementation of graph, using IncidenceMatrix.
+ *
+ * @param <T>
+ */
 public class IncidenceMatrix<T> implements Graph<T> {
     private final List<Vertex<T>> vertices;
     private final List<Edge<T>> edges;
@@ -35,7 +40,7 @@ public class IncidenceMatrix<T> implements Graph<T> {
     }
 
     /**
-     * Method to get the matrix
+     * Method to get the matrix.
      *
      * @return matrix.
      */
@@ -91,8 +96,8 @@ public class IncidenceMatrix<T> implements Graph<T> {
             incidenceMatrix.get(finishId).add(newEdgeIndex, edge.getWeight());
         }
 
-        if(vertices.size() > 2) {
-            for(int i = 0; i < vertices.size(); i++){
+        if (vertices.size() > 2) {
+            for (int i = 0; i < vertices.size(); i++) {
                 if(vertices.get(i) != startV && vertices.get(i) != finishV) {
                     incidenceMatrix.get(i).add(newEdgeIndex, 0);
                 }
