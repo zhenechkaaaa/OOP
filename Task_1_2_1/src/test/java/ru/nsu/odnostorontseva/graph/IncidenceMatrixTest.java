@@ -1,6 +1,8 @@
 package ru.nsu.odnostorontseva.graph;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -51,7 +53,6 @@ class IncidenceMatrixTest {
         int vertexIndexA = graph.getAllVertices().indexOf(a);
         int vertexIndexB = graph.getAllVertices().indexOf(b);
 
-        // Проверяем, что вершины связаны с рёбрами правильно
         assertEquals(1, testMatrix.get(vertexIndexA).get(0)); // Вершина a инцидентна ребру
         assertEquals(1, testMatrix.get(vertexIndexB).get(0)); // Вершина b инцидентна ребру
     }
@@ -69,9 +70,8 @@ class IncidenceMatrixTest {
         int vertexIndexA = graph.getAllVertices().indexOf(a);
         int vertexIndexB = graph.getAllVertices().indexOf(b);
 
-        // Проверяем, что направление ребра представлено корректно (1 для исходящей вершины и -1 для входящей)
-        assertEquals(1, testMatrix.get(vertexIndexA).get(0)); // Вершина a инцидентна ребру (исходящее ребро)
-        assertEquals(-1, testMatrix.get(vertexIndexB).get(0)); // Вершина b инцидентна ребру (входящее ребро)
+        assertEquals(1, testMatrix.get(vertexIndexA).get(0));
+        assertEquals(-1, testMatrix.get(vertexIndexB).get(0));
     }
 
     @Test
@@ -88,7 +88,6 @@ class IncidenceMatrixTest {
         int vertexIndexA = graph.getAllVertices().indexOf(a);
         int vertexIndexB = graph.getAllVertices().indexOf(b);
 
-        // Проверяем, что после удаления рёбер все инцидентные значения возвращены к 0
         assertEquals(0, testMatrix.get(vertexIndexA).get(0));
         assertEquals(0, testMatrix.get(vertexIndexB).get(0));
     }

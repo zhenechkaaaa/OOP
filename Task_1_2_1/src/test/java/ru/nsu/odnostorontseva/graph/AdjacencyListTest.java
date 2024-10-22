@@ -1,16 +1,20 @@
 package ru.nsu.odnostorontseva.graph;
 
-import org.junit.jupiter.api.Test;
-import ru.nsu.odnostorontseva.graph.algorithms.TopologicalSort;
-import ru.nsu.odnostorontseva.graph.basicparts.Edge;
-import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
-import ru.nsu.odnostorontseva.graph.implementations.AdjacencyList;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import org.junit.jupiter.api.Test;
+import ru.nsu.odnostorontseva.graph.algorithms.TopologicalSort;
+import ru.nsu.odnostorontseva.graph.implementations.AdjacencyList;
+import ru.nsu.odnostorontseva.graph.basicparts.Edge;
+import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 
-import static org.junit.jupiter.api.Assertions.*;
 class AdjacencyListTest {
 
     @Test
