@@ -12,7 +12,7 @@ import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 /**
  * Implementation of graph, using IncidenceMatrix.
  *
- * @param <T>
+ * @param <T> параметр.
  */
 public class IncidenceMatrix<T> implements Graph<T> {
     private final List<Vertex<T>> vertices;
@@ -98,7 +98,7 @@ public class IncidenceMatrix<T> implements Graph<T> {
 
         if (vertices.size() > 2) {
             for (int i = 0; i < vertices.size(); i++) {
-                if(vertices.get(i) != startV && vertices.get(i) != finishV) {
+                if (vertices.get(i) != startV && vertices.get(i) != finishV) {
                     incidenceMatrix.get(i).add(newEdgeIndex, 0);
                 }
             }
@@ -109,7 +109,7 @@ public class IncidenceMatrix<T> implements Graph<T> {
 
     @Override
     public void removeEdge(Edge<T> edge) {
-        int edgeId= edges.indexOf(edge);
+        int edgeId = edges.indexOf(edge);
         if (edgeId != -1) {
             edges.remove(edgeId);
             for (ArrayList<Integer> row : incidenceMatrix) {
@@ -127,7 +127,8 @@ public class IncidenceMatrix<T> implements Graph<T> {
             for (int edgeIndex = 0; edgeIndex < edges.size(); edgeIndex++) {
                 if (incidenceMatrix.get(vertexId).get(edgeIndex) == 1) {
                     Edge<T> edge = edges.get(edgeIndex);
-                    Vertex<T> neighbor = (edge.getStartVertex().equals(vertex)) ? edge.getFinishVertex() : edge.getStartVertex();
+                    Vertex<T> neighbor = (edge.getStartVertex().equals(vertex))
+                            ? edge.getFinishVertex() : edge.getStartVertex();
                     neighbors.add(neighbor);
                 }
             }
@@ -172,8 +173,8 @@ public class IncidenceMatrix<T> implements Graph<T> {
 
         for (int e = 1; e <= edges.size(); e++) {
             sb.append("e").append(e).append(" ");
-            for(int i = 0; i< vertices.size(); i++){
-                sb.append(incidenceMatrix.get(i).get(e-1)).append(" ");
+            for (int i = 0; i < vertices.size(); i++) {
+                sb.append(incidenceMatrix.get(i).get(e - 1)).append(" ");
             }
             sb.append("\n");
         }
