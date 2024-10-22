@@ -18,10 +18,16 @@ import java.util.function.Function;
 public class AdjacencyList<T> implements Graph<T> {
     public final Map<Vertex<T>, ArrayList<Vertex<T>>> adjacencyList;
 
+    /**
+     *
+     */
     public AdjacencyList() {
         adjacencyList = new HashMap<>();
     }
 
+    /**
+     * @return список смежности
+     */
     public Map<Vertex<T>, ArrayList<Vertex<T>>> getAdjacencyList() {
         return adjacencyList;
     }

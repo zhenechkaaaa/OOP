@@ -16,8 +16,7 @@ import ru.nsu.odnostorontseva.graph.Graph;
  */
 public class AdjacencyMatrix<T> implements Graph<T> {
     private final List<Vertex<T>> vertices;
-    private int[][] matrix;
-
+    private final ArrayList<ArrayList<Integer>> adjacencyMatrix;
     /**
      * Class constructor.
      *
@@ -25,7 +24,13 @@ public class AdjacencyMatrix<T> implements Graph<T> {
      */
     public AdjacencyMatrix(List<Vertex<T>> vertices) {
         this.vertices = new ArrayList<>(vertices);
-        this.matrix = new int[0][0];
+        this.adjacencyMatrix = new ArrayList<>();
+        for (int i = 0; i < vertices.size(); i++) {
+            adjacencyMatrix.add(new ArrayList<>());
+            for (int j = 0; j < vertices.size(); j++) {
+                adjacencyMatrix.get(i).add(0);
+            }
+        }
     }
 
     @Override
@@ -38,8 +43,8 @@ public class AdjacencyMatrix<T> implements Graph<T> {
      *
      * @return matrix.
      */
-    public int[][] getMatrix() {
-        return this.matrix;
+    public ArrayList<ArrayList<Integer>> getMatrix() {
+        return this.adjacencyMatrix;
     }
 
 
@@ -47,12 +52,13 @@ public class AdjacencyMatrix<T> implements Graph<T> {
     public void addVertex(Vertex<T> vertex) {
         if (!vertices.contains(vertex)) {
             vertices.add(vertex);
-            int newSize = vertices.size();
-            int[][] newMatrix = new int[newSize][newSize];
-            for (int i = 0; i < matrix.length; i++) {
-                System.arraycopy(matrix[i], 0, newMatrix[i], 0, matrix.length);
+            adjacencyMatrix.add(new ArrayList<>());
+            for (int i = 0; i < vertices.size(); i++) {
+                adjacencyMatrix.get(i).add(0);
+                if (i < vertices.size() - 1) {
+                    adjacencyMatrix.getLast().add(0);
+                }
             }
-            matrix = newMatrix;
         }
     }
 
@@ -61,43 +67,43 @@ public class AdjacencyMatrix<T> implements Graph<T> {
         int index = vertices.indexOf(vertex);
         if (index != -1) {
             vertices.remove(index);
-            int[][] newMatrix = new int[vertices.size()][vertices.size()];
-            for (int i = 0, newI = 0; i < matrix.length; i++) {
-                if (i == index) continue;
-                for (int j = 0, newJ = 0; j < matrix.length; j++) {
-                    if (j == index) continue;
-                    newMatrix[newI][newJ++] = matrix[i][j];
-                }
-                newI++;
+            adjacencyMatrix.remove(index);
+            for (ArrayList<Integer> row : adjacencyMatrix) {
+                row.remove(index);
             }
-            matrix = newMatrix;
         }
     }
 
     @Override
     public void addEdge(Edge<T> edge) {
-        int index1 = vertices.indexOf(edge.getStartVertex());
-        int index2 = vertices.indexOf(edge.getFinishVertex());
-        if (index1 != -1 && index2 != -1) {
-            matrix[index1][index2] = edge.getWeight();
-            if (!edge.isDirected()) {
-                matrix[index2][index1] = edge.getWeight();
-            }
-        } else {
-            addVertex(edge.getStartVertex());
-            addVertex(edge.getFinishVertex());
-            addEdge(edge);
+        Vertex<T> startVertex = edge.getStartVertex();
+        Vertex<T> finishVertex = edge.getFinishVertex();
+
+        if (!vertices.contains(startVertex)) {
+            addVertex(startVertex);
+        }
+        if (!vertices.contains(finishVertex)) {
+            addVertex(finishVertex);
+        }
+
+        int startId = vertices.indexOf(startVertex);
+        int finishId = vertices.indexOf(finishVertex);
+
+        adjacencyMatrix.get(startId).set(finishId, edge.getWeight());
+        if (!edge.isDirected()) {
+            adjacencyMatrix.get(finishId).set(startId, edge.getWeight());
         }
     }
 
     @Override
     public void removeEdge(Edge<T> edge) {
-        int index1 = vertices.indexOf(edge.getStartVertex());
-        int index2 = vertices.indexOf(edge.getFinishVertex());
-        if (index1 != -1 && index2 != -1) {
-            matrix[index1][index2] = 0;
+        int startId = vertices.indexOf(edge.getStartVertex());
+        int FinishId = vertices.indexOf(edge.getFinishVertex());
+
+        if (startId != -1 && FinishId != -1) {
+            adjacencyMatrix.get(startId).set(FinishId, 0);
             if (!edge.isDirected()) {
-                matrix[index2][index1] = 0;
+                adjacencyMatrix.get(FinishId).set(startId, 0);
             }
         }
     }
@@ -107,9 +113,9 @@ public class AdjacencyMatrix<T> implements Graph<T> {
         List<Vertex<T>> neighbors = new ArrayList<>();
         int index = vertices.indexOf(vertex);
         if (index != -1) {
-            for (int i = 0; i < matrix.length; i++) {
-                if (matrix[index][i] == 1) {
-                    neighbors.add(vertices.get(i));
+            for (int j = 0; j < vertices.size(); j++) {
+                if (adjacencyMatrix.get(index).get(j) != 0) {
+                    neighbors.add(vertices.get(j));
                 }
             }
         }
@@ -130,12 +136,12 @@ public class AdjacencyMatrix<T> implements Graph<T> {
         if (!(o instanceof AdjacencyMatrix<?> other)) {
             return false;
         }
-        return Arrays.deepEquals(matrix, other.matrix) && vertices.equals(other.vertices);
+        return adjacencyMatrix.equals(other.adjacencyMatrix) && vertices.equals(other.vertices);
     }
 
     @Override
     public int hashCode() {
-        return Arrays.deepHashCode(matrix) + vertices.hashCode();
+        return adjacencyMatrix.hashCode() + vertices.hashCode();
     }
 
     @Override
@@ -143,15 +149,15 @@ public class AdjacencyMatrix<T> implements Graph<T> {
         StringBuilder sb = new StringBuilder();
 
         sb.append("  ");
-        for (Vertex<T> v : vertices) {
-            sb.append(v).append(" ");
+        for (Vertex<T> vertex : vertices) {
+            sb.append(vertex).append(" ");
         }
         sb.append("\n");
 
         for (int i = 0; i < vertices.size(); i++) {
             sb.append(vertices.get(i)).append(" ");
             for (int j = 0; j < vertices.size(); j++) {
-                sb.append(matrix[i][j]).append(" ");
+                sb.append(adjacencyMatrix.get(i).get(j)).append(" ");
             }
             sb.append("\n");
         }

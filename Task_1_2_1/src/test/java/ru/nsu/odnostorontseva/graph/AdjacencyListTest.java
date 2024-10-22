@@ -1,10 +1,10 @@
-package ru.nsu.odnostorontseva.graph.implementations;
+package ru.nsu.odnostorontseva.graph;
 
 import org.junit.jupiter.api.Test;
 import ru.nsu.odnostorontseva.graph.algorithms.TopologicalSort;
 import ru.nsu.odnostorontseva.graph.basicparts.Edge;
 import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
-
+import ru.nsu.odnostorontseva.graph.implementations.AdjacencyList;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -30,7 +30,7 @@ class AdjacencyListTest {
 
     @Test
     void removeVertexTest() {
-        AdjacencyMatrix<String> graph = new AdjacencyMatrix<>(List.of());
+        AdjacencyList<String> graph = new AdjacencyList<>();
         Vertex<String> a = new Vertex<>("a");
         graph.addVertex(a);
         graph.removeVertex(a);

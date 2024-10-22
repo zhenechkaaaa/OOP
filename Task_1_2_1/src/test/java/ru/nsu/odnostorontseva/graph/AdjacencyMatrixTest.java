@@ -1,14 +1,19 @@
-package ru.nsu.odnostorontseva.graph.implementations;
+package ru.nsu.odnostorontseva.graph;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import ru.nsu.odnostorontseva.graph.algorithms.TopologicalSort;
 import ru.nsu.odnostorontseva.graph.basicparts.Edge;
 import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
-
+import ru.nsu.odnostorontseva.graph.implementations.AdjacencyMatrix;
 
 
 class AdjacencyMatrixTest{
@@ -49,10 +54,11 @@ class AdjacencyMatrixTest{
 
         int indexA = graph.getAllVertices().indexOf(a);
         int indexB = graph.getAllVertices().indexOf(b);
-        int[][] testMatrix = graph.getMatrix();
-        assertEquals(1, testMatrix[indexA][indexB]);
-        assertEquals(1, testMatrix[indexB][indexA]);
+        ArrayList<ArrayList<Integer>> testMatrix = graph.getMatrix();
+        assertEquals(1, testMatrix.get(indexA).get(indexB));
+        assertEquals(1, testMatrix.get(indexB).get(indexA));
     }
+
 
     @Test
     void addDirectedEdgeTest() {
@@ -65,9 +71,9 @@ class AdjacencyMatrixTest{
 
         int indexA = graph.getAllVertices().indexOf(a);
         int indexB = graph.getAllVertices().indexOf(b);
-        int[][] testMatrix = graph.getMatrix();
-        assertEquals(1, testMatrix[indexA][indexB]);
-        assertEquals(0, testMatrix[indexB][indexA]);
+        ArrayList<ArrayList<Integer>> testMatrix = graph.getMatrix();
+        assertEquals(1, testMatrix.get(indexA).get(indexB));
+        assertEquals(0, testMatrix.get(indexB).get(indexA));
     }
 
     @Test
@@ -82,9 +88,9 @@ class AdjacencyMatrixTest{
 
         int indexA = graph.getAllVertices().indexOf(a);
         int indexB = graph.getAllVertices().indexOf(b);
-        int[][] testMatrix = graph.getMatrix();
-        assertEquals(0, testMatrix[indexA][indexB]);
-        assertEquals(0, testMatrix[indexB][indexA]);
+        ArrayList<ArrayList<Integer>> testMatrix = graph.getMatrix();
+        assertEquals(0, testMatrix.get(indexA).get(indexB));
+        assertEquals(0, testMatrix.get(indexB).get(indexA));
     }
 
     @Test
@@ -107,8 +113,8 @@ class AdjacencyMatrixTest{
     }
 
     @Test
-    void readFromFile() {
-        //добавить файлы для тесто в ресурсы
+    void readFromFileTest() {
+        //to do
     }
 
     @Test
