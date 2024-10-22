@@ -25,8 +25,13 @@ public class Reader<T> {
             File newStream = new File(fileName);
             Scanner scanner = new Scanner(newStream);
 
+            if (!scanner.hasNextLine()) {
+                throw new IllegalArgumentException("The file is empty.");
+            }
+
             while (scanner.hasNextLine()) {
                 String[] line = scanner.nextLine().trim().split(" ");
+
                 Edge<T> e;
                 try {
                     if (line.length == 3) {
