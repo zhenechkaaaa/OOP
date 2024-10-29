@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.nsu.odnostorontseva.hashtable.HashTableTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-10-29T04:39:03" hostname="zhunzhunya-HP-Laptop-15s-eq0xxx" time="0.067">
+  <properties/>
+  <testcase name="put()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.067"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
