@@ -71,16 +71,7 @@ public class HashTable<K, V> {
         }
 
         int id = hashFunction(key);
-
         List<Entry<K, V>> t = table[id];
-
-        for (Entry<K, V> entry : t) {
-            if (entry.getKey().equals(key)) {
-                entry.setValue(value);
-                return;
-            }
-        }
-
         t.add(new Entry<>(key, value));
         size++;
     }
@@ -100,23 +91,24 @@ public class HashTable<K, V> {
         int id = hashFunction(key);
         List<Entry<K, V>> t = table[id];
 
+        V res = null;
+
         for (Entry<K, V> entry : t) {
             if (entry.getKey().equals(key)) {
-                return entry.getValue();
+                res = entry.getValue();
             }
         }
 
-        return null;
+        return res;
     }
 
     /**
      * Removes the mapping for the key from the hash table.
      *
      * @param key (the key whose mapping is to be removed).
-     * @return (the value associated with the key, or null if no mapping existed).
      * @throws NullPointerException (if the key is null).
      */
-    public V remove(K key) {
+    public void remove(K key) {
         if (key == null) {
             throw new NullPointerException();
         }
@@ -127,11 +119,8 @@ public class HashTable<K, V> {
             if (entry.getKey().equals(key)) {
                 t.remove(entry);
                 size--;
-                return entry.getValue();
             }
         }
-
-        return null;
     }
 
     /**
@@ -142,7 +131,15 @@ public class HashTable<K, V> {
      * @param newValue (the new value to associate with the key).
      */
     public void update(K key, V newValue) {
-        put(key, newValue);
+        int id = hashFunction(key);
+        List<Entry<K, V>> t = table[id];
+
+        for (Entry<K, V> entry : t) {
+            if (entry.getKey().equals(key)) {
+                entry.setValue(newValue);
+                return;
+            }
+        }
     }
 
     /**
@@ -163,4 +160,6 @@ public class HashTable<K, V> {
     public int size() {
         return size;
     }
+
+
 }
