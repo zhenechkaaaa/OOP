@@ -49,16 +49,20 @@ public class Mul extends Expression {
         Expression moreSimpleLeftPart = leftPart.makeSimple();
         Expression moreSimpleRightPart = rightPart.makeSimple();
 
-        if (moreSimpleLeftPart instanceof Number nl
-                && moreSimpleRightPart instanceof Number nr) {
-            if (nr.getNum() == 0 || nl.getNum() == 0) {
-                return new Number(0);
-            } else if (nr.getNum() == 1) {
-                return moreSimpleLeftPart;
+        if (moreSimpleLeftPart instanceof Number nl) {
+            if (moreSimpleRightPart instanceof Number nr) {
+                if (nr.getNum() == 0 || nl.getNum() == 0) {
+                    return new Number(0);
+                }
+                return new Number(nl.getNum() * nr.getNum());
             } else if (nl.getNum() == 1) {
                 return moreSimpleRightPart;
             }
-            return new Number(nl.getNum() * nr.getNum());
+        }
+        if (moreSimpleRightPart instanceof Number nr) {
+            if (nr.getNum() == 1) {
+                return moreSimpleLeftPart;
+            }
         }
         return new Mul(moreSimpleLeftPart, moreSimpleRightPart);
     }

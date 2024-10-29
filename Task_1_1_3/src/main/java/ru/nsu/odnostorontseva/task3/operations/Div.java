@@ -50,11 +50,10 @@ public class Div extends Expression {
 
         if (moreSimpleLeftPart instanceof Number nl
                 && moreSimpleRightPart instanceof Number nr) {
-            if(nr.getNum() == 0)
-            {
+            if (nr.getNum() == 0) {
                 throw new ArithmeticException("Деление на ноль.");
             } else if (nr.getNum() == 1) {
-                return moreSimpleRightPart;
+                return moreSimpleLeftPart;
             } else if (nr.getNum() == nl.getNum()) {
                 return new Number(1);
             }
