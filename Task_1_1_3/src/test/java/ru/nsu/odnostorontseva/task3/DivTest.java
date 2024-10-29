@@ -133,8 +133,11 @@ class DivTest {
 
     @Test
     void evalDiffExpTest() {
-        Expression l = new Sub(new Add(new Number(5), new Variable("x")), new Sub(new Add(new Number(5), new Variable("y")), new Variable("z")));
-        Expression r = new Mul(new Variable("x"), new Add(new Variable("y"), new Variable("z")));
+        Expression l = new Sub(new Add(new Number(5), new Variable("x")),
+                new Sub(new Add(new Number(5), new Variable("y")),
+                        new Variable("z")));
+        Expression r = new Mul(new Variable("x"),
+                new Add(new Variable("y"), new Variable("z")));
         Expression e = new Div(l, r);
 
         assertEquals(0.1, e.eval("x = 1; y = 5; z = 5"));

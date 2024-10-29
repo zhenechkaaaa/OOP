@@ -3,18 +3,18 @@ package ru.nsu.odnostorontseva.task3;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
 import org.junit.jupiter.api.Test;
-import ru.nsu.odnostorontseva.task3.operations.Add;
-import ru.nsu.odnostorontseva.task3.operations.Div;
-import ru.nsu.odnostorontseva.task3.operations.Sub;
-import ru.nsu.odnostorontseva.task3.operations.Mul;
 import ru.nsu.odnostorontseva.task3.operands.Variable;
 import ru.nsu.odnostorontseva.task3.operands.Number;
+import ru.nsu.odnostorontseva.task3.operations.Add;
+import ru.nsu.odnostorontseva.task3.operations.Div;
 import ru.nsu.odnostorontseva.task3.operations.Expression;
+import ru.nsu.odnostorontseva.task3.operations.Mul;
+import ru.nsu.odnostorontseva.task3.operations.Sub;
 
 public class ExpressionParserTest {
 
     @Test
-    public void ParseNumTest() {
+    public void parseNumTest() {
         ExpressionParser parser = new ExpressionParser("42");
         Expression expr = parser.parse();
 
@@ -22,7 +22,7 @@ public class ExpressionParserTest {
     }
 
     @Test
-    public void ParseVarTest() {
+    public void parseVarTest() {
         ExpressionParser parser = new ExpressionParser("x");
         Expression expr = parser.parse();
 

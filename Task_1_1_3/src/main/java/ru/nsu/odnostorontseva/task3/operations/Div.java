@@ -57,7 +57,7 @@ public class Div extends Expression {
             } else if (nr.getNum() == nl.getNum()) {
                 return new Number(1);
             }
-            return new Number(nl.getNum()/nr.getNum());
+            return new Number(nl.getNum() / nr.getNum());
         }
         return new Div(moreSimpleLeftPart, moreSimpleRightPart);
     }
