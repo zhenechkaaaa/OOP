@@ -48,18 +48,17 @@ public class Div extends Expression {
         Expression moreSimpleLeftPart = leftPart.makeSimple();
         Expression moreSimpleRightPart = rightPart.makeSimple();
 
-        if (moreSimpleRightPart.equals(new Number(0))) {
-            throw new ArithmeticException("Деление на ноль.");
-        }
-
         if (moreSimpleLeftPart instanceof Number nl
                 && moreSimpleRightPart instanceof Number nr) {
-            return new Number(nl.getNum() / nr.getNum());
-        } else if (moreSimpleRightPart instanceof Number
-                && moreSimpleRightPart.equals(new Number(1))) {
-            return moreSimpleLeftPart;
-        } else if (moreSimpleRightPart.equals(moreSimpleLeftPart)) {
-            return new Number(1);
+            if(nr.getNum() == 0)
+            {
+                throw new ArithmeticException("Деление на ноль.");
+            } else if (nr.getNum() == 1) {
+                return moreSimpleRightPart;
+            } else if (nr.getNum() == nl.getNum()) {
+                return new Number(1);
+            }
+            return new Number(nl.getNum()/nr.getNum());
         }
         return new Div(moreSimpleLeftPart, moreSimpleRightPart);
     }

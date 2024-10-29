@@ -51,6 +51,7 @@ public class Sub extends Expression {
         if (moreSimpleLeftPart instanceof Number nl && moreSimpleRightPart instanceof Number nr) {
             return new Number(nl.getNum() - nr.getNum());
         }
+
         if (moreSimpleLeftPart.equals(moreSimpleRightPart)) {
             return new Number(0);
         }

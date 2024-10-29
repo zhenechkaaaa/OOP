@@ -35,7 +35,8 @@ public class Mul extends Expression {
         if (!(o instanceof Mul e)) {
             return false;
         }
-        return this.leftPart.equals(e.leftPart) && this.rightPart.equals(e.rightPart);
+        return this.leftPart.equals(e.leftPart)
+                && this.rightPart.equals(e.rightPart);
     }
 
     @Override
@@ -48,18 +49,17 @@ public class Mul extends Expression {
         Expression moreSimpleLeftPart = leftPart.makeSimple();
         Expression moreSimpleRightPart = rightPart.makeSimple();
 
-        if (moreSimpleLeftPart instanceof Number nl && moreSimpleRightPart instanceof Number nr) {
+        if (moreSimpleLeftPart instanceof Number nl
+                && moreSimpleRightPart instanceof Number nr) {
+            if (nr.getNum() == 0 || nl.getNum() == 0) {
+                return new Number(0);
+            } else if (nr.getNum() == 1) {
+                return moreSimpleLeftPart;
+            } else if (nl.getNum() == 1) {
+                return moreSimpleRightPart;
+            }
             return new Number(nl.getNum() * nr.getNum());
-        } else if (moreSimpleLeftPart.equals(new Number(0))) {
-            return new Number(0);
-        } else if (moreSimpleRightPart.equals(new Number(0))) {
-            return new Number(0);
-        } else if (moreSimpleLeftPart.equals(new Number(1))) {
-            return moreSimpleRightPart;
-        } else if (moreSimpleRightPart.equals(new Number(1))) {
-            return moreSimpleLeftPart;
         }
-
         return new Mul(moreSimpleLeftPart, moreSimpleRightPart);
     }
 
