@@ -52,7 +52,7 @@ class AdjacencyMatrixTest {
 
         int indexA = graph.getAllVertices().indexOf(a);
         int indexB = graph.getAllVertices().indexOf(b);
-        ArrayList<ArrayList<Integer>> testMatrix = graph.getMatrix();
+        List<List<Integer>> testMatrix = graph.getMatrix();
         assertEquals(1, testMatrix.get(indexA).get(indexB));
         assertEquals(1, testMatrix.get(indexB).get(indexA));
     }
@@ -69,7 +69,7 @@ class AdjacencyMatrixTest {
 
         int indexA = graph.getAllVertices().indexOf(a);
         int indexB = graph.getAllVertices().indexOf(b);
-        ArrayList<ArrayList<Integer>> testMatrix = graph.getMatrix();
+        List<List<Integer>> testMatrix = graph.getMatrix();
         assertEquals(1, testMatrix.get(indexA).get(indexB));
         assertEquals(0, testMatrix.get(indexB).get(indexA));
     }
@@ -86,7 +86,7 @@ class AdjacencyMatrixTest {
 
         int indexA = graph.getAllVertices().indexOf(a);
         int indexB = graph.getAllVertices().indexOf(b);
-        ArrayList<ArrayList<Integer>> testMatrix = graph.getMatrix();
+        List<List<Integer>> testMatrix = graph.getMatrix();
         assertEquals(0, testMatrix.get(indexA).get(indexB));
         assertEquals(0, testMatrix.get(indexB).get(indexA));
     }

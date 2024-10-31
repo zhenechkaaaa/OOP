@@ -1,5 +1,6 @@
 package ru.nsu.odnostorontseva.graph;
 
+import java.io.InputStream;
 import java.util.List;
 import java.util.function.Function;
 import ru.nsu.odnostorontseva.graph.basicparts.Edge;
@@ -58,9 +59,9 @@ public interface Graph<T> {
     /**
      * Method which read an information about graph from file.
      *
-     * @param fileName (имя файла).
+     * @param file (поток ввода).
      */
-    void readFromFile(String fileName, Function<String, T> parse);
+    void readFromFile(InputStream file, Function<String, T> parse);
 
     /**
      * Method which using to make a vertex-sort.

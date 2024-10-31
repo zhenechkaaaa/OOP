@@ -49,7 +49,7 @@ class IncidenceMatrixTest {
 
         graph.addEdge(e);
 
-        ArrayList<ArrayList<Integer>> testMatrix = graph.getMatrix();
+        List<List<Integer>> testMatrix = graph.getMatrix();
         int vertexIndexA = graph.getAllVertices().indexOf(a);
         int vertexIndexB = graph.getAllVertices().indexOf(b);
 
@@ -66,7 +66,7 @@ class IncidenceMatrixTest {
 
         graph.addEdge(e);
 
-        ArrayList<ArrayList<Integer>> testMatrix = graph.getMatrix();
+        List<List<Integer>> testMatrix = graph.getMatrix();
         int vertexIndexA = graph.getAllVertices().indexOf(a);
         int vertexIndexB = graph.getAllVertices().indexOf(b);
 
@@ -84,7 +84,7 @@ class IncidenceMatrixTest {
         graph.addEdge(e);
         graph.removeEdge(e);
 
-        ArrayList<ArrayList<Integer>> testMatrix = graph.getMatrix();
+        List<List<Integer>> testMatrix = graph.getMatrix();
         int vertexIndexA = graph.getAllVertices().indexOf(a);
         int vertexIndexB = graph.getAllVertices().indexOf(b);
 

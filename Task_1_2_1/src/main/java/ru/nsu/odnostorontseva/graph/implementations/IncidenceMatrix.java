@@ -1,5 +1,6 @@
 package ru.nsu.odnostorontseva.graph.implementations;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
@@ -17,7 +18,7 @@ import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 public class IncidenceMatrix<T> implements Graph<T> {
     private final List<Vertex<T>> vertices;
     private final List<Edge<T>> edges;
-    private final ArrayList<ArrayList<Integer>> incidenceMatrix;
+    private final List<List<Integer>> incidenceMatrix;
 
     /**
      * Class constructor.
@@ -44,7 +45,7 @@ public class IncidenceMatrix<T> implements Graph<T> {
      *
      * @return matrix.
      */
-    public ArrayList<ArrayList<Integer>> getMatrix() {
+    public List<List<Integer>> getMatrix() {
         return this.incidenceMatrix;
     }
 
@@ -53,7 +54,7 @@ public class IncidenceMatrix<T> implements Graph<T> {
         if (!vertices.contains(vertex)) {
             vertices.add(vertex);
             incidenceMatrix.add(new ArrayList<>());
-            for (ArrayList<Integer> row : incidenceMatrix) {
+            for (List<Integer> row : incidenceMatrix) {
                 while (row.size() < edges.size()) {
                     row.add(0);
                 }
@@ -112,7 +113,7 @@ public class IncidenceMatrix<T> implements Graph<T> {
         int edgeId = edges.indexOf(edge);
         if (edgeId != -1) {
             edges.remove(edgeId);
-            for (ArrayList<Integer> row : incidenceMatrix) {
+            for (List<Integer> row : incidenceMatrix) {
                 row.remove(edgeId);
                 row.add(0);
             }
@@ -138,9 +139,9 @@ public class IncidenceMatrix<T> implements Graph<T> {
 
 
     @Override
-    public void readFromFile(String fileName, Function<String, T> parse) {
+    public void readFromFile(InputStream file, Function<String, T> parse) {
         Reader<T> r = new Reader<>();
-        r.readFromFile(fileName, this, parse);
+        r.readFromFile(file, this, parse);
     }
 
     @Override

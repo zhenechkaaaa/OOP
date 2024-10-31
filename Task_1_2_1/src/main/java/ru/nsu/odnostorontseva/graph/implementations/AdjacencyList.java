@@ -1,5 +1,6 @@
 package ru.nsu.odnostorontseva.graph.implementations;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,12 +12,11 @@ import ru.nsu.odnostorontseva.graph.Reader;
 import ru.nsu.odnostorontseva.graph.basicparts.Edge;
 import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 
-
 /**
  * Implementation of graph, using Adjacency List.
  */
 public class AdjacencyList<T> implements Graph<T> {
-    public final Map<Vertex<T>, ArrayList<Vertex<T>>> adjacencyList;
+    public final Map<Vertex<T>, List<Vertex<T>>> adjacencyList;
 
     /**
      * Constructor.
@@ -30,7 +30,7 @@ public class AdjacencyList<T> implements Graph<T> {
      *
      * @return список смежности.
      */
-    public Map<Vertex<T>, ArrayList<Vertex<T>>> getAdjacencyList() {
+    public Map<Vertex<T>, List<Vertex<T>>> getAdjacencyList() {
         return adjacencyList;
     }
 
@@ -96,9 +96,9 @@ public class AdjacencyList<T> implements Graph<T> {
     }
 
     @Override
-    public void readFromFile(String fileName, Function<String, T> parse) {
+    public void readFromFile(InputStream file, Function<String, T> parse) {
         Reader<T> r = new Reader<>();
-        r.readFromFile(fileName, this, parse);
+        r.readFromFile(file, this, parse);
     }
 
     @Override

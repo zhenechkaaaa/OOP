@@ -1,5 +1,6 @@
 package ru.nsu.odnostorontseva.graph.implementations;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
@@ -9,13 +10,12 @@ import ru.nsu.odnostorontseva.graph.Reader;
 import ru.nsu.odnostorontseva.graph.basicparts.Edge;
 import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 
-
 /**
  * Implementation of graph, using Adjacency Matrix.
  */
 public class AdjacencyMatrix<T> implements Graph<T> {
     private final List<Vertex<T>> vertices;
-    private final ArrayList<ArrayList<Integer>> adjacencyMatrix;
+    private final List<List<Integer>> adjacencyMatrix;
 
     /**
      * Class constructor.
@@ -43,7 +43,7 @@ public class AdjacencyMatrix<T> implements Graph<T> {
      *
      * @return matrix.
      */
-    public ArrayList<ArrayList<Integer>> getMatrix() {
+    public List<List<Integer>> getMatrix() {
         return this.adjacencyMatrix;
     }
 
@@ -68,7 +68,7 @@ public class AdjacencyMatrix<T> implements Graph<T> {
         if (index != -1) {
             vertices.remove(index);
             adjacencyMatrix.remove(index);
-            for (ArrayList<Integer> row : adjacencyMatrix) {
+            for (List<Integer> row : adjacencyMatrix) {
                 row.remove(index);
             }
         }
@@ -123,9 +123,9 @@ public class AdjacencyMatrix<T> implements Graph<T> {
     }
 
     @Override
-    public void readFromFile(String fileName, Function<String, T> parse) {
+    public void readFromFile(InputStream file, Function<String, T> parse) {
         Reader<T> r = new Reader<>();
-        r.readFromFile(fileName, this, parse);
+        r.readFromFile(file, this, parse);
     }
 
     @Override

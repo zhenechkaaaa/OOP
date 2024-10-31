@@ -51,7 +51,7 @@ class AdjacencyListTest {
 
         graph.addEdge(edge);
 
-        Map<Vertex<String>, ArrayList<Vertex<String>>> adjList = graph.getAdjacencyList();
+        Map<Vertex<String>, List<Vertex<String>>> adjList = graph.getAdjacencyList();
         assertTrue(adjList.get(a).contains(b));
         assertTrue(adjList.get(b).contains(a));
     }
@@ -65,7 +65,7 @@ class AdjacencyListTest {
 
         graph.addEdge(edge);
 
-        Map<Vertex<String>, ArrayList<Vertex<String>>> adjList = graph.getAdjacencyList();
+        Map<Vertex<String>, List<Vertex<String>>> adjList = graph.getAdjacencyList();
         assertTrue(adjList.get(a).contains(b));
         assertFalse(adjList.containsKey(b));
     }
