@@ -124,7 +124,7 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#readFromFile(java.lang.String,ru.nsu.odnostorontseva.graph.Graph,java.util.function.Function)" class="member-name-link">readFromFile</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;fileName,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#readFromFile(java.io.InputStream,ru.nsu.odnostorontseva.graph.Graph,java.util.function.Function)" class="member-name-link">readFromFile</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/InputStream.html" title="class or interface in java.io" class="external-link">InputStream</a>&nbsp;file,
  <a href="Graph.html" title="interface in ru.nsu.odnostorontseva.graph">Graph</a>&lt;<a href="Reader.html" title="type parameter in Reader">T</a>&gt;&nbsp;graph,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/Function.html" title="class or interface in java.util.function" class="external-link">Function</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="Reader.html" title="type parameter in Reader">T</a>&gt;&nbsp;parse)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
@@ -162,16 +162,17 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="readFromFile(java.lang.String,ru.nsu.odnostorontseva.graph.Graph,java.util.function.Function)">
+<section class="detail" id="readFromFile(java.io.InputStream,ru.nsu.odnostorontseva.graph.Graph,java.util.function.Function)">
 <h3>readFromFile</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">readFromFile</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;fileName,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">readFromFile</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/InputStream.html" title="class or interface in java.io" class="external-link">InputStream</a>&nbsp;file,
  <a href="Graph.html" title="interface in ru.nsu.odnostorontseva.graph">Graph</a>&lt;<a href="Reader.html" title="type parameter in Reader">T</a>&gt;&nbsp;graph,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/Function.html" title="class or interface in java.util.function" class="external-link">Function</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="Reader.html" title="type parameter in Reader">T</a>&gt;&nbsp;parse)</span></div>
 <div class="block">Read edges from file and add them into a graph.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>fileName</code> - (имя файла).</dd>
+<dd><code>file</code> - (поток ввода).</dd>
 <dd><code>graph</code> - (тип представления гарфа).</dd>
+<dd><code>parse</code> - (функция для парсинга в нужный тип).</dd>
 </dl>
 </section>
 </li>
