@@ -1,7 +1,10 @@
 package ru.nsu.odnostorontseva.hashtable;
 
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * The main container for storing key-value pairs.
@@ -10,10 +13,11 @@ import java.util.List;
  * @param <K> (the type of keys).
  * @param <V> (the type of values).
  */
-public class HashTable<K, V> {
+public class HashTable<K, V> implements Iterable<Entry<K, V>> {
     public List<Entry<K, V>>[] table;
     public int size;
     public int capacity;
+    public int modCounter;
 
     /**
      * Constructs a hash table with the specified initial capacity.
@@ -23,6 +27,7 @@ public class HashTable<K, V> {
     public HashTable(int initialCapacity) {
         this.capacity = initialCapacity;
         this.size = 0;
+        this.modCounter = 0;
         this.table = new LinkedList[capacity];
         for (int i = 0; i < capacity; i++) {
             table[i] = new LinkedList<>();
@@ -72,8 +77,10 @@ public class HashTable<K, V> {
 
         int id = hashFunction(key);
         List<Entry<K, V>> t = table[id];
+
         t.add(new Entry<>(key, value));
         size++;
+        modCounter++;
     }
 
     /**
@@ -119,6 +126,7 @@ public class HashTable<K, V> {
             if (entry.getKey().equals(key)) {
                 t.remove(entry);
                 size--;
+                modCounter++;
             }
         }
     }
@@ -137,7 +145,7 @@ public class HashTable<K, V> {
         for (Entry<K, V> entry : t) {
             if (entry.getKey().equals(key)) {
                 entry.setValue(newValue);
-                return;
+                modCounter++;
             }
         }
     }
@@ -162,4 +170,39 @@ public class HashTable<K, V> {
     }
 
 
+    @Override
+    public @NotNull Iterator<Entry<K, V>> iterator() {
+        return new HashTableIterator<>(this);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+
+        if (!(o instanceof HashTable<?, ?> h)) {
+            return false;
+        }
+
+        return this.size == h.size
+                && this.capacity == h.capacity
+                && Arrays.equals(this.table, h.table);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(this.table);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < capacity; i++) {
+            for (Entry<K, V> entry : table[i]) {
+                sb.append(entry.toString()).append(";").append("\n");
+            }
+        }
+        return sb.toString();
+    }
 }

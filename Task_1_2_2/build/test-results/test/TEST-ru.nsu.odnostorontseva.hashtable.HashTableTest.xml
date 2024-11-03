@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.nsu.odnostorontseva.hashtable.HashTableTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2024-10-29T07:52:11" hostname="zhunzhunya-HP-Laptop-15s-eq0xxx" time="0.222">
+<testsuite name="ru.nsu.odnostorontseva.hashtable.HashTableTest" tests="24" skipped="0" failures="0" errors="0" timestamp="2024-11-03T13:22:48" hostname="zhunzhunya-HP-Laptop-15s-eq0xxx" time="0.275">
   <properties/>
-  <testcase name="containsTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.119"/>
-  <testcase name="removeNullKeyTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.012"/>
-  <testcase name="putNullKeyTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.004"/>
-  <testcase name="updateTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.023"/>
-  <testcase name="putTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.003"/>
-  <testcase name="getTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.003"/>
-  <testcase name="getNullTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.007"/>
-  <testcase name="getNullKeyTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.003"/>
-  <testcase name="notContainsTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.007"/>
-  <testcase name="sizeTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.004"/>
+  <testcase name="containsTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.092"/>
+  <testcase name="removeNullKeyTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.013"/>
+  <testcase name="nullEqualsTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.016"/>
+  <testcase name="iteratorOnEmptyTableTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.012"/>
+  <testcase name="testIteratorConcurrentModification()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.004"/>
+  <testcase name="testIteratorAfterRemovingElements()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.007"/>
+  <testcase name="notEqualsTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.003"/>
+  <testcase name="diffCapEqualsTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.003"/>
+  <testcase name="putNullKeyTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.003"/>
+  <testcase name="updateTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.011"/>
+  <testcase name="equalsToItselfTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.003"/>
+  <testcase name="putTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.002"/>
+  <testcase name="getTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.004"/>
+  <testcase name="getNullTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.005"/>
+  <testcase name="getNullKeyTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.004"/>
+  <testcase name="diffTypeEqualsTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.003"/>
+  <testcase name="equalsTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.002"/>
+  <testcase name="toStringTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.016"/>
+  <testcase name="notContainsTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.003"/>
+  <testcase name="sizeTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.003"/>
   <testcase name="removeTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.003"/>
+  <testcase name="testIteratorAfterUpdatingElements()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.002"/>
+  <testcase name="hashCodeTest()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.003"/>
+  <testcase name="testIteratorOnNotEmptyTable()" classname="ru.nsu.odnostorontseva.hashtable.HashTableTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
