@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -33,6 +34,36 @@ class HashTableTest {
         hashTable.put("cucumber", "cucumber");
 
         assertEquals(6, hashTable.size);
+    }
+
+    @Test
+    void putIntegerKeyTest() {
+        HashTable<Integer, String> hashTable1 = new HashTable<>(16);
+        hashTable1.put(1, "apple");
+        hashTable1.put(2, "banana");
+        hashTable1.put(3, "berry");
+
+        assertEquals(3, hashTable1.size);
+    }
+
+    @Test
+    void putDoubleKeyTest() {
+        HashTable<Double, String> hashTable1 = new HashTable<>(16);
+        hashTable1.put(1.1, "apple");
+        hashTable1.put(1.2, "banana");
+        hashTable1.put(1.3, "berry");
+
+        assertEquals(3, hashTable1.size);
+    }
+
+    @Test
+    void putCharKeyTest() {
+        HashTable<Character, String> hashTable1 = new HashTable<>(16);
+        hashTable1.put('a', "apple");
+        hashTable1.put('b', "banana");
+        hashTable1.put('c', "cherry");
+
+        assertEquals(3, hashTable1.size);
     }
 
     @Test
