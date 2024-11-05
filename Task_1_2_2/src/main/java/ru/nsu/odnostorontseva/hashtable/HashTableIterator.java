@@ -12,8 +12,8 @@ import java.util.NoSuchElementException;
  */
 public class HashTableIterator<K, V> implements Iterator<Entry<K, V>> {
     private final HashTable<K, V> hashTable;
-    private int currentId; // Index of the current bucket in the table
-    private int currentEntryId; // Index of the current entry within the bucket
+    private int currentId;
+    private int currentEntryId;
     private final int expectedMod;
 
 
@@ -31,7 +31,6 @@ public class HashTableIterator<K, V> implements Iterator<Entry<K, V>> {
 
     @Override
     public boolean hasNext() {
-        // Move to the next non-empty bucket if needed
         while (currentId < hashTable.capacity && hashTable.table[currentId].isEmpty()) {
             currentId++;
         }
