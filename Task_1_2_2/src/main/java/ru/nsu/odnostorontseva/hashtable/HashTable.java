@@ -172,7 +172,7 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
      * Increase capacity of hashTable.
      */
     private void rehash() {
-        List<Entry<K, V>>[] old = table;
+        final List<Entry<K, V>>[] old = table;
         table = new LinkedList[(capacity *= 2)];
         for (int i = 0; i < capacity; i++) {
             table[i] = null;
