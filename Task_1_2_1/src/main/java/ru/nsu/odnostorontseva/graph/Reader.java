@@ -3,7 +3,6 @@ package ru.nsu.odnostorontseva.graph;
 import java.io.InputStream;
 import java.util.Scanner;
 import java.util.function.Function;
-
 import ru.nsu.odnostorontseva.graph.basicparts.Edge;
 import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 

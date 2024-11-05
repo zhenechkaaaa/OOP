@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 import java.io.InputStream;
-
 import org.junit.jupiter.api.Test;
 import ru.nsu.odnostorontseva.graph.basicparts.Vertex;
 import ru.nsu.odnostorontseva.graph.implementations.AdjacencyList;
@@ -16,7 +15,8 @@ class ReaderTest {
     @Test
     void readStringGraphTest() throws IOException {
         Graph<String> graph = new AdjacencyList<>();
-        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream("strGraph")) {
+        try (InputStream inputStream =
+                     getClass().getClassLoader().getResourceAsStream("strGraph")) {
             assertNotNull(inputStream, "File not found in resources");
             graph.readFromFile(inputStream, str -> str);
         }
@@ -26,7 +26,8 @@ class ReaderTest {
     @Test
     void readIntGraphTest() throws IOException {
         Graph<Integer> graph = new AdjacencyList<>();
-        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream("intGraph")) {
+        try (InputStream inputStream =
+                     getClass().getClassLoader().getResourceAsStream("intGraph")) {
             assertNotNull(inputStream, "File not found in resources");
             graph.readFromFile(inputStream, Integer::parseInt);
         }
@@ -36,7 +37,8 @@ class ReaderTest {
     @Test
     void readDblGraphTest() throws IOException {
         Graph<Double> graph = new AdjacencyList<>();
-        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream("dblGraph")) {
+        try (InputStream inputStream =
+                     getClass().getClassLoader().getResourceAsStream("dblGraph")) {
             assertNotNull(inputStream, "File not found in resources");
             graph.readFromFile(inputStream, Double::parseDouble);
         }
@@ -47,7 +49,8 @@ class ReaderTest {
     void readEmptyFileTest() {
         Graph<Integer> graph = new AdjacencyList<>();
 
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("emptFile");
+        InputStream inputStream =
+                getClass().getClassLoader().getResourceAsStream("emptFile");
         assertNotNull(inputStream, "File not found in resources");
 
         assertThrows(IllegalArgumentException.class,
@@ -65,7 +68,8 @@ class ReaderTest {
     void wrongTypeTest() {
         Graph<Integer> graph = new AdjacencyList<>();
 
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("strGraph");
+        InputStream inputStream =
+                getClass().getClassLoader().getResourceAsStream("strGraph");
         assertNotNull(inputStream, "File not found in resources");
 
         assertThrows(IllegalArgumentException.class,
@@ -76,7 +80,8 @@ class ReaderTest {
     void notEnoughVertexes() {
         Graph<Integer> graph = new AdjacencyList<>();
 
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("wrngFile");
+        InputStream inputStream =
+                getClass().getClassLoader().getResourceAsStream("wrngFile");
         assertNotNull(inputStream, "File not found in resources");
 
         assertThrows(RuntimeException.class,
