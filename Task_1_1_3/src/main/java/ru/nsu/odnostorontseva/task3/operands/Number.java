@@ -41,7 +41,7 @@ public class Number extends Expression {
         if (!(o instanceof Number e)) {
             return false;
         }
-            return this.num == e.num;
+        return this.num == e.num;
     }
 
     @Override
