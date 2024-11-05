@@ -297,4 +297,22 @@ class HashTableTest {
         hashTable.put("apple", "apple");
         assertEquals(hashTable.hashCode(), hashTable.hashCode());
     }
+
+    @Test
+    void rehashTest() {
+        HashTable<Integer, String> hashTable1 = new HashTable<>(4);
+
+        hashTable1.put(1, "apple");
+        hashTable1.put(2, "banana");
+        hashTable1.put(3, "cherry");
+
+        assertEquals(4, hashTable1.capacity);
+
+        hashTable1.put(4, "cucumber");
+
+        assertEquals(8, hashTable1.capacity);
+
+        assertEquals("cucumber", hashTable1.get(4));
+        assertEquals("apple", hashTable1.get(1));
+    }
 }

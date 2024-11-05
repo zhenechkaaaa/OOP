@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -73,6 +74,10 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
     void put(K key, V value) {
         if (key == null) {
             throw new NullPointerException();
+        }
+
+        if (size >= capacity * 0.75) {
+            rehash();
         }
 
         int id = hashFunction(key);
@@ -169,6 +174,24 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
         return size;
     }
 
+    /**
+     * Increase capacity of hashTable.
+     */
+    private void rehash() {
+        List<Entry<K, V>>[] oldTable = table;
+        capacity *= 2;
+        table = new LinkedList[capacity];
+        for (int i = 0; i < capacity; i++) {
+            table[i] = new LinkedList<>();
+        }
+        size = 0;
+
+        for (List<Entry<K, V>> t : oldTable) {
+            for (Entry<K, V> entry : t) {
+                put(entry.getKey(), entry.getValue());
+            }
+        }
+    }
 
     @Override
     public @NotNull Iterator<Entry<K, V>> iterator() {
@@ -206,3 +229,4 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
         return sb.toString();
     }
 }
+

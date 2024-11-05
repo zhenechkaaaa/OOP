@@ -2,7 +2,6 @@ package ru.nsu.odnostorontseva.hashtable;
 
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
-import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
