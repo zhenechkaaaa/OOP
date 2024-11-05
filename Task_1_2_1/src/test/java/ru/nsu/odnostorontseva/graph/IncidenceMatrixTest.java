@@ -111,11 +111,6 @@ class IncidenceMatrixTest {
     }
 
     @Test
-    void readFromFileTest(){
-        //to do
-    }
-
-    @Test
     void equalsItselfTest() {
         IncidenceMatrix<String> graph = new IncidenceMatrix<>(List.of(), List.of());
         Vertex<String> a = new Vertex<>("a");

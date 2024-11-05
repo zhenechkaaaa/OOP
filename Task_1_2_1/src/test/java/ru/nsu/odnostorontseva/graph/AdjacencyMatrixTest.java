@@ -110,11 +110,6 @@ class AdjacencyMatrixTest {
     }
 
     @Test
-    void readFromFileTest() {
-        //to do
-    }
-
-    @Test
     void equalsItselfTest() {
         AdjacencyMatrix<String> graph = new AdjacencyMatrix<>(List.of());
         Vertex<String> a = new Vertex<>("a");

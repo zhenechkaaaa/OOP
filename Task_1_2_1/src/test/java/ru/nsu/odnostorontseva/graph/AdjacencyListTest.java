@@ -99,12 +99,6 @@ class AdjacencyListTest {
         assertTrue(neighbors.contains(b) && neighbors.contains(c));
     }
 
-
-    @Test
-    void readFromFileTest() {
-        // to do
-    }
-
     @Test
     void equalsTest() {
         AdjacencyList<String> graph = new AdjacencyList<>();
