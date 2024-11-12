@@ -3,14 +3,18 @@ package ru.nsu.odnostorontseva.task3;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
 import org.junit.jupiter.api.Test;
-import ru.nsu.odnostorontseva.task3.operands.Variable;
 import ru.nsu.odnostorontseva.task3.operands.Number;
+import ru.nsu.odnostorontseva.task3.operands.Variable;
 import ru.nsu.odnostorontseva.task3.operations.Add;
 import ru.nsu.odnostorontseva.task3.operations.Div;
 import ru.nsu.odnostorontseva.task3.operations.Expression;
 import ru.nsu.odnostorontseva.task3.operations.Mul;
 import ru.nsu.odnostorontseva.task3.operations.Sub;
 
+
+/**
+ * Tests to check work of parser.
+ */
 public class ExpressionParserTest {
 
     @Test
