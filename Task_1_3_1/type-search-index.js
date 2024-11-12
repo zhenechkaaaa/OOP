@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"ru.nsu.odnostorontseva.substringfinder","l":"Algorithm"},{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.odnostorontseva.substringfinder","l":"SubstringSearch"}];updateSearchResults();
