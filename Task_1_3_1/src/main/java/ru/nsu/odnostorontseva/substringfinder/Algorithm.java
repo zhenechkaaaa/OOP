@@ -6,14 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 public class Algorithm {
-
     private static class TrieNode {
         Map<Character, TrieNode> children = new HashMap<>();
         Map<Character, TrieNode> goCache = new HashMap<>();
         TrieNode link = null;
         TrieNode parent;
         char parentChar;
-        List<Integer> patternIndexes = new ArrayList<>();
 
         TrieNode(char parentChar, TrieNode parent) {
             this.parentChar = parentChar;
@@ -22,7 +20,7 @@ public class Algorithm {
     }
 
     private final TrieNode root = new TrieNode('\0', null);
-    private final List<String> patterns = new ArrayList<>();
+    private String pattern;
 
     public void addPattern(String pattern) {
         TrieNode node = root;
@@ -30,8 +28,7 @@ public class Algorithm {
             TrieNode finalNode = node;
             node = node.children.computeIfAbsent(c, k -> new TrieNode(c, finalNode));
         }
-        node.patternIndexes.add(patterns.size());
-        patterns.add(pattern);
+        this.pattern = pattern;
     }
 
     private TrieNode getLink(TrieNode node) {
@@ -58,18 +55,18 @@ public class Algorithm {
         return node.goCache.get(c);
     }
 
-    public Map<String, List<Integer>> search(String text) {
-        Map<String, List<Integer>> results = new HashMap<>();
+    public List<Integer> search(String text) {
+        List<Integer> results = new ArrayList<>();
         TrieNode node = root;
 
         for (int i = 0; i < text.length(); i++) {
             char c = text.charAt(i);
             node = go(node, c); // Используем ленивый переход
 
-            // Для всех шаблонов, найденных в узле, сохраняем вхождения
-            for (int patternIndex : node.patternIndexes) {
-                String pattern = patterns.get(patternIndex);
-                results.computeIfAbsent(pattern, k -> new ArrayList<>()).add(i - pattern.length() + 1);
+            char endOfPat = pattern.charAt(pattern.length() - 1);
+
+            if (node.parentChar == endOfPat) {
+                results.add(i - pattern.length() + 1);
             }
         }
         return results;
