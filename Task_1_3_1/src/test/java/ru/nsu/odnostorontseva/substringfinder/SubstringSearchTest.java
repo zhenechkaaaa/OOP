@@ -29,7 +29,7 @@ class SubstringSearchTest {
     @Test
     void findIdTest() throws IOException {
         ArrayList<Integer> res = substringSearch.find("smalltest", "umpa");
-        assertTrue(res.contains(0) && res.contains(5));
+        assertTrue(res.contains(0) && res.contains(5) && res.size() == 2);
     }
 
     @Test
