@@ -9,18 +9,20 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 /**
- *
+ * A class for searching substrings in files using algorithm.
  */
 public class SubstringSearch {
     int buffSize = 1024;
     Algorithm ahoCorasick = new Algorithm();
 
     /**
-     * @param file ().
-     * @param pattern ().
-     * @return ().
-     * @throws FileNotFoundException ().
-     * @throws IOException ().
+     * Searching pattern in the file.
+     *
+     * @param file (путь к файлу(просто имя)).
+     * @param pattern (подстрока).
+     * @return (список индексов вхождений).
+     * @throws FileNotFoundException (файл не найден).
+     * @throws IOException (ошибка ввода/вывода).
      */
     public ArrayList<Integer> find(String file, String pattern)
             throws FileNotFoundException, IOException {
