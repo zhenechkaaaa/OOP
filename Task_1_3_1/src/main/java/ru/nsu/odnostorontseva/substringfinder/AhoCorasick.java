@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * The class implements a substring search algorithm.
  */
-public class Algorithm {
+public class AhoCorasick {
 
     /**
      * An inner class representing a node in a bore.
@@ -23,8 +23,8 @@ public class Algorithm {
         /**
          * Creates a node.
          *
-         * @param parentChar (родительский символ).
-         * @param parent (родительский узел).
+         * @param parentChar (previous node's char).
+         * @param parent (previous node).
          */
         TrieNode(char parentChar, TrieNode parent) {
             this.parentChar = parentChar;
@@ -38,7 +38,7 @@ public class Algorithm {
     /**
      * Adding pattern into the bore.
      *
-     * @param pattern (подстрока которую будем искать).
+     * @param pattern (substring).
      */
     public void addPattern(String pattern) {
         TrieNode node = root;
@@ -52,8 +52,8 @@ public class Algorithm {
     /**
      * Gets the suffix link for the given node.
      *
-     * @param node (узел).
-     * @return (ссылка на другой узел).
+     * @param node (current node).
+     * @return (link to the node).
      */
     private TrieNode getLink(TrieNode node) {
         if (node.link == null) {
@@ -69,9 +69,9 @@ public class Algorithm {
     /**
      * Character-by-symbol transition from the current node.
      *
-     * @param node (текущий узел).
-     * @param c (символ, по которому идём).
-     * @return (узел, куда пришли).
+     * @param node (current node).
+     * @param c (transition-char).
+     * @return (node we're going to).
      */
     private TrieNode go(TrieNode node, char c) {
         if (!node.goCache.containsKey(c)) { // Если переход по символу `c` ещё не вычислен
@@ -89,9 +89,9 @@ public class Algorithm {
     /**
      * Searches for all occurrences of the pattern in the text starting at the given offset.
      *
-     * @param text (текст).
-     * @param offset (сдвиг).
-     * @return (список индексов вхожений подстроки).
+     * @param text (text/part of text).
+     * @param offset (how much we read).
+     * @return (index-list of entries).
      */
     public List<Integer> search(String text, int offset) {
         List<Integer> results = new ArrayList<>();

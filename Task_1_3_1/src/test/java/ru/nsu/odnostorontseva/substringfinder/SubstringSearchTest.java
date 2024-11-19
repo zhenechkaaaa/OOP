@@ -2,23 +2,21 @@ package ru.nsu.odnostorontseva.substringfinder;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class SubstringSearchTest {
-    static Algorithm aho;
     static SubstringSearch substringSearch;
 
     @BeforeEach
     void setUp() {
-        aho = new Algorithm();
         substringSearch = new SubstringSearch();
     }
 
@@ -26,6 +24,12 @@ class SubstringSearchTest {
     void findTest() throws IOException {
         ArrayList<Integer> res = substringSearch.find("test", "hello");
         assertEquals(1, res.size());
+    }
+
+    @Test
+    void findIdTest() throws IOException {
+        ArrayList<Integer> res = substringSearch.find("smalltest", "umpa");
+        assertTrue(res.contains(0) && res.contains(5));
     }
 
     @Test

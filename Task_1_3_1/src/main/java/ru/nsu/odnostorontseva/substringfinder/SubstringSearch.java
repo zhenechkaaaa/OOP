@@ -13,16 +13,16 @@ import java.util.ArrayList;
  */
 public class SubstringSearch {
     int buffSize = 100000;
-    Algorithm ahoCorasick = new Algorithm();
+    AhoCorasick ahoCorasick = new AhoCorasick();
 
     /**
      * Searching pattern in the file.
      *
-     * @param file    (путь к файлу(просто имя)).
-     * @param pattern (подстрока).
-     * @return (список индексов вхождений).
-     * @throws FileNotFoundException (файл не найден).
-     * @throws IOException           (ошибка ввода/вывода).
+     * @param file    (filepath).
+     * @param pattern (substring).
+     * @return (index-list of entries).
+     * @throws FileNotFoundException (no such file).
+     * @throws IOException (i/o error).
      */
     public ArrayList<Integer> find(String file, String pattern)
             throws FileNotFoundException, IOException {
