@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -49,6 +50,33 @@ class SubstringSearchTest {
     void findWarAndPeaceEnglishTest() throws IOException {
         ArrayList<Integer> res = substringSearch.find("wap_en.txt", "Kutuzov");
         assertEquals(115, res.size());
+    }
+
+    @Test
+    void genTextTest() throws IOException {
+        String txt = "p";
+        int cnt = 99998;
+
+        File file = new File("ppppppupappppp");
+        if (file.createNewFile()) {
+            try {
+                FileOutputStream fos = new FileOutputStream(file);
+                for (int i = 0; i < cnt; i++) {
+                    fos.write(txt.getBytes());
+                }
+                fos.write("pupa".getBytes());
+                for (int i = 0; i < cnt; i++) {
+                    fos.write(txt.getBytes());
+                }
+                fos.close();
+            } catch (IOException e) {
+                throw new FileNotFoundException();
+            }
+        }
+
+        ArrayList<Integer> res = substringSearch.find(file.getName(), "pupa");
+        file.deleteOnExit();
+        assertEquals(1, res.size());
     }
 
     @Test
