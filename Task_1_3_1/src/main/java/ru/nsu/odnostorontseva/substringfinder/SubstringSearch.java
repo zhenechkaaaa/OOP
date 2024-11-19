@@ -1,20 +1,38 @@
 package ru.nsu.odnostorontseva.substringfinder;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.List;
 
+
+/**
+ *
+ */
 public class SubstringSearch {
     int BUFF_SIZ = 1024;
     Algorithm ahoCorasick = new Algorithm();
 
+    /**
+     * @param file ().
+     * @param pattern ().
+     * @return ().
+     * @throws FileNotFoundException ().
+     * @throws IOException ().
+     */
     public ArrayList<Integer> find(String file, String pattern) throws FileNotFoundException, IOException {
         ahoCorasick.addPattern(pattern);
 
         InputStream inputStream;
         inputStream = SubstringSearch.class.getClassLoader().getResourceAsStream(file);
         if (inputStream == null) {
-            throw new FileNotFoundException("File not found: " + file);
+            inputStream = new FileInputStream(file);
+            if(inputStream == null) {
+                throw new FileNotFoundException();
+            }
         }
 
         ArrayList<Integer> res = new ArrayList<>();
@@ -26,8 +44,8 @@ public class SubstringSearch {
 
             while ((readChars = reader.read(buffer)) != -1) {
                 currentBuffer.append(buffer, 0, readChars);
-
-                res.addAll(ahoCorasick.search(currentBuffer.toString()));
+                res.addAll(ahoCorasick.search(currentBuffer.toString(), currentBuffer.length() - readChars));
+                currentBuffer.setLength(0);
             }
         }
         return res;

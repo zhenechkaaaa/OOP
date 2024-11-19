@@ -5,7 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ *
+ */
 public class Algorithm {
+
+    /**
+     *
+     */
     private static class TrieNode {
         Map<Character, TrieNode> children = new HashMap<>();
         Map<Character, TrieNode> goCache = new HashMap<>();
@@ -13,6 +20,10 @@ public class Algorithm {
         TrieNode parent;
         char parentChar;
 
+        /**
+         * @param parentChar ().
+         * @param parent ().
+         */
         TrieNode(char parentChar, TrieNode parent) {
             this.parentChar = parentChar;
             this.parent = parent;
@@ -22,6 +33,9 @@ public class Algorithm {
     private final TrieNode root = new TrieNode('\0', null);
     private String pattern;
 
+    /**
+     * @param pattern ().
+     */
     public void addPattern(String pattern) {
         TrieNode node = root;
         for (char c : pattern.toCharArray()) {
@@ -31,6 +45,10 @@ public class Algorithm {
         this.pattern = pattern;
     }
 
+    /**
+     * @param node ().
+     * @return ().
+     */
     private TrieNode getLink(TrieNode node) {
         if (node.link == null) {
             if (node == root || node.parent == root) {
@@ -42,6 +60,11 @@ public class Algorithm {
         return node.link;
     }
 
+    /**
+     * @param node ().
+     * @param c ().
+     * @return ().
+     */
     private TrieNode go(TrieNode node, char c) {
         if (!node.goCache.containsKey(c)) { // Если переход по символу `c` ещё не вычислен
             if (node.children.containsKey(c)) {
@@ -55,7 +78,12 @@ public class Algorithm {
         return node.goCache.get(c);
     }
 
-    public List<Integer> search(String text) {
+    /**
+     * @param text ().
+     * @param offset ().
+     * @return ().
+     */
+    public List<Integer> search(String text, int offset) {
         List<Integer> results = new ArrayList<>();
         TrieNode node = root;
 
@@ -66,7 +94,7 @@ public class Algorithm {
             char endOfPat = pattern.charAt(pattern.length() - 1);
 
             if (node.parentChar == endOfPat) {
-                results.add(i - pattern.length() + 1);
+                results.add((i - pattern.length() + 1) + offset);
             }
         }
         return results;
