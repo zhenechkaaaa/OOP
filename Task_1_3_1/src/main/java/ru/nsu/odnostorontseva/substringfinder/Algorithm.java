@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
+ * The class implements a substring search algorithm.
  */
 public class Algorithm {
 
     /**
-     *
+     * An inner class representing a node in a bore.
      */
     private static class TrieNode {
         Map<Character, TrieNode> children = new HashMap<>();
@@ -21,8 +21,10 @@ public class Algorithm {
         char parentChar;
 
         /**
-         * @param parentChar ().
-         * @param parent ().
+         * Creates a node.
+         *
+         * @param parentChar (родительский символ).
+         * @param parent (родительский узел).
          */
         TrieNode(char parentChar, TrieNode parent) {
             this.parentChar = parentChar;
@@ -34,7 +36,9 @@ public class Algorithm {
     private String pattern;
 
     /**
-     * @param pattern ().
+     * Adding pattern into the bore.
+     *
+     * @param pattern (подстрока которую будем искать).
      */
     public void addPattern(String pattern) {
         TrieNode node = root;
@@ -46,8 +50,10 @@ public class Algorithm {
     }
 
     /**
-     * @param node ().
-     * @return ().
+     * Gets the suffix link for the given node.
+     *
+     * @param node (узел).
+     * @return (ссылка на другой узел).
      */
     private TrieNode getLink(TrieNode node) {
         if (node.link == null) {
@@ -61,9 +67,11 @@ public class Algorithm {
     }
 
     /**
-     * @param node ().
-     * @param c ().
-     * @return ().
+     * Character-by-symbol transition from the current node.
+     *
+     * @param node (текущий узел).
+     * @param c (символ, по которому идём).
+     * @return (узел, куда пришли).
      */
     private TrieNode go(TrieNode node, char c) {
         if (!node.goCache.containsKey(c)) { // Если переход по символу `c` ещё не вычислен
@@ -79,9 +87,11 @@ public class Algorithm {
     }
 
     /**
-     * @param text ().
-     * @param offset ().
-     * @return ().
+     * Searches for all occurrences of the pattern in the text starting at the given offset.
+     *
+     * @param text (текст).
+     * @param offset (сдвиг).
+     * @return (список индексов вхожений подстроки).
      */
     public List<Integer> search(String text, int offset) {
         List<Integer> results = new ArrayList<>();

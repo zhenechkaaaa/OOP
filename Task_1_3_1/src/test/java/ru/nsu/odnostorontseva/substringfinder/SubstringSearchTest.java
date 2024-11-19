@@ -54,8 +54,8 @@ class SubstringSearchTest {
     @Test
     void genBigTextTest() throws IOException {
         String txt = "biba is fan of Lightning McQueen";
-        //int cnt = 67108860; //- эта штука для 2гб, долго генерит покажу лично
-        int cnt = 38; // чтобы тест работал(38-мой регион)
+        int cnt = 67108860; //- эта штука для 2гб, долго генерит покажу лично
+        //int cnt = 38; // чтобы тест работал(38-мой регион)
 
         File file = new File("pupaFile");
         if (file.createNewFile()) {
