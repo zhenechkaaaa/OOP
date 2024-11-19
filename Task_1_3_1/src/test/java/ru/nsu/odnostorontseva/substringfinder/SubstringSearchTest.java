@@ -23,8 +23,8 @@ class SubstringSearchTest {
 
     @Test
     void findTest() throws IOException {
-         ArrayList<Integer> res = substringSearch.find("test", "hello");
-         assertEquals(1, res.size());
+        ArrayList<Integer> res = substringSearch.find("test", "hello");
+        assertEquals(1, res.size());
     }
 
     @Test
@@ -54,19 +54,17 @@ class SubstringSearchTest {
     @Test
     void genBigTextTest() throws IOException {
         String txt = "biba is fan of Lightning McQueen";
-        int cnt = 67108860; //- эта штука для 2гб, долго генерит покажу лично
-        //int cnt = 38; // чтобы тест работал(38-мой регион)
+        int cnt = 67108860;
 
         File file = new File("pupaFile");
         if (file.createNewFile()) {
             try {
                 FileOutputStream fos = new FileOutputStream(file);
-                int c = cnt/2;
-                for (int i = 0; i < c; i++) {
+                for (int i = 0; i < cnt / 2; i++) {
                     fos.write(txt.getBytes());
                 }
                 fos.write("pupa".getBytes());
-                for (int i = 0; i < c; i++) {
+                for (int i = 0; i < cnt / 2; i++) {
                     fos.write(txt.getBytes());
                 }
                 fos.close();
