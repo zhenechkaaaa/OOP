@@ -33,6 +33,7 @@ public class GradeBook {
                         Collectors.maxBy(Comparator.comparing(Grade::getSemester))
                 )).values().stream()
                 .flatMap(Optional::stream)
+                .filter(grade -> !grade.getGradeType().equals("зачёт"))
                 .toList();
 
         int totalGrades = lastGrades.stream().mapToInt(Grade::getGradeValue).sum();

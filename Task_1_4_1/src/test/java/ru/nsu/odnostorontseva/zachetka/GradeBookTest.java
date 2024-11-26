@@ -6,12 +6,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GradeBookTest {
-    private Student student;
     private GradeBook gradeBook;
 
     @BeforeEach
     void setUp() throws Exception {
-        student = new Student("Zhenechka", false);
+        Student student = new Student("Zhenechka", false);
         gradeBook = new GradeBook(student);
         student.addGrade(
                 "ОРГ",
@@ -143,7 +142,7 @@ class GradeBookTest {
                 "05.02.2002",
                 "зачёт",
                 1
-                );
+        );
         assertTrue(newGradeBook.canSwitchToBudget());
     }
 
@@ -157,3 +156,4 @@ class GradeBookTest {
         assertFalse(gradeBook.canGetIncreasedScholarship(2));
     }
 }
+
