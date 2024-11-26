@@ -98,7 +98,7 @@ public class Student {
     }
 
     /**
-     * Returns information about student is studying on a paid basis or not
+     * Returns information about student is studying on a paid basis or not.
      *
      * @return (true or false).
      */

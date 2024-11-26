@@ -120,8 +120,8 @@ class GradeBookTest {
     }
 
     @Test
-    void calcGPATest() {
-        double res = gradeBook.calcGPA();
+    void calcAverageGradeTest() {
+        double res = gradeBook.calcAverageGrade();
         double expected = 4.5;
         assertEquals(expected, res);
     }

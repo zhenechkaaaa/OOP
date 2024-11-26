@@ -26,7 +26,7 @@ public class GradeBook {
      *
      * @return (average grade).
      */
-    public double calcGPA() {
+    public double calcAverageGrade() {
         List<Grade> lastGrades = student.getGrades().stream()
                 .collect(Collectors.groupingBy(
                         grade -> grade.getSubject() + '-' + grade.getSemester(),
@@ -63,8 +63,8 @@ public class GradeBook {
 
         return grades.stream()
                 .filter(grade -> lastTwoSemesters.contains(grade.getSemester()))
-                .allMatch(g -> g.getGradeType().equals("зачёт") ?
-                        g.getGradeValue() == 1 : g.getGradeValue() > 3);
+                .allMatch(g -> g.getGradeType().equals("зачёт")
+                        ? g.getGradeValue() == 1 : g.getGradeValue() > 3);
     }
 
     /**
@@ -105,7 +105,7 @@ public class GradeBook {
         List<Grade> grades = student.getGrades();
         return grades.stream()
                 .filter(g -> g.getSemester() == semester)
-                .allMatch(g -> g.getGradeType().equals("зачёт") ?
-                        g.getGradeValue() == 1 : g.getGradeValue() == 5);
+                .allMatch(g -> g.getGradeType().equals("зачёт")
+                        ? g.getGradeValue() == 1 : g.getGradeValue() == 5);
     }
 }
