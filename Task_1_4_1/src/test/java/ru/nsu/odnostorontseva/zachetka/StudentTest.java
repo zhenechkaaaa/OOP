@@ -1,8 +1,8 @@
 package ru.nsu.odnostorontseva.zachetka;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +17,7 @@ class StudentTest {
                 "13.01.1995",
                 "экзамен",
                 3
-                );
+        );
         student.addGrade("PE",
                 2,
                 "25.06.1995",

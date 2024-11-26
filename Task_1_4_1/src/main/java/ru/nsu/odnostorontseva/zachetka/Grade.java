@@ -19,7 +19,11 @@ public class Grade {
      * @param gradeType  (grade type string representation).
      * @param gradeValue (number of grade value).
      */
-    public Grade(String subject, int semester, String date, String gradeType, int gradeValue) {
+    public Grade(String subject,
+                 int semester,
+                 String date,
+                 String gradeType,
+                 int gradeValue) {
         this.subject = subject;
         this.semester = semester;
         this.date = date;

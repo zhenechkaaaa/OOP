@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *  Class representing a student.
+ * Class representing a student.
  */
 public class Student {
 
@@ -27,10 +27,10 @@ public class Student {
     /**
      * Method to add a grade.
      *
-     * @param subject (subject name).
-     * @param semester (number of semester).
-     * @param date (string representing of date).
-     * @param gradeType (type of grade).
+     * @param subject    (subject name).
+     * @param semester   (number of semester).
+     * @param date       (string representing of date).
+     * @param gradeType  (type of grade).
      * @param gradeValue (grade value).
      * @throws Exception (if the value is unreal or student has non-certification)
      */
@@ -38,34 +38,38 @@ public class Student {
                          int semester,
                          String date,
                          String gradeType,
-                         int gradeValue)  throws Exception{
+                         int gradeValue) throws Exception {
 
         if (gradeType.equals("зачёт")) {
             if (gradeValue < 0 || gradeValue > 1) {
-                throw new IllegalArgumentException("Grade value for 'зачёт' must be 0 (false) or 1 (true).");
+                throw new IllegalArgumentException(
+                        "Grade value for 'зачёт' must be 0 (false) or 1 (true).");
             }
         } else {
-            if(gradeValue < 2 || gradeValue > 5) {
+            if (gradeValue < 2 || gradeValue > 5) {
                 throw new IllegalArgumentException("Grade value must be between 2 and 5");
             }
         }
 
         boolean hasNonCertification = grades.stream()
-                        .anyMatch(grade -> grade.getSemester() == (semester - 1)
+                .anyMatch(grade -> grade.getSemester() == (semester - 1)
                         && grade.getGradeValue() == 2);
 
-        if(hasNonCertification) {
-            throw new Exception("Can't add a new grade. Previous semester has non-certification");
+        if (hasNonCertification) {
+            throw new Exception(
+                    "Can't add a new grade. Previous semester has non-certification");
         }
 
         boolean isExist = grades.stream()
-                        .anyMatch(grade -> grade.getSubject().equals(subject)
-                        && grade.getSemester() == semester && grade.getGradeType().equals(gradeType));
+                .anyMatch(grade -> grade.getSubject().equals(subject)
+                        && grade.getSemester() == semester
+                        && grade.getGradeType().equals(gradeType));
 
-        if(isExist) {
+        if (isExist) {
             grades.stream()
                     .filter(grade -> grade.getSubject().equals(subject)
-                            && grade.getSemester() == semester && grade.getGradeType().equals(gradeType))
+                            && grade.getSemester() == semester
+                            && grade.getGradeType().equals(gradeType))
                     .forEach(grade -> {
                         grade.setDate(date);
                         grade.setGradeValue(gradeValue);
