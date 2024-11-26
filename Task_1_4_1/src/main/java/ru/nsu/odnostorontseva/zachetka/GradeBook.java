@@ -6,13 +6,26 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * Class representing a student's grade book.
+ */
 public class GradeBook {
     private final Student student;
 
+    /**
+     * Constructor.
+     *
+     * @param student (student).
+     */
     public GradeBook(Student student) {
         this.student = student;
     }
 
+    /**
+     * Method to calculate an average grade.
+     *
+     * @return (average grade).
+     */
     public double calcGPA() {
         List<Grade> lastGrades = student.getGrades().stream()
                 .collect(Collectors.groupingBy(
@@ -28,7 +41,16 @@ public class GradeBook {
         return numOfGrades > 0 ? (double) totalGrades / numOfGrades : 0;
     }
 
-    public boolean canSwitchToBudget() {
+    /**
+     * Method to check possibility of switching to the budget.
+     *
+     * @return (true or false - can or cannot).
+     */
+    public boolean canSwitchToBudget() throws Exception {
+        if (!student.isPaidEducation()) {
+            throw new Exception("Student is already on budget.");
+        }
+
         List<Grade> grades = student.getGrades();
 
         int maxSemester = grades.stream()
@@ -40,9 +62,14 @@ public class GradeBook {
 
         return grades.stream()
                 .filter(grade -> lastTwoSemesters.contains(grade.getSemester()))
-                .allMatch(grade -> grade.getGradeValue() > 3);
+                .allMatch(g -> g.getGradeType().equals("зачёт") ? g.getGradeValue() == 1 : g.getGradeValue() > 3);
     }
 
+    /**
+     * Method to check possibility of getting the red diploma.
+     *
+     * @return (true or false - can or cannot).
+     */
     public boolean canGetRedDiploma() {
         List<Grade> grades = student.getGrades();
 
@@ -58,7 +85,7 @@ public class GradeBook {
                 .noneMatch(g -> g.getGradeValue() == 3);
 
         boolean hasExcellentQualificationWork = grades.stream()
-                .anyMatch(grade -> grade.getSubject().equals("Qualification Work")
+                .anyMatch(grade -> grade.getSubject().equals("ВКР")
                         && grade.getGradeValue() == 5);
 
         double excellentPercentage = (double) excellentGrades / totalGradedSubjects;
@@ -66,10 +93,16 @@ public class GradeBook {
         return excellentPercentage >= 0.75 && hasNoSatisfactory && hasExcellentQualificationWork;
     }
 
-    public boolean canGetIncreasedScholarship(int currentSemester) {
+    /**
+     * Method to check possibility of getting increased scholarship.
+     *
+     * @param semester (number of last semester)
+     * @return (true or false - can or cannot)
+     */
+    public boolean canGetIncreasedScholarship(int semester) {
         List<Grade> grades = student.getGrades();
         return grades.stream()
-                .filter(g -> g.getSemester() == currentSemester)
-                .allMatch(g -> g.getGradeValue() == 5 || g.getGradeType().equals("зачет"));
+                .filter(g -> g.getSemester() == semester)
+                .allMatch(g -> g.getGradeType().equals("зачёт") ? g.getGradeValue() == 1 : g.getGradeValue() == 5);
     }
 }
