@@ -52,7 +52,9 @@ public class SubstringSearch {
 
                 left.setLength(0);
                 int leftoverLength = Math.min(currentBuffer.length(), pattern.length() - 1);
-                left.append(currentBuffer, currentBuffer.length() - leftoverLength, currentBuffer.length());
+                left.append(currentBuffer,
+                        currentBuffer.length() - leftoverLength,
+                            currentBuffer.length());
 
                 currentBuffer.setLength(0);
                 offset += readChars;
