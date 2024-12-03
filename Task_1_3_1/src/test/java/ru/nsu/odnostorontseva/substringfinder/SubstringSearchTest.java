@@ -33,6 +33,12 @@ class SubstringSearchTest {
     }
 
     @Test
+    void findIdTest2() throws IOException {
+        ArrayList<Integer> res = substringSearch.find("smalltest2", "да");
+        assertTrue(res.contains(2) && res.contains(18) && res.size() == 4);
+    }
+
+    @Test
     void findNoFileTest() {
         assertThrows(FileNotFoundException.class,
                 () -> substringSearch.find("text", "hello"));
