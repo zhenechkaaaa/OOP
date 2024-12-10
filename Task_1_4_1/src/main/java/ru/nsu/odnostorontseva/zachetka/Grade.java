@@ -1,9 +1,15 @@
 package ru.nsu.odnostorontseva.zachetka;
 
+import java.io.Serial;
+import java.io.Serializable;
+
 /**
  * Class representing a grade.
  */
-public class Grade {
+public class Grade implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     private final String subject;
     private final int semester;
     private String date;
@@ -47,6 +53,15 @@ public class Grade {
      */
     public int getSemester() {
         return semester;
+    }
+
+    /**
+     * Getter for date.
+     *
+     * @return (string representation of date).
+     */
+    public String getDate() {
+        return date;
     }
 
 

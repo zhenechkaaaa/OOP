@@ -146,6 +146,48 @@ class GradeBookTest {
                 "зачёт",
                 1
         );
+        newStudent.addGrade("Baldupinanie",
+                1,
+                "29.02.2002",
+                "экзамен",
+                5
+        );
+        newStudent.addGrade("Hihihaha",
+                1,
+                "29.02.2002",
+                "экзамен",
+                5
+        );
+        newStudent.addGrade("Domashniy son",
+                1,
+                "29.02.2002",
+                "зачёт",
+                1
+        );
+        newStudent.addGrade("Pokushat",
+                1,
+                "29.02.2002",
+                "зачёт",
+                1
+        );
+        newStudent.addGrade("Igra v fermu",
+                1,
+                "29.02.2002",
+                "зачёт",
+                1
+        );
+        newStudent.addGrade("Potikatsa v komputer",
+                1,
+                "29.02.2002",
+                "зачёт",
+                1
+        );
+        newStudent.addGrade("Psmotret filmi",
+                1,
+                "29.02.2002",
+                "зачёт",
+                1
+        );
         assertTrue(newGradeBook.canSwitchToBudget());
     }
 
@@ -155,8 +197,16 @@ class GradeBookTest {
     }
 
     @Test
-    void canGetIncreasedScholarshipTest() {
+    void canGetIncreasedScholarshipTest() throws Exception {
         assertFalse(gradeBook.canGetIncreasedScholarship(2));
     }
+
+    @Test
+    void canGetIncreasedScholarshipExceptionTest() {
+        Student newStudent = new Student("Vasya", true);
+        GradeBook newGradeBook = new GradeBook(newStudent);
+        assertThrows(Exception.class, () -> newGradeBook.canGetIncreasedScholarship(2));
+    }
+
 }
 

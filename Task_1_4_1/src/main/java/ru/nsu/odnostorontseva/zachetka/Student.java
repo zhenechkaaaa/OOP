@@ -1,16 +1,19 @@
 package ru.nsu.odnostorontseva.zachetka;
 
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Class representing a student.
  */
-public class Student {
+public class Student implements Serializable {
 
-    private final String studentFullName;
-    private final List<Grade> grades;
-    private final boolean isPaidEducation;
+    private String studentFullName;
+    private List<Grade> grades;
+    private boolean isPaidEducation;
 
     /**
      * Constructor.
@@ -105,5 +108,50 @@ public class Student {
     public boolean isPaidEducation() {
         return isPaidEducation;
     }
+
+    private void writeObject(java.io.ObjectOutputStream out) throws IOException {
+        out.writeObject(studentFullName);
+        out.writeBoolean(isPaidEducation);
+        out.writeInt(grades.size());
+        for (Grade grade : grades) {
+            out.writeObject(grade.getSubject());
+            out.writeInt(grade.getSemester());
+            out.writeObject(grade.getDate());
+            out.writeObject(grade.getGradeType());
+            out.writeInt(grade.getGradeValue());
+        }
+    }
+
+    private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
+        // Десериализуем стандартные поля
+        studentFullName = (String) in.readObject();
+        isPaidEducation = in.readBoolean();
+
+        // Восстанавливаем список
+        int size = in.readInt(); // Читаем размер списка
+        grades = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            String subject = (String) in.readObject();
+            int semester = in.readInt();
+            String date = (String) in.readObject();
+            String gradeType = (String) in.readObject();
+            int gradeValue = in.readInt();
+            grades.add(new Grade(subject, semester, date, gradeType, gradeValue));
+        }
+    }
+
+    @Override
+    public boolean equals(Object anotherObject) {
+        if (this == anotherObject) {
+            return true;
+        }
+        if (anotherObject instanceof Student anotherStudent) {
+            return studentFullName.equals(anotherStudent.studentFullName)
+                    && isPaidEducation == anotherStudent.isPaidEducation
+                    && grades.size() == anotherStudent.grades.size();
+        }
+        return false;
+    }
+
 }
 

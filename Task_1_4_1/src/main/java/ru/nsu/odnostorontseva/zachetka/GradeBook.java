@@ -1,7 +1,9 @@
 package ru.nsu.odnostorontseva.zachetka;
 
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -64,7 +66,8 @@ public class GradeBook {
         return grades.stream()
                 .filter(grade -> lastTwoSemesters.contains(grade.getSemester()))
                 .allMatch(g -> g.getGradeType().equals("зачёт")
-                        ? g.getGradeValue() == 1 : g.getGradeValue() > 3);
+                        ? g.getGradeValue() == 1 : g.getGradeValue() > 3)
+                && isOk(maxSemester);
     }
 
     /**
@@ -92,7 +95,15 @@ public class GradeBook {
 
         double excellentPercentage = (double) excellentGrades / totalGradedSubjects;
 
-        return excellentPercentage >= 0.75 && hasNoSatisfactory && hasExcellentQualificationWork;
+        int lastSemester = grades.stream()
+                .mapToInt(Grade::getSemester)
+                .max()
+                .orElse(0);
+
+        return excellentPercentage >= 0.75
+                && hasNoSatisfactory
+                && hasExcellentQualificationWork
+                && isOk(lastSemester);
     }
 
     /**
@@ -101,11 +112,36 @@ public class GradeBook {
      * @param semester (number of last semester)
      * @return (true or false - can or cannot)
      */
-    public boolean canGetIncreasedScholarship(int semester) {
+    public boolean canGetIncreasedScholarship(int semester) throws Exception {
+        if (student.isPaidEducation()) {
+            throw new Exception("Student can't get scholarship");
+        }
+
         List<Grade> grades = student.getGrades();
         return grades.stream()
                 .filter(g -> g.getSemester() == semester)
                 .allMatch(g -> g.getGradeType().equals("зачёт")
-                        ? g.getGradeValue() == 1 : g.getGradeValue() == 5);
+                        ? g.getGradeValue() == 1 : g.getGradeValue() == 5)
+                && isOk(semester);
+    }
+
+    public boolean isOk(int semester) {
+        Map<Integer, Integer> grades = new HashMap<>();
+        grades.put(1, 9);
+        grades.put(2, 8);
+        grades.put(3, 8);
+        grades.put(4, 10);
+        grades.put(5, 7);
+        grades.put(6, 8);
+        grades.put(7, 6);
+        grades.put(8, 2);
+
+        int all = student.getGrades().size();
+        int cnt = 0;
+
+        for (int i = 1; i <= semester; i++) {
+            cnt += grades.get(i);
+        }
+        return all == cnt;
     }
 }
