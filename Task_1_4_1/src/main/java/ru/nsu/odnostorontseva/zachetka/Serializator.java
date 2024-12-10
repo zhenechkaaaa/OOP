@@ -20,7 +20,7 @@ public class Serializator {
      * @return if the serialization was successful.
      * @throws IOException if an I/O error occurs during serialization.
      */
-    public boolean Serialization (Student student, File file) throws IOException {
+    public boolean serialization(Student student, File file) throws IOException {
 
         ObjectOutputStream objectOutputStream = null;
         try {
@@ -46,7 +46,7 @@ public class Serializator {
      * @throws IOException if an I/O error occurs during deserialization.
      * @throws RuntimeException if the class of the serialized object cannot be found.
      */
-    public Student Deserialization (File file) throws IOException {
+    public Student deserialization(File file) throws IOException {
         ObjectInputStream objectInputStream = null;
         Student student;
         try {

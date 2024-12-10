@@ -122,13 +122,12 @@ public class Student implements Serializable {
         }
     }
 
-    private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
-        // Десериализуем стандартные поля
+    private void readObject(java.io.ObjectInputStream in)
+            throws IOException, ClassNotFoundException {
         studentFullName = (String) in.readObject();
         isPaidEducation = in.readBoolean();
 
-        // Восстанавливаем список
-        int size = in.readInt(); // Читаем размер списка
+        int size = in.readInt();
         grades = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             String subject = (String) in.readObject();

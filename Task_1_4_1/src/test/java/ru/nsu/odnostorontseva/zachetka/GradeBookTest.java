@@ -134,7 +134,6 @@ class GradeBookTest {
     @Test
     void canSwitchToBudgetTest() throws Exception {
         Student newStudent = new Student("Vasya", true);
-        GradeBook newGradeBook = new GradeBook(newStudent);
         newStudent.addGrade("Math",
                 1,
                 "10.02.2002",
@@ -188,6 +187,7 @@ class GradeBookTest {
                 "зачёт",
                 1
         );
+        GradeBook newGradeBook = new GradeBook(newStudent);
         assertTrue(newGradeBook.canSwitchToBudget());
     }
 

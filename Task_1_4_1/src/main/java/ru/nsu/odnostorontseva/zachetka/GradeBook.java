@@ -125,6 +125,12 @@ public class GradeBook {
                 && isOk(semester);
     }
 
+    /**
+     * Method to check if all exams are passed.
+     *
+     * @param semester (number of semester).
+     * @return true/false.
+     */
     public boolean isOk(int semester) {
         Map<Integer, Integer> grades = new HashMap<>();
         grades.put(1, 9);

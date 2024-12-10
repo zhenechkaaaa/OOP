@@ -13,7 +13,7 @@ class SerializatorTest {
         Student newStudent = new Student("Platnik Vasya", true);
         File file = new File("./student.data");
         Serializator serializator = new Serializator();
-        boolean flag = serializator.Serialization(newStudent, file);
+        boolean flag = serializator.serialization(newStudent, file);
         file.deleteOnExit();
         assertTrue(flag);
     }
@@ -23,9 +23,9 @@ class SerializatorTest {
         Student newStudent = new Student("Platnik Vasya", true);
         File file = new File("./student.data");
         Serializator serializator = new Serializator();
-        boolean flag = serializator.Serialization(newStudent, file);
+        boolean flag = serializator.serialization(newStudent, file);
         if (flag) {
-            assertEquals(newStudent, serializator.Deserialization(file));
+            assertEquals(newStudent, serializator.deserialization(file));
         }
         file.deleteOnExit();
     }
