@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"ru.nsu.odnostorontseva.task1","c":"Sequential","l":"containsNotPrime(int[])"},{"p":"ru.nsu.odnostorontseva.task1","c":"Sequential","l":"isPrime(int)"},{"p":"ru.nsu.odnostorontseva.task1","c":"Sequential","l":"Sequential()","u":"%3Cinit%3E()"}];updateSearchResults();
