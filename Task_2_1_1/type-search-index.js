@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.odnostorontseva.task1","l":"Sequential"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.odnostorontseva.task1","l":"ParallelStream"},{"p":"ru.nsu.odnostorontseva.task1","l":"Sequential"},{"p":"ru.nsu.odnostorontseva.task1","l":"Threaded"}];updateSearchResults();
