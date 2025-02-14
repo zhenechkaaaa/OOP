@@ -2,10 +2,23 @@ package ru.nsu.odnostorontseva.task1;
 
 import java.util.Arrays;
 
+/**
+ * Class to check if array has a not prime number in using ParallelStream.
+ */
 public class ParallelStream {
 
-    boolean containsNotPrime(int[] numbers) {
-        return Arrays.stream(numbers).parallel().anyMatch(n -> !isPrime(n));
+    /**
+     * Method for checking all numbers in an array using parallel stream.
+     *
+     * @param nums - array of numbers.
+     * @return - whether the array has prime numbers or not.
+     */
+    boolean containsNotPrime(int[] nums) {
+        return Arrays
+                .stream(nums)
+                .parallel()
+                .filter(n -> !isPrime(n))
+                .count() > 0;
     }
 
     /**
@@ -26,7 +39,7 @@ public class ParallelStream {
             return false;
         }
 
-        for (int i = 3; i*i <= num; i+=2) {
+        for (int i = 3; i * i <= num; i += 2) {
             if (num % i == 0) {
                 return false;
             }

@@ -1,4 +1,5 @@
 package ru.nsu.odnostorontseva.task1;
+
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -13,12 +14,13 @@ public class Sequential {
      * @return - whether the array has prime numbers or not.
      */
     public boolean containsNotPrime(int @NotNull [] nums) {
+        int cnt = 0;
         for (int num : nums) {
             if (!isPrime(num)) {
-                return true;
+                cnt++;
             }
         }
-        return false;
+        return cnt > 0;
     }
 
     /**
@@ -39,7 +41,7 @@ public class Sequential {
             return false;
         }
 
-        for (int i = 3; i*i <= num; i+=2) {
+        for (int i = 3; i * i <= num; i += 2) {
             if (num % i == 0) {
                 return false;
             }
