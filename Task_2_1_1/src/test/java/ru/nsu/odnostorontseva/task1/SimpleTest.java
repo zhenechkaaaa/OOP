@@ -1,6 +1,6 @@
 package ru.nsu.odnostorontseva.task1;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,10 +14,10 @@ class SimpleTest {
 
     @BeforeEach
     void setup() {
-         seqCheck = new Sequential();
-         thrCheckFour = new Threaded(4);
-         thrCheckEight = new Threaded(8);
-         parallCheck = new ParallelStream();
+        seqCheck = new Sequential();
+        thrCheckFour = new Threaded(4);
+        thrCheckEight = new Threaded(8);
+        parallCheck = new ParallelStream();
     }
 
     @Test

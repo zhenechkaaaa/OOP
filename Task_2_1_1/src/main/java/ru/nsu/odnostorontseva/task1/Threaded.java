@@ -1,6 +1,7 @@
 package ru.nsu.odnostorontseva.task1;
 
-import static java.lang.Math.*;
+import static java.lang.Math.ceil;
+import static java.lang.Math.min;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -34,7 +35,9 @@ public class Threaded {
         for (int i = 0; i < numOfThreads; i++) {
             final int startOfPart = i * chunks;
             final int endOfPart = min(startOfPart + chunks, nums.length);
-            if (startOfPart >= nums.length) break;
+            if (startOfPart >= nums.length) {
+                break;
+            }
 
             threads[i] = new Thread(() -> {
                 int cnt = 0;
@@ -43,7 +46,9 @@ public class Threaded {
                         cnt++;
                     }
                 }
-                if (cnt > 0) hasNotPrime = true;
+                if (cnt > 0) {
+                    hasNotPrime = true;
+                }
             });
             threads[i].start();
         }
