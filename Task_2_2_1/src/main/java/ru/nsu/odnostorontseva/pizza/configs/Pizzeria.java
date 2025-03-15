@@ -4,6 +4,10 @@ import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * The Pizzeria class represents the configuration of a pizzeria.
+ * It contains details such as working time, bakers, couriers, and storage capacity.
+ */
 @Getter
 @Setter
 public class Pizzeria {

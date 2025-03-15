@@ -8,4 +8,5 @@ import lombok.Setter;
 public class Courier {
     private int id;
     private int capacity;
+    private String name;
 }

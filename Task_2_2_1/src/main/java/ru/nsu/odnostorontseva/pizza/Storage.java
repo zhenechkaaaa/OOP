@@ -32,12 +32,12 @@ public class Storage {
         while (!storage.isEmpty() && takenOrders.size() < courierCapacity) {
             takenOrders.add(storage.removeFirst());
         }
-        System.out.println("Курьер забрал " + takenOrders.size() + " пицц со склада.");
+        System.out.println(takenOrders.size() + " пицц забрали со склада.");
         notifyAll();
         return takenOrders;
     }
 
-    public boolean isEmpty() {
+    public synchronized boolean isEmpty() {
         return storage.isEmpty();
     }
 }
