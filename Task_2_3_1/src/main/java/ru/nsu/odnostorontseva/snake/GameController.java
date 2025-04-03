@@ -12,11 +12,13 @@ public class GameController {
     private Snake snake;
     private GameView gameView;
     private Apple apple;
-    private static final int WIDTH = 450;
-    private static final int HEIGHT = 450;
 
-    private long lastUpdate = 0;
+    private long lastUpdate;
     private static final long UPDATE_INTERVAL = 300000000;
+    private AnimationTimer game;
+
+    private int score;
+    private boolean gameOver = false;
 
     @FXML
     public void initialize() {
@@ -42,24 +44,33 @@ public class GameController {
     }
 
     private void startGameLoop() {
-        new AnimationTimer() {
+        score = 0;
+        game = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                if (now - lastUpdate >= UPDATE_INTERVAL) {
+                if (!gameOver && now - lastUpdate >= UPDATE_INTERVAL) {
                     updateGame();
                     render();
-                    lastUpdate = now; // Обновляем время последнего обновления
+                    lastUpdate = now;
                 }
             }
-        }.start();
+        };
+        game.start();
     }
 
     private void updateGame() {
         snake.move();
 
-        if (apple.isEatenBy(snake)) {
+        if (snake.wallCollision() || snake.bodyCollision()) {
+            gameOver = true;
+            game.stop();
+            return;
+        }
+
+        if (snake.Ate(apple)) {
             snake.grow();
-            apple.spawnFood();
+            apple.spawnFood(snake);
+            score++;
         }
     }
 
@@ -67,5 +78,9 @@ public class GameController {
         gameView.drawGrid();
         gameView.drawSnake(snake);
         gameView.drawFood(apple);
+        gameView.drawScore(score);
+        if (gameOver) {
+            gameView.drawGameOver();
+        }
     }
 }
