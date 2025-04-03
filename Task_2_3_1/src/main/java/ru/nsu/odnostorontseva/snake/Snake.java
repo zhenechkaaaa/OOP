@@ -6,11 +6,15 @@ import lombok.Getter;
 import java.awt.Point;
 import java.util.LinkedList;
 
+@Getter
 public class Snake {
-    @Getter
-    private LinkedList<Point> body;
+    private final LinkedList<Point> body;
     private Direction direction;
     private static final int CELL_SIZE = 30;
+
+    public Point getHead() {
+        return body.getFirst();
+    }
 
     public Snake(int startX, int startY) {
         body = new LinkedList<>();
@@ -19,12 +23,14 @@ public class Snake {
     }
 
     public void move() {
-        Point head = body.getFirst();
-        Point newHead = switch (direction) {
-            case UP -> new Point(head.x, head.y - CELL_SIZE);
-            case DOWN -> new Point(head.x, head.y + CELL_SIZE);
-            case LEFT -> new Point(head.x - CELL_SIZE, head.y);
-            case RIGHT -> new Point(head.x + CELL_SIZE, head.y);
+        Point head = getHead();
+        Point newHead = new Point(head.x, head.y);
+
+        switch (direction) {
+            case UP -> newHead.y -= CELL_SIZE;
+            case DOWN -> newHead.y += CELL_SIZE;
+            case LEFT -> newHead.x -= CELL_SIZE;
+            case RIGHT -> newHead.x += CELL_SIZE;
         };
 
         body.addFirst(newHead); // Добавляем новую голову
@@ -32,7 +38,7 @@ public class Snake {
     }
 
     public void grow() {
-        body.addLast(body.getLast()); // Добавляем новую часть к хвосту
+        body.addLast(new Point(-1, -1));
     }
 
     public void setDirection(Direction newDirection) {
@@ -42,9 +48,5 @@ public class Snake {
                 (direction == Direction.RIGHT && newDirection != Direction.LEFT)) {
             this.direction = newDirection;
         }
-    }
-
-    public Color getColor() {
-        return Color.PURPLE;
     }
 }

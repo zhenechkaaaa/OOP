@@ -5,27 +5,30 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyEvent;
 import javafx.animation.AnimationTimer;
+import ru.nsu.odnostorontseva.snake.FOOD.Apple;
 
 public class GameController {
     @FXML private Canvas gameCanvas;
-    private GraphicsContext gc;
     private Snake snake;
     private GameView gameView;
+    private Apple apple;
     private static final int WIDTH = 450;
     private static final int HEIGHT = 450;
 
-    private long lastUpdate = 0; // Время последнего обновления
-    private static final long UPDATE_INTERVAL = 500000000;
+    private long lastUpdate = 0;
+    private static final long UPDATE_INTERVAL = 300000000;
 
     @FXML
     public void initialize() {
-        gc = gameCanvas.getGraphicsContext2D();
+        GraphicsContext gc = gameCanvas.getGraphicsContext2D();
         gameView = new GameView(gameCanvas);
-        snake = new Snake(0, 0); // Змейка появляется в центре
-        startGameLoop();
+        snake = new Snake(GameView.CELL_SIZE, GameView.CELL_SIZE);
+        apple = new Apple();
 
         gameCanvas.setFocusTraversable(true);
         gameCanvas.setOnKeyPressed(this::onKeyPressed);
+
+        startGameLoop();
     }
 
     @FXML
@@ -53,10 +56,16 @@ public class GameController {
 
     private void updateGame() {
         snake.move();
+
+        if (apple.isEatenBy(snake)) {
+            snake.grow();
+            apple.spawnFood();
+        }
     }
 
     private void render() {
-        gameView.drawGrid(); // Отрисовываем поле
-        gameView.drawSnake(snake); // Отрисовываем змейку
+        gameView.drawGrid();
+        gameView.drawSnake(snake);
+        gameView.drawFood(apple);
     }
 }

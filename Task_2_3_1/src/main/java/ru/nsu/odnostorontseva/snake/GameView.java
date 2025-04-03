@@ -3,12 +3,13 @@ package ru.nsu.odnostorontseva.snake;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import ru.nsu.odnostorontseva.snake.FOOD.Apple;
 
 import java.awt.Point;
 
 public class GameView {
     private final GraphicsContext gc;
-    private static final int CELL_SIZE = 30;
+    public static final int CELL_SIZE = 30;
     private static final int WIDTH = 450;
     private static final int HEIGHT = 450;
 
@@ -17,7 +18,6 @@ public class GameView {
         drawGrid();
     }
 
-    // Метод для рисования поля
     public void drawGrid() {
         gc.setFill(Color.web("#ffdbde"));
         gc.fillRect(0, 0, WIDTH, HEIGHT);
@@ -30,11 +30,16 @@ public class GameView {
         }
     }
 
-    // Метод для рисования змейки
     public void drawSnake(Snake snake) {
-        gc.setFill(snake.getColor());
+        gc.setFill(Color.PURPLE);
         for (Point part : snake.getBody()) {
             gc.fillRect(part.x, part.y, CELL_SIZE, CELL_SIZE);
         }
+    }
+
+    public void drawFood(Apple apple) {
+        gc.setFill(Color.BLACK);
+        Point position = apple.getPosition();
+        gc.fillRect(position.x, position.y, CELL_SIZE, CELL_SIZE);
     }
 }
