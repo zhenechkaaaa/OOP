@@ -1,7 +1,9 @@
-package ru.nsu.odnostorontseva.snake;
+package ru.nsu.odnostorontseva.snake.SNAKE;
 
 import lombok.Getter;
-import ru.nsu.odnostorontseva.snake.FOOD.Apple;
+import ru.nsu.odnostorontseva.snake.Direction;
+import ru.nsu.odnostorontseva.snake.FOOD.GoodFood;
+import ru.nsu.odnostorontseva.snake.GameView;
 
 import java.awt.Point;
 import java.util.ArrayList;
@@ -53,8 +55,8 @@ public class Snake {
         }
     }
 
-    public boolean Ate(Apple apple) {
-        return head.getLocation().equals(apple.getPosition());
+    public boolean Ate(GoodFood goodFood) {
+        return head.getLocation().equals(goodFood.getPosition());
     }
 
     public boolean wallCollision() {

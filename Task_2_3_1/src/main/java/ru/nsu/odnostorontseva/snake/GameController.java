@@ -5,13 +5,22 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyEvent;
 import javafx.animation.AnimationTimer;
-import ru.nsu.odnostorontseva.snake.FOOD.Apple;
+import ru.nsu.odnostorontseva.snake.FOOD.FoodView;
+import ru.nsu.odnostorontseva.snake.FOOD.GoodFood;
+import ru.nsu.odnostorontseva.snake.SNAKE.Snake;
+import ru.nsu.odnostorontseva.snake.SNAKE.SnakeView;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class GameController {
     @FXML private Canvas gameCanvas;
     private Snake snake;
     private GameView gameView;
-    private Apple apple;
+    private SnakeView snakeView;
+    private FoodView foodView;
+    private List<GoodFood> goodFoodList;
 
     private long lastUpdate;
     private static final long UPDATE_INTERVAL = 300000000;
@@ -24,8 +33,15 @@ public class GameController {
     public void initialize() {
         GraphicsContext gc = gameCanvas.getGraphicsContext2D();
         gameView = new GameView(gameCanvas);
+        snakeView = new SnakeView(gameCanvas);
+        foodView = new FoodView(gameCanvas);
         snake = new Snake(GameView.CELL_SIZE, GameView.CELL_SIZE);
-        apple = new Apple();
+        goodFoodList = new ArrayList<GoodFood>();
+        for(int i = 0; i< GameView.NUM_OF_FOOD; i++){
+            GoodFood goodFood = new GoodFood();
+            goodFood.spawnFood(snake);
+            goodFoodList.add(goodFood);
+        }
 
         gameCanvas.setFocusTraversable(true);
         gameCanvas.setOnKeyPressed(this::onKeyPressed);
@@ -67,17 +83,28 @@ public class GameController {
             return;
         }
 
-        if (snake.Ate(apple)) {
-            snake.grow();
-            apple.spawnFood(snake);
-            score++;
+        List<GoodFood> add = new ArrayList<>();
+        Iterator<GoodFood> it = goodFoodList.iterator();
+        while (it.hasNext()) {
+            GoodFood food = it.next();
+            if (snake.Ate(food)) {
+                snake.grow();
+                it.remove();
+                score++;
+                GoodFood newFood = new GoodFood();
+                newFood.spawnFood(snake);
+                add.add(newFood);
+            }
         }
+        goodFoodList.addAll(add);
     }
 
     private void render() {
         gameView.drawGrid();
-        gameView.drawSnake(snake);
-        gameView.drawFood(apple);
+        snakeView.drawSnake(snake);
+        for (GoodFood food : goodFoodList) {
+            foodView.drawFood(food);
+        }
         gameView.drawScore(score);
         if (gameOver) {
             gameView.drawGameOver();
