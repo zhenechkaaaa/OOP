@@ -5,11 +5,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import ru.nsu.odnostorontseva.snake.FOOD.GoodFood;
-import java.awt.Point;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 
 public class GameView {
@@ -17,7 +12,6 @@ public class GameView {
     public static final int CELL_SIZE = 28;
     public static final int WIDTH = 420;
     public static final int HEIGHT = 420;
-    public static final int NUM_OF_FOOD = 5;
 
     public GameView(Canvas canvas) {
         this.gc = canvas.getGraphicsContext2D();

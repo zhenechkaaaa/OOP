@@ -4,6 +4,7 @@ import lombok.Getter;
 import ru.nsu.odnostorontseva.snake.Direction;
 import ru.nsu.odnostorontseva.snake.FOOD.GoodFood;
 import ru.nsu.odnostorontseva.snake.GameView;
+import ru.nsu.odnostorontseva.snake.OBSTACLE.Obstacle;
 
 import java.awt.Point;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import static ru.nsu.odnostorontseva.snake.GameView.CELL_SIZE;
 public class Snake {
     private final List<Point> body;
     private Direction direction;
+    private Direction nextDirection;
     private Point head;
 
     public Snake(int startX, int startY) {
@@ -22,9 +24,12 @@ public class Snake {
         head = new Point(startX, startY);
         body.add(head);
         direction = Direction.RIGHT;
+        nextDirection = Direction.RIGHT;
     }
 
     public void move() {
+        this.direction = this.nextDirection;
+
         double y = head.getY();
         double x = head.getX();
 
@@ -51,7 +56,7 @@ public class Snake {
                 (direction == Direction.DOWN && newDirection != Direction.UP) ||
                 (direction == Direction.LEFT && newDirection != Direction.RIGHT) ||
                 (direction == Direction.RIGHT && newDirection != Direction.LEFT)) {
-            this.direction = newDirection;
+            this.nextDirection = newDirection;
         }
     }
 
@@ -70,6 +75,15 @@ public class Snake {
     public boolean bodyCollision() {
         for (int i = 1; i < body.size(); i++) {
             if (head.getX() == body.get(i).getX() && head.getY() == body.get(i).getY()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean obstacleCollision(List<Obstacle> obstacles) {
+        for (Obstacle obstacle : obstacles) {
+            if (head.getLocation().equals(obstacle.getPosition())) {
                 return true;
             }
         }
