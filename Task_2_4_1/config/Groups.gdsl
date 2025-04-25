@@ -1,0 +1,13 @@
+group G23101 {
+    student S1 {
+        name "Ivan Ivanov"
+        github "ivanov"
+        repo "oop-labs"
+    }
+
+    student S2 {
+        name "Petr Petrov"
+        github "petr007"
+        repo "oop"
+    }
+}

@@ -2,7 +2,6 @@ package ru.nsu.odnostorontseva.snake;
 
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyEvent;
 import javafx.animation.AnimationTimer;
 import ru.nsu.odnostorontseva.snake.FOOD.FoodView;
@@ -39,7 +38,6 @@ public class GameController {
 
     @FXML
     public void initialize() {
-        GraphicsContext gc = gameCanvas.getGraphicsContext2D();
         gameView = new GameView(gameCanvas);
         snakeView = new SnakeView(gameCanvas);
         foodView = new FoodView(gameCanvas);
