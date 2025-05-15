@@ -1,0 +1,12 @@
+{
+  "workingTime": 15,
+  "bakers": [
+    { "id": 1, "speed": 5, "name": "Павел" },
+    { "id": 2, "speed": 7, "name": "Пётр"}
+  ],
+  "couriers": [
+    { "id": 1, "capacity": 3, "name": "Кирилл" },
+    { "id": 2, "capacity": 5, "name": "Колян" }
+  ],
+  "storageCapacity": 3
+}
